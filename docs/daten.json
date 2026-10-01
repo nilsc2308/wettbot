@@ -1,16 +1,37 @@
 {
- "erzeugt": "2026-10-01T11:53:43Z",
- "letzter_scan": null,
- "spiele_geprueft": 0,
- "credits": null,
+ "erzeugt": "2026-10-01T12:05:11Z",
+ "letzter_scan": "2026-10-01T12:05:11Z",
+ "spiele_geprueft": 23,
+ "credits": 496,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
   "max_einsatz_anteil": 0.02,
   "min_edge": 0.02
  },
- "gescannt": [],
- "ausgelassen": 0,
+ "gescannt": [
+  {
+   "name": "Brazil Série A",
+   "gruppe": "Fußball",
+   "spiele": 2
+  },
+  {
+   "name": "Brazil Série B",
+   "gruppe": "Fußball",
+   "spiele": 10
+  },
+  {
+   "name": "Frauen-Bundesliga",
+   "gruppe": "Fußball",
+   "spiele": 5
+  },
+  {
+   "name": "La Liga 2 - Spain",
+   "gruppe": "Fußball",
+   "spiele": 6
+  }
+ ],
+ "ausgelassen": 48,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
