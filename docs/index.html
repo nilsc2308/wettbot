@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Wettbot</title>
+<meta name="description" content="Value-Wetten mit fairer Gewinnwahrscheinlichkeit und ehrlicher Bilanz">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f4f3ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f100f" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Wettbot">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f4f3ef;
+  --card: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #7d7c76;
+  --line: #e3e1da;
+  --soft: #ecebe6;
+  --value: #0b7a50;
+  --value-soft: #dff1e8;
+  --series: #2a78d6;
+  --good: #0b7a50;
+  --bad: #c23b3a;
+  --bad-soft: #f8e3e2;
+  --warn: #9a6400;
+  --warn-soft: #f6ecd6;
+  --brand: #14211b;
+  --on-brand: #f4f3ef;
+  --radius: 18px;
+  --nav-h: 64px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0f100f;
+    --card: #1a1a19;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #8d8c84;
+    --line: #2d2d2b;
+    --soft: #242423;
+    --value: #3ddc97;
+    --value-soft: #143024;
+    --series: #3987e5;
+    --good: #3ddc97;
+    --bad: #e66767;
+    --bad-soft: #3a1d1d;
+    --warn: #e0a83a;
+    --warn-soft: #33270f;
+    --brand: #3ddc97;
+    --on-brand: #0f100f;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f100f; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #8d8c84; --line: #2d2d2b;
+  --soft: #242423; --value: #3ddc97; --value-soft: #143024; --series: #3987e5; --good: #3ddc97;
+  --bad: #e66767; --bad-soft: #3a1d1d; --warn: #e0a83a; --warn-soft: #33270f; --brand: #3ddc97; --on-brand: #0f100f;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  font-variant-numeric: tabular-nums;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+button { font: inherit; color: inherit; }
+a { color: inherit; }
+
+/* Kopfzeile */
+.kopf {
+  position: sticky; top: 0; z-index: 10;
+  padding: calc(env(safe-area-inset-top) + 10px) 16px 10px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  display: flex; align-items: center; gap: 12px;
+}
+.kopf.scrolled { border-bottom-color: var(--line); }
+.kopf h1 { margin: 0; font-size: 28px; line-height: 1.1; letter-spacing: -0.02em; flex: 1; }
+.kopf .stand { display: block; font-size: 13px; font-weight: 400; color: var(--muted); letter-spacing: 0; margin-top: 2px; }
+.rund {
+  width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--soft);
+  display: grid; place-items: center; cursor: pointer; flex: none;
+}
+.rund svg { width: 20px; height: 20px; }
+.rund.dreht svg { animation: drehen .8s linear infinite; }
+@keyframes drehen { to { transform: rotate(360deg); } }
+
+main { padding: 4px 16px calc(var(--nav-h) + env(safe-area-inset-bottom) + 24px); max-width: 640px; margin: 0 auto; }
+.ansicht { display: none; }
+.ansicht.aktiv { display: block; }
+
+/* Untere Leiste */
+nav.leiste {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  padding: 6px 8px calc(env(safe-area-inset-bottom) + 6px);
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  border-top: 1px solid var(--line);
+}
+nav.leiste button {
+  border: 0; background: none; padding: 6px 0; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  font-size: 11px; color: var(--muted);
+}
+nav.leiste svg { width: 24px; height: 24px; }
+nav.leiste button[aria-current="page"] { color: var(--ink); font-weight: 600; }
+nav.leiste .zahl {
+  position: absolute; margin-left: 22px; margin-top: -2px; min-width: 18px; height: 18px; padding: 0 5px;
+  border-radius: 9px; background: var(--value); color: var(--on-brand); font-size: 11px; font-weight: 700;
+  display: grid; place-items: center;
+}
+nav.leiste .zahl:empty { display: none; }
+
+/* Allgemein */
+.abschnitt { margin: 22px 0 10px; font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.karte { background: var(--card); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; border: 1px solid var(--line); }
+.leer { text-align: center; padding: 40px 20px; color: var(--ink-2); }
+.leer strong { display: block; color: var(--ink); font-size: 18px; margin-bottom: 6px; }
+.klein { font-size: 13px; color: var(--muted); }
+.zeile { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 999px;
+  font-size: 12px; font-weight: 600; background: var(--soft); color: var(--ink-2); white-space: nowrap;
+}
+.chip svg { width: 12px; height: 12px; }
+.chip.hoch { background: var(--value-soft); color: var(--value); }
+.chip.niedrig { background: var(--warn-soft); color: var(--warn); }
+.chip.gut { background: var(--value-soft); color: var(--good); }
+.chip.schlecht { background: var(--bad-soft); color: var(--bad); }
+
+/* Tipp-Karte */
+.tipp .meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+.tipp .spiel { margin: 8px 0 2px; font-size: 15px; color: var(--ink-2); }
+.tipp .wahl { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
+.tipp .quote { display: flex; align-items: baseline; gap: 8px; margin-top: 10px; }
+.tipp .quote b { font-size: 34px; letter-spacing: -0.02em; line-height: 1; }
+.tipp .quote span { color: var(--muted); font-size: 14px; }
+.prob { margin: 14px 0 4px; }
+.prob .balken { height: 8px; border-radius: 4px; background: var(--soft); overflow: hidden; margin-top: 6px; }
+.prob .balken i { display: block; height: 100%; border-radius: 4px; background: var(--value); }
+.werte { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+.werte div { background: var(--soft); border-radius: 12px; padding: 8px 10px; }
+.werte small { display: block; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.werte b { font-size: 17px; }
+.werte .pos { color: var(--value); }
+.hinweis { margin-top: 12px; padding: 10px 12px; border-radius: 12px; font-size: 14px; display: flex; gap: 8px; align-items: flex-start; }
+.hinweis svg { width: 18px; height: 18px; flex: none; margin-top: 1px; }
+.hinweis.warn { background: var(--warn-soft); color: var(--warn); }
+.hinweis.ok { background: var(--value-soft); color: var(--value); }
+details.analyse { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 10px; }
+details.analyse summary { cursor: pointer; font-weight: 600; font-size: 14px; list-style: none; display: flex; justify-content: space-between; }
+details.analyse summary::-webkit-details-marker { display: none; }
+details.analyse summary::after { content: "+"; color: var(--muted); font-weight: 400; font-size: 18px; line-height: 1; }
+details.analyse[open] summary::after { content: "–"; }
+.quellen { margin: 10px 0 0; padding: 0; list-style: none; font-size: 14px; }
+.quellen li { display: grid; grid-template-columns: 1fr 70px 56px; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.quellen li:last-child { border-bottom: 0; }
+.quellen .mini { height: 6px; border-radius: 3px; background: var(--soft); overflow: hidden; }
+.quellen .mini i { display: block; height: 100%; background: var(--ink-2); border-radius: 3px; }
+.quellen span:last-child { text-align: right; font-weight: 600; }
+.erklaer { font-size: 14px; color: var(--ink-2); margin: 10px 0 0; }
+.knoepfe { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+.knopf {
+  display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 46px; padding: 0 12px;
+  border-radius: 14px; border: 1px solid var(--line); background: var(--card); font-weight: 600; font-size: 15px;
+  text-decoration: none; cursor: pointer;
+}
+.knopf svg { width: 18px; height: 18px; }
+.knopf.primaer { background: var(--brand); color: var(--on-brand); border-color: var(--brand); }
+.knopf.an { background: var(--value-soft); color: var(--value); border-color: transparent; }
+
+/* Bilanz */
+.held { padding: 20px 16px; }
+.held small { color: var(--muted); font-size: 14px; }
+.held .gross { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; margin: 4px 0; }
+.kacheln { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.kacheln .karte { margin: 0; }
+.kacheln small { display: block; color: var(--muted); font-size: 13px; }
+.kacheln b { display: block; font-size: 24px; letter-spacing: -0.02em; margin: 2px 0; }
+.fortschritt { height: 10px; border-radius: 5px; background: var(--soft); overflow: hidden; margin: 10px 0 6px; }
+.fortschritt i { display: block; height: 100%; background: var(--series); border-radius: 5px; }
+.urteil { font-size: 15px; color: var(--ink-2); margin: 8px 0 0; }
+.urteil strong { color: var(--ink); }
+
+.liste { list-style: none; margin: 0; padding: 0; }
+.liste li { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.liste li:last-child { border-bottom: 0; }
+.liste .text { flex: 1; min-width: 0; }
+.liste .marke { width: 30px; height: 30px; padding: 0; justify-content: center; flex: none; }
+.liste .marke svg { width: 14px; height: 14px; }
+.liste .text span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.liste .text b { display: block; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.liste .text span { font-size: 13px; color: var(--muted); }
+.liste .betrag { text-align: right; font-weight: 600; white-space: nowrap; }
+.liste .betrag small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+
+/* Diagramme */
+.diagramm { position: relative; margin-top: 10px; touch-action: pan-y; }
+.diagramm svg { display: block; width: 100%; height: auto; overflow: visible; }
+.diagramm .achse { fill: var(--muted); font-size: 11px; }
+.diagramm .gitter { stroke: var(--line); stroke-width: 1; }
+.diagramm .null { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
+.diagramm .linie { fill: none; stroke: var(--series); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.diagramm .flaeche { fill: var(--series); opacity: 0.08; }
+.diagramm .fadenkreuz { stroke: var(--ink-2); stroke-width: 1; }
+.diagramm .punkt { fill: var(--series); stroke: var(--card); stroke-width: 2; }
+.diagramm .diagonale { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 4; fill: none; }
+.tooltip {
+  position: absolute; pointer-events: none; background: var(--ink); color: var(--card); font-size: 13px;
+  padding: 6px 9px; border-radius: 8px; white-space: nowrap; transform: translate(-50%, -110%); opacity: 0; transition: opacity .1s;
+}
+.tooltip.an { opacity: 1; }
+.legende { display: flex; gap: 14px; font-size: 12px; color: var(--ink-2); margin-top: 8px; flex-wrap: wrap; }
+.legende i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
+
+.strategien { list-style: none; margin: 0; padding: 0; }
+.strategien li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.strategien li:last-child { border-bottom: 0; }
+.strategien .kopfz { display: flex; justify-content: space-between; gap: 10px; font-size: 15px; }
+.strategien .kopfz b { white-space: nowrap; }
+.strategien .roi-balken { position: relative; height: 10px; margin: 8px 0 4px; background: var(--soft); border-radius: 5px; }
+.strategien .roi-balken i { position: absolute; top: 0; bottom: 0; border-radius: 4px; }
+.strategien .roi-balken .mitte { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--muted); left: 50%; }
+.pos { color: var(--value); }
+.neg { color: var(--bad); }
+table.daten { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+table.daten th, table.daten td { text-align: right; padding: 6px 4px; border-bottom: 1px solid var(--line); }
+table.daten th:first-child, table.daten td:first-child { text-align: left; }
+table.daten th { color: var(--muted); font-weight: 600; }
+details.tabelle summary { cursor: pointer; font-size: 13px; color: var(--muted); margin-top: 10px; }
+
+.infos h3 { margin: 0 0 6px; font-size: 17px; }
+.infos p, .infos li { color: var(--ink-2); font-size: 15px; }
+.infos p { margin: 0 0 8px; }
+.infos ul { padding-left: 18px; margin: 0; }
+.infos dt { font-weight: 600; margin-top: 10px; }
+.infos dd { margin: 2px 0 0; color: var(--ink-2); font-size: 15px; }
+
+.installieren {
+  display: none; position: fixed; left: 12px; right: 12px; z-index: 20;
+  bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 12px);
+  background: var(--ink); color: var(--card); border-radius: 16px; padding: 14px 44px 14px 16px; font-size: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.installieren.an { display: block; }
+.installieren button { position: absolute; right: 8px; top: 8px; border: 0; background: none; color: inherit; font-size: 22px; width: 32px; height: 32px; cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rund.dreht svg { animation: none; }
+  .tooltip { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="kopf" id="kopf">
+  <h1><span id="titel">Tipps</span><span class="stand" id="stand">Lädt …</span></h1>
+  <button class="rund" id="neuLaden" aria-label="Neu laden">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+  </button>
+</header>
+
+<main>
+  <section class="ansicht aktiv" id="tipps" aria-label="Tipps"></section>
+  <section class="ansicht" id="bilanz" aria-label="Bilanz"></section>
+  <section class="ansicht" id="beweis" aria-label="Beweis"></section>
+  <section class="ansicht infos" id="infos" aria-label="Infos"></section>
+</main>
+
+<nav class="leiste" aria-label="Bereiche">
+  <button data-ziel="tipps" aria-current="page">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    <span class="zahl" id="anzahlTipps"></span>Tipps
+  </button>
+  <button data-ziel="bilanz">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+    Bilanz
+  </button>
+  <button data-ziel="beweis">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L5 19a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/><path d="M7.5 15h9"/></svg>
+    Beweis
+  </button>
+  <button data-ziel="infos">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>
+    Infos
+  </button>
+</nav>
+
+<div class="installieren" id="installieren">
+  <b>Als App installieren:</b> unten auf <b>Teilen</b> tippen, dann <b>„Zum Home-Bildschirm“</b>.
+  <button aria-label="Schließen" id="installierenZu">×</button>
+</div>
+
+<script>
+const WINAMAX_URL = "https://www.winamax.de/sportwetten";
+const TITEL = { tipps: "Tipps", bilanz: "Bilanz", beweis: "Beweis", infos: "Infos" };
+let daten = null, backtest = null;
+
+/* ---------- Helfer ---------- */
+const $ = (s) => document.querySelector(s);
+const nf = (d) => new Intl.NumberFormat("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d });
+const zahl = (x, d = 2) => nf(d).format(x);
+const pct = (x, d = 1) => nf(d).format(x * 100) + " %";
+const pctVz = (x, d = 1) => (x > 0 ? "+" : x < 0 ? "−" : "") + nf(d).format(Math.abs(x * 100)) + " %";
+const eur = (x) => (x < 0 ? "−" : "") + nf(2).format(Math.abs(x)) + " €";
+const eurVz = (x) => (x > 0 ? "+" : x < 0 ? "−" : "") + nf(2).format(Math.abs(x)) + " €";
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const TAGE = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+function zeit(iso) {
+  const d = new Date(iso);
+  return TAGE[d.getDay()] + " " + d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" }) + " · " +
+    d.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
+}
+function tagKopf(iso) {
+  const d = new Date(iso), h = new Date();
+  const tag = (x) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
+  const diff = Math.round((tag(d) - tag(h)) / 864e5);
+  if (diff === 0) return "Heute";
+  if (diff === 1) return "Morgen";
+  return d.toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long" });
+}
+function vorWann(iso) {
+  if (!iso) return "noch kein Lauf";
+  const min = Math.round((Date.now() - new Date(iso)) / 6e4);
+  if (min < 2) return "gerade eben";
+  if (min < 60) return "vor " + min + " Min.";
+  const std = Math.round(min / 60);
+  if (std < 24) return "vor " + std + " Std.";
+  return "am " + new Date(iso).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" });
+}
+const speicher = {
+  lesen(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+  schreiben(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+const ICON = {
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  minus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 12h12"/></svg>',
+  uhr: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  warn: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17v.5"/></svg>',
+  ok: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>',
+  extern: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>',
+  schild: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>',
+};
+const SICHERHEIT = {
+  hoch: ["hoch", "Sicherheit hoch"],
+  mittel: ["", "Sicherheit mittel"],
+  niedrig: ["niedrig", "Sicherheit niedrig"],
+};
+
+/* ---------- Laden ---------- */
+async function laden() {
+  const knopf = $("#neuLaden");
+  knopf.classList.add("dreht");
+  try {
+    const t = "?t=" + Date.now();
+    const [d, b] = await Promise.all([
+      fetch("daten.json" + t).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+      fetch("backtest.json" + t).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+    ]);
+    daten = d; backtest = b;
+  } finally {
+    knopf.classList.remove("dreht");
+  }
+  zeichnen();
+}
+
+function zeichnen() {
+  $("#stand").textContent = daten ? "Stand: " + vorWann(daten.letzter_scan) : "Keine Verbindung";
+  tippsZeichnen();
+  bilanzZeichnen();
+  beweisZeichnen();
+  infosZeichnen();
+}
+
+/* ---------- Tipps ---------- */
+function offeneTipps() {
+  if (!daten) return [];
+  const jetzt = Date.now();
+  return daten.tipps.filter((t) => new Date(t.anstoss).getTime() > jetzt);
+}
+
+function tippsZeichnen() {
+  const el = $("#tipps");
+  const tipps = offeneTipps();
+  $("#anzahlTipps").textContent = tipps.length || "";
+  if (!daten) {
+    el.innerHTML = '<div class="leer"><strong>Keine Daten</strong>Prüfe deine Verbindung und lade neu.</div>';
+    return;
+  }
+  if (!daten.letzter_scan) {
+    el.innerHTML = '<div class="leer"><strong>Der Bot ist noch nicht gelaufen</strong>Sobald der API-Key hinterlegt ist, sucht er zweimal täglich nach Value-Wetten (10 und 17 Uhr).</div>';
+    return;
+  }
+  if (!tipps.length) {
+    el.innerHTML = '<div class="leer"><strong>Gerade keine Value-Wetten</strong>' +
+      esc(daten.spiele_geprueft) + " Spiele geprüft, bei keinem liegt Winamax über der fairen Quote. " +
+      "Nicht wetten ist dann die richtige Entscheidung.</div>";
+    return;
+  }
+  const minEdge = daten.einstellungen.min_edge;
+  let html = "", letzterTag = "";
+  for (const t of tipps) {
+    const tag = tagKopf(t.anstoss);
+    if (tag !== letzterTag) { html += '<h2 class="abschnitt">' + esc(tag) + "</h2>"; letzterTag = tag; }
+    html += tippKarte(t, minEdge);
+  }
+  el.innerHTML = html;
+}
+
+function tippKarte(t, minEdge) {
+  const a = t.analyse || {};
+  const [klasse, label] = SICHERHEIT[a.sicherheit] || SICHERHEIT.mittel;
+  const fair = 1 / t.prob;
+  const abQuote = (1 + minEdge) / t.prob;
+  const gesetzt = speicher.lesen("wb-gesetzt-" + t.id);
+
+  // Ist die Quote seit dem Fund gefallen?
+  let status = "";
+  if (t.akt_quote != null && t.akt_edge != null && t.akt_zeit && t.akt_quote !== t.quote) {
+    if (t.akt_edge < minEdge) {
+      status = '<div class="hinweis warn">' + ICON.warn + "<span>Quote ist auf <b>" + zahl(t.akt_quote) +
+        "</b> gefallen (" + vorWann(t.akt_zeit) + "). Kein Value mehr, nicht mehr setzen.</span></div>";
+    } else {
+      status = '<div class="hinweis ok">' + ICON.ok + "<span>Aktuell " + zahl(t.akt_quote) + ", Edge " +
+        pctVz(t.akt_edge) + ". Weiterhin Value.</span></div>";
+    }
+  }
+
+  const quellen = [["Pinnacle", a.pinnacle], ["Betfair-Börse", a.betfair],
+    ["Ø " + (a.anzahl_buecher || "") + " Buchmacher", a.markt]].filter((q) => q[1] != null);
+  const bewegung = t.prob_jetzt != null ? t.prob_jetzt - t.prob : null;
+  let bewegungText = "";
+  if (bewegung != null && Math.abs(bewegung) >= 0.002) {
+    bewegungText = "<p class=\"erklaer\">Seit dem Fund hat sich Pinnacle " +
+      (bewegung > 0 ? "<b class=\"pos\">in Richtung dieses Tipps</b> bewegt (" : "<b class=\"neg\">gegen diesen Tipp</b> bewegt (") +
+      pct(t.prob) + " → " + pct(t.prob_jetzt) + "). " +
+      (bewegung > 0 ? "Das bestätigt den Value." : "Das spricht eher gegen den Tipp.") + "</p>";
+  }
+
+  return '<article class="karte tipp">' +
+    '<div class="meta"><span>' + esc(t.liga) + " · " + zeit(t.anstoss) + '</span><span class="chip ' + klasse + '">' + ICON.schild + label + "</span></div>" +
+    '<div class="spiel">' + esc(t.heim) + " – " + esc(t.gast) + "</div>" +
+    '<div class="wahl">' + esc(t.tipp) + "</div>" +
+    '<div class="quote"><b>' + zahl(t.quote) + "</b><span>bei " + esc(t.buchmacher) + " · fair wäre " + zahl(fair) + "</span></div>" +
+    '<div class="prob"><div class="zeile"><span>Gewinnwahrscheinlichkeit</span><b>' + pct(t.prob) + "</b></div>" +
+    '<div class="balken"><i style="width:' + (t.prob * 100).toFixed(1) + '%"></i></div></div>' +
+    '<div class="werte"><div><small>Edge</small><b class="pos">' + pctVz(t.edge) + "</b></div>" +
+    "<div><small>Einsatz</small><b>" + eur(t.einsatz) + "</b></div>" +
+    "<div><small>Setzen ab</small><b>" + zahl(abQuote) + "</b></div></div>" +
+    status +
+    '<details class="analyse"><summary>Analyse</summary>' +
+    '<p class="erklaer">Faire Wahrscheinlichkeit für „' + esc(t.tipp) + "“ ohne Buchmacher-Marge, je Quelle:</p>" +
+    '<ul class="quellen">' + quellen.map((q) =>
+      "<li><span>" + esc(q[0]) + '</span><span class="mini"><i style="width:' + (q[1] * 100).toFixed(1) + '%"></i></span><span>' + pct(q[1]) + "</span></li>").join("") +
+    "</ul>" +
+    '<p class="erklaer">' + sicherheitText(a, t) + "</p>" + bewegungText +
+    '<p class="erklaer">Bei Quote ' + zahl(t.quote) + " gewinnst du im Schnitt " + zahl(t.edge * 100, 1) +
+    " Cent pro Euro Einsatz. Das ist ein Durchschnitt über viele Wetten, keine Garantie für dieses Spiel.</p>" +
+    "</details>" +
+    '<div class="knoepfe"><a class="knopf primaer" href="' + WINAMAX_URL + '" target="_blank" rel="noopener">' + ICON.extern + "Winamax</a>" +
+    '<button class="knopf ' + (gesetzt ? "an" : "") + '" data-setzen="' + t.id + '">' + (gesetzt ? ICON.check + "Gesetzt" : "Gesetzt?") + "</button></div>" +
+    "</article>";
+}
+
+function sicherheitText(a, t) {
+  if (a.sicherheit === "hoch") return "Alle Quellen sind sich einig: Winamax liegt mit " + zahl(t.quote) + " über der fairen Quote. Das ist die stärkste Art von Value.";
+  if (a.sicherheit === "niedrig") return "Nur die Hauptquelle sieht hier Value, die anderen Quellen nicht. Eher Finger weg oder nur klein setzen.";
+  return "Die Hauptquelle und mindestens eine weitere sehen Value, aber nicht alle. Solide, aber nicht ganz eindeutig.";
+}
+
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-setzen]");
+  if (!b) return;
+  const id = b.dataset.setzen;
+  const t = daten.tipps.find((x) => String(x.id) === id);
+  const k = "wb-gesetzt-" + id;
+  if (speicher.lesen(k)) speicher.schreiben(k, null);
+  else speicher.schreiben(k, { einsatz: t ? t.einsatz : 0, quote: t ? t.quote : 0, zeit: new Date().toISOString() });
+  tippsZeichnen();
+  bilanzZeichnen();
+});
+
+/* ---------- Bilanz ---------- */
+function bilanzZeichnen() {
+  const el = $("#bilanz");
+  if (!daten) { el.innerHTML = ""; return; }
+  const b = daten.bilanz;
+  if (!b.gesamt) {
+    el.innerHTML = '<div class="leer"><strong>Noch keine Papierwetten</strong>Der Bot protokolliert jeden Tipp automatisch, auch wenn du nicht setzt. So siehst du nach einigen Wochen schwarz auf weiß, ob die Methode funktioniert.</div>';
+    return;
+  }
+  const ziel = 100;
+  const fortschritt = Math.min(1, b.abgerechnet / ziel);
+  let urteil;
+  if (b.clv == null || b.clv_anzahl < 30) {
+    urteil = "Noch zu wenige Wetten für ein Urteil. Ab etwa 50 Wetten wird der CLV aussagekräftig.";
+  } else if (b.clv > 0.01) {
+    urteil = "<strong>Gutes Zeichen:</strong> Deine Quoten waren im Schnitt " + pctVz(b.clv) + " besser als die faire Schlussquote. Das ist das stärkste Indiz für eine echte Edge.";
+  } else if (b.clv > -0.005) {
+    urteil = "<strong>Unentschieden:</strong> Der CLV liegt bei " + pctVz(b.clv) + ". Eine Edge ist noch nicht belegt.";
+  } else {
+    urteil = "<strong>Warnsignal:</strong> Der CLV ist negativ (" + pctVz(b.clv) + "). Die Tipps schlagen den Markt nicht, kein Echtgeld.";
+  }
+
+  // Echte Einsätze (nur auf diesem Gerät gespeichert)
+  let echtAnzahl = 0, echtEinsatz = 0, echtGewinn = 0, echtOffen = 0;
+  for (const w of [...daten.tipps, ...daten.verlauf]) {
+    const g = speicher.lesen("wb-gesetzt-" + w.id);
+    if (!g) continue;
+    echtAnzahl++;
+    if (w.status === "gewonnen") { echtEinsatz += g.einsatz; echtGewinn += g.einsatz * (g.quote - 1); }
+    else if (w.status === "verloren") { echtEinsatz += g.einsatz; echtGewinn -= g.einsatz; }
+    else echtOffen++;
+  }
+
+  const fertig = daten.verlauf.filter((w) => w.status !== "offen");
+  el.innerHTML =
+    '<div class="karte held"><small>Gewinn der Papierwetten</small>' +
+    '<div class="gross ' + (b.gewinn >= 0 ? "pos" : "neg") + '">' + eurVz(b.gewinn) + "</div>" +
+    '<div class="klein">' + (b.roi != null ? "ROI " + pctVz(b.roi) + " · " : "") + eur(b.einsatz) + " eingesetzt (Bankroll " + eur(daten.einstellungen.bankroll) + ")</div></div>" +
+
+    '<div class="kacheln">' +
+    '<div class="karte"><small>Abgerechnet</small><b>' + b.abgerechnet + "</b><span class=\"klein\">" + b.offen + " offen</span></div>" +
+    '<div class="karte"><small>Treffer</small><b>' + b.treffer + "</b><span class=\"klein\">erwartet " + zahl(b.erwartet, 1) + "</span></div>" +
+    '<div class="karte"><small>CLV</small><b class="' + (b.clv > 0 ? "pos" : b.clv < 0 ? "neg" : "") + '">' + (b.clv != null ? pctVz(b.clv) : "–") + "</b><span class=\"klein\">über " + b.clv_anzahl + " Wetten</span></div>" +
+    '<div class="karte"><small>1 € pro Wette</small><b class="' + (b.gewinn_flach >= 0 ? "pos" : "neg") + '">' + eurVz(b.gewinn_flach) + '</b><span class="klein">ohne Kelly</span></div>' +
+    "</div>" +
+
+    '<h2 class="abschnitt">Testphase</h2><div class="karte">' +
+    '<div class="zeile"><span>' + b.abgerechnet + " von " + ziel + ' Wetten</span><span class="klein">' + pct(fortschritt, 0) + "</span></div>" +
+    '<div class="fortschritt"><i style="width:' + (fortschritt * 100).toFixed(1) + '%"></i></div>' +
+    '<p class="urteil">' + urteil + "</p></div>" +
+
+    '<h2 class="abschnitt">Verlauf</h2><div class="karte"><div class="zeile"><b>Papier-Gewinn kumuliert</b><span class="klein">in €</span></div>' +
+    '<div class="diagramm" id="kurve"></div></div>' +
+
+    (echtAnzahl ? '<h2 class="abschnitt">Echt gesetzt</h2><div class="karte"><div class="zeile"><span>' + echtAnzahl + " Wetten (" + echtOffen + ' offen)</span><b class="' + (echtGewinn >= 0 ? "pos" : "neg") + '">' + eurVz(echtGewinn) + '</b></div><p class="klein" style="margin:6px 0 0">Mit „Gesetzt?“ markiert, nur auf diesem Gerät gespeichert. Einsatz ' + eur(echtEinsatz) + ".</p></div>" : "") +
+
+    '<h2 class="abschnitt">Letzte Wetten</h2><div class="karte"><ul class="liste">' +
+    (fertig.length ? fertig.slice(0, 40).map(verlaufZeile).join("") : '<li class="klein">Noch nichts abgerechnet.</li>') +
+    "</ul></div>";
+
+  linienDiagramm($("#kurve"), daten.kurve);
+}
+
+function verlaufZeile(w) {
+  const [klasse, icon, text] = w.status === "gewonnen" ? ["gut", ICON.check, "Gewonnen"]
+    : w.status === "verloren" ? ["schlecht", ICON.x, "Verloren"]
+    : w.status === "void" ? ["", ICON.minus, "Erstattet"] : ["", ICON.uhr, "Läuft"];
+  const chip = '<span class="marke chip ' + klasse + '" aria-hidden="true">' + icon + "</span>";
+  const betrag = w.gewinn != null ? '<span class="' + (w.gewinn >= 0 ? "pos" : "neg") + '">' + eurVz(w.gewinn) + "</span>" : "";
+  return "<li>" + chip + '<div class="text"><b>' + esc(w.tipp) + "</b><span>" + text + " · " + esc(w.heim) + " – " + esc(w.gast) + " · " + zahl(w.quote) + "</span></div>" +
+    '<div class="betrag">' + betrag + "<small>" + (w.clv != null ? "CLV " + pctVz(w.clv) : "") + "</small></div></li>";
+}
+
+/* Liniendiagramm mit Fadenkreuz */
+function linienDiagramm(el, punkte) {
+  if (!el) return;
+  if (!punkte || punkte.length < 2) {
+    el.innerHTML = '<p class="klein">Die Kurve erscheint ab zwei abgerechneten Wetten.</p>';
+    return;
+  }
+  punkte = [{ t: punkte[0].t, summe: 0, start: true }, ...punkte];
+  const B = Math.max(280, Math.round(el.clientWidth || 320)), H = 200, L = 40, R = 8, O = 10, U = 24;
+  const werte = punkte.map((p) => p.summe);
+  let min = Math.min(...werte), max = Math.max(...werte);
+  if (max - min < 1) { max += 0.5; min -= 0.5; }
+  const roh = (max - min) / 4, p10 = Math.pow(10, Math.floor(Math.log10(roh))), f = roh / p10;
+  const schritt = (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p10;
+  min = Math.floor(min / schritt) * schritt; max = Math.ceil(max / schritt) * schritt;
+  const n = punkte.length;
+  const x = (i) => L + (i / (n - 1)) * (B - L - R);
+  const y = (v) => O + (1 - (v - min) / (max - min)) * (H - O - U);
+  const ticks = [];
+  for (let v = min; v <= max + schritt / 2; v += schritt) ticks.push(v);
+  const pfad = punkte.map((p, i) => (i ? "L" : "M") + x(i).toFixed(1) + " " + y(p.summe).toFixed(1)).join(" ");
+  const flaeche = pfad + " L" + x(n - 1).toFixed(1) + " " + y(Math.max(min, 0)).toFixed(1) + " L" + x(0).toFixed(1) + " " + y(Math.max(min, 0)).toFixed(1) + " Z";
+  el.innerHTML =
+    '<svg viewBox="0 0 ' + B + " " + H + '" role="img" aria-label="Kumulierter Papier-Gewinn, aktuell ' + eurVz(punkte[n - 1].summe) + '">' +
+    ticks.map((v) => '<line class="gitter" x1="' + L + '" x2="' + (B - R) + '" y1="' + y(v) + '" y2="' + y(v) + '"/>' +
+      '<text class="achse" x="' + (L - 6) + '" y="' + (y(v) + 4) + '" text-anchor="end">' + nf(0).format(v) + "</text>").join("") +
+    (min < 0 && max > 0 ? '<line class="null" x1="' + L + '" x2="' + (B - R) + '" y1="' + y(0) + '" y2="' + y(0) + '"/>' : "") +
+    '<text class="achse" x="' + L + '" y="' + (H - 4) + '">' + new Date(punkte[0].t).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" }) + "</text>" +
+    '<text class="achse" x="' + (B - R) + '" y="' + (H - 4) + '" text-anchor="end">' + new Date(punkte[n - 1].t).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" }) + "</text>" +
+    '<path class="flaeche" d="' + flaeche + '"/><path class="linie" d="' + pfad + '"/>' +
+    '<line class="fadenkreuz" id="fk" y1="' + O + '" y2="' + (H - U) + '" visibility="hidden"/>' +
+    '<circle class="punkt" id="fkp" r="5" visibility="hidden"/>' +
+    '<rect x="' + L + '" y="0" width="' + (B - L - R) + '" height="' + H + '" fill="transparent" id="fkFlaeche"/>' +
+    '</svg><div class="tooltip" id="fkTip"></div>';
+  const svg = el.querySelector("svg"), fk = el.querySelector("#fk"), fkp = el.querySelector("#fkp"), tip = el.querySelector("#fkTip");
+  const zeigen = (ev) => {
+    const r = svg.getBoundingClientRect();
+    const sx = ((ev.clientX - r.left) / r.width) * B;
+    const i = Math.max(0, Math.min(n - 1, Math.round(((sx - L) / (B - L - R)) * (n - 1))));
+    const p = punkte[i];
+    fk.setAttribute("x1", x(i)); fk.setAttribute("x2", x(i)); fk.setAttribute("visibility", "visible");
+    fkp.setAttribute("cx", x(i)); fkp.setAttribute("cy", y(p.summe)); fkp.setAttribute("visibility", "visible");
+    tip.innerHTML = p.start ? "Start · 0,00 €" : "<b>" + eurVz(p.summe) + "</b> · nach Wette " + i + " · " + new Date(p.t).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" });
+    tip.style.left = Math.min(Math.max((x(i) / B) * r.width, 90), r.width - 90) + "px";
+    tip.style.top = (y(p.summe) / H) * r.height + "px";
+    tip.classList.add("an");
+  };
+  const weg = () => { fk.setAttribute("visibility", "hidden"); fkp.setAttribute("visibility", "hidden"); tip.classList.remove("an"); };
+  svg.addEventListener("pointermove", zeigen);
+  svg.addEventListener("pointerdown", zeigen);
+  svg.addEventListener("pointerleave", weg);
+}
+
+/* ---------- Beweis (Backtest) ---------- */
+function beweisZeichnen() {
+  const el = $("#beweis");
+  if (!backtest) { el.innerHTML = '<div class="leer"><strong>Kein Backtest vorhanden</strong></div>'; return; }
+  const s = backtest.strategien;
+  const maxRoi = Math.max(0.1, ...s.map((x) => Math.abs(x.roi || 0)));
+  el.innerHTML =
+    '<div class="karte"><p style="margin:0">Getestet mit <b>' + nf(0).format(backtest.spiele) + " echten Spielen</b> (" + esc(backtest.zeitraum) + ", " + esc(backtest.ligen.join(", ")) +
+    ") samt den damaligen Quoten. Zwei Fragen: Stimmen die Wahrscheinlichkeiten? Und bringt die Methode Geld?</p></div>" +
+
+    '<h2 class="abschnitt">1 · Stimmen die Wahrscheinlichkeiten?</h2><div class="karte">' +
+    '<p class="erklaer" style="margin-top:0">Jeder Punkt fasst alle Tipps mit ähnlicher vorhergesagter Wahrscheinlichkeit zusammen. Liegt er auf der gestrichelten Linie, ist eingetreten, was vorhergesagt war.</p>' +
+    '<div class="diagramm" id="kalib"></div>' +
+    '<div class="legende"><span><i style="background:var(--series)"></i>Pinnacle ohne Marge</span><span><i style="background:none;border:1px dashed var(--muted)"></i>perfekte Vorhersage</span></div>' +
+    '<details class="tabelle"><summary>Als Tabelle</summary><table class="daten"><thead><tr><th>Bereich</th><th>Tipps</th><th>Vorhergesagt</th><th>Eingetreten</th></tr></thead><tbody>' +
+    backtest.kalibrierung.map((k) => "<tr><td>" + esc(k.bereich) + "</td><td>" + nf(0).format(k.anzahl) + "</td><td>" + pct(k.vorhergesagt) + "</td><td>" + pct(k.eingetreten) + "</td></tr>").join("") +
+    "</tbody></table></details>" +
+    '<p class="urteil"><strong>Ergebnis:</strong> Die Wahrscheinlichkeiten treffen fast exakt. Wenn der Bot „45 %“ sagt, gewinnt der Tipp auf lange Sicht auch etwa 45 % der Zeit.</p></div>' +
+
+    '<h2 class="abschnitt">2 · Bringt die Methode Geld?</h2><div class="karte"><p class="erklaer" style="margin-top:0">Rendite pro Euro Einsatz (ROI), immer 1 € pro Wette.</p><ul class="strategien">' +
+    s.map((x) => {
+      const roi = x.roi || 0, breite = (Math.abs(roi) / maxRoi) * 50, zuWenig = x.wetten < 300;
+      return "<li><div class=\"kopfz\"><span>" + esc(x.name) + '</span><b class="' + (zuWenig ? "" : roi >= 0 ? "pos" : "neg") + '">' + pctVz(roi) + "</b></div>" +
+        '<div class="roi-balken"><span class="mitte"></span><i style="background:' + (zuWenig ? "var(--muted)" : roi >= 0 ? "var(--value)" : "var(--bad)") + ";" +
+        (roi >= 0 ? "left:50%;width:" + breite + "%" : "right:50%;width:" + breite + "%") + '"></i></div>' +
+        '<div class="klein">' + nf(0).format(x.wetten) + " Wetten · Treffer " + pct(x.treffer) + " (erwartet " + pct(x.erwartet) + ")" +
+        (x.clv != null ? " · CLV " + pctVz(x.clv) : "") + "</div>" +
+        (zuWenig ? '<div class="hinweis warn" style="margin-top:8px;padding:6px 10px">' + ICON.warn + "<span>Nur " + x.wetten + " Wetten: zu wenige, der ROI ist hier überwiegend Zufall.</span></div>" : "") + "</li>";
+    }).join("") + "</ul></div>" +
+
+    '<h2 class="abschnitt">Was das für dich heißt</h2><div class="karte infos">' +
+    "<p><b>Offensichtliche Tipps verlieren.</b> Immer auf den Favoriten zu setzen hätte in jeder einzelnen Saison Geld gekostet.</p>" +
+    "<p><b>Value funktioniert, aber er ist selten.</b> Mit nur einem Buchmacher gab es in sieben Saisons nur rund zehn echte Value-Wetten pro Jahr. Das sind zu wenige, um Glück von Können zu trennen.</p>" +
+    "<p><b>Mit mehreren Konten wird es belastbar.</b> Wer immer die beste Quote nimmt, kam auf über 2.000 Wetten mit positivem CLV und Gewinn in fast jeder Saison. Je mehr legale Buchmacher-Konten der Bot vergleichen kann, desto öfter findet er etwas.</p>" +
+    '<p class="klein">Daten: football-data.co.uk. Bet365 dient als Stellvertreter für einen einzelnen Buchmacher, wie Winamax ohne Wettsteuer-Abzug. Die Bestquote ist eine Obergrenze, weil sie manchmal von Anbietern stammt, die man nicht nutzen kann.</p></div>';
+  kalibDiagramm($("#kalib"), backtest.kalibrierung);
+}
+
+function kalibDiagramm(el, daten) {
+  const G = 300, L = 34, O = 8, U = 26, R = 8;
+  const s = (v) => L + v * (G - L - R);
+  const y = (v) => O + (1 - v) * (G - O - U);
+  const ticks = [0, 0.25, 0.5, 0.75, 1];
+  el.innerHTML = '<svg viewBox="0 0 ' + G + " " + G + '" role="img" aria-label="Vorhergesagte gegen eingetretene Wahrscheinlichkeit">' +
+    ticks.map((t) => '<line class="gitter" x1="' + L + '" x2="' + (G - R) + '" y1="' + y(t) + '" y2="' + y(t) + '"/>' +
+      '<text class="achse" x="' + (L - 5) + '" y="' + (y(t) + 4) + '" text-anchor="end">' + t * 100 + "</text>" +
+      '<text class="achse" x="' + s(t) + '" y="' + (G - U + 14) + '" text-anchor="middle">' + t * 100 + "</text>").join("") +
+    '<text class="achse" x="' + ((L + G) / 2) + '" y="' + (G - 1) + '" text-anchor="middle">vorhergesagt in %</text>' +
+    '<text class="achse" x="' + (L + 6) + '" y="' + (O + 12) + '">eingetreten in %</text>' +
+    '<line class="diagonale" x1="' + s(0) + '" y1="' + y(0) + '" x2="' + s(1) + '" y2="' + y(1) + '"/>' +
+    daten.map((k, i) => '<circle class="punkt" r="5" cx="' + s(k.vorhergesagt) + '" cy="' + y(k.eingetreten) + '"/>' +
+      '<circle r="16" fill="transparent" data-k="' + i + '" cx="' + s(k.vorhergesagt) + '" cy="' + y(k.eingetreten) + '"/>').join("") +
+    '</svg><div class="tooltip" id="kTip"></div>';
+  const svg = el.querySelector("svg"), tip = el.querySelector("#kTip");
+  const zeigen = (ev) => {
+    const c = ev.target.closest("[data-k]");
+    if (!c) { tip.classList.remove("an"); return; }
+    const k = daten[+c.dataset.k], r = svg.getBoundingClientRect();
+    tip.innerHTML = "<b>" + esc(k.bereich) + "</b> · vorhergesagt " + pct(k.vorhergesagt) + " · eingetreten " + pct(k.eingetreten) + " · " + nf(0).format(k.anzahl) + " Tipps";
+    tip.style.left = Math.min(Math.max((s(k.vorhergesagt) / G) * r.width, 120), r.width - 120) + "px";
+    tip.style.top = (y(k.eingetreten) / G) * r.height + "px";
+    tip.classList.add("an");
+  };
+  svg.addEventListener("pointermove", zeigen);
+  svg.addEventListener("pointerdown", zeigen);
+  svg.addEventListener("pointerleave", () => tip.classList.remove("an"));
+}
+
+/* ---------- Infos ---------- */
+function infosZeichnen() {
+  const e = daten ? daten.einstellungen : null;
+  $("#infos").innerHTML =
+    '<div class="karte"><h3>So arbeitet der Bot</h3><ul>' +
+    "<li>Zweimal täglich (10 und 17 Uhr) holt er die Quoten von etwa 25 europäischen Buchmachern für " + esc(daten ? daten.ligen.join(", ") : "die großen Ligen") + ".</li>" +
+    "<li>Aus Pinnacle und der Betfair-Börse, den genauesten Märkten der Welt, rechnet er die Marge heraus. Das ergibt die faire Gewinnwahrscheinlichkeit.</li>" +
+    "<li>Liegt Winamax darüber, ist das eine Value-Wette. Die Gegenprobe mit allen anderen Buchmachern bestimmt die Sicherheit.</li>" +
+    "<li>Jeder Tipp wird als Papierwette gespeichert und nach dem Spiel abgerechnet, ganz ohne echtes Geld.</li></ul></div>" +
+    '<div class="karte"><h3>Begriffe</h3><dl>' +
+    "<dt>Gewinnwahrscheinlichkeit</dt><dd>Wie oft dieser Tipp auf lange Sicht aufgeht. Im Backtest stimmte sie fast exakt.</dd>" +
+    "<dt>Edge</dt><dd>Erwarteter Gewinn pro Euro Einsatz. +4 % heißt: über viele solche Wetten im Schnitt 4 Cent Gewinn pro Euro.</dd>" +
+    "<dt>Setzen ab</dt><dd>Die niedrigste Quote, bei der sich die Wette noch lohnt. Zeigt Winamax weniger, lass sie aus.</dd>" +
+    "<dt>Einsatz</dt><dd>" + (e ? pct(e.kelly_anteil, 0) + " Kelly, höchstens " + pct(e.max_einsatz_anteil, 0) + " von " + eur(e.bankroll) : "Ein Bruchteil des Kelly-Kriteriums") + ". So überlebt die Kasse auch lange Pechsträhnen.</dd>" +
+    "<dt>CLV</dt><dd>War deine Quote besser als die faire Quote kurz vor Anpfiff? Dauerhaft positiver CLV ist der zuverlässigste Beweis für eine echte Edge, schon lange bevor der Gewinn es zeigt.</dd>" +
+    "<dt>Sicherheit</dt><dd>Hoch: Pinnacle, Betfair und der Marktschnitt sehen alle Value. Mittel: nicht alle. Niedrig: nur eine Quelle.</dd></dl></div>" +
+    '<div class="karte"><h3>Ehrlich bleiben</h3><p>Auch eine Wette mit 55 % Gewinnwahrscheinlichkeit verliert fast jedes zweite Mal. Pechsträhnen von zehn verlorenen Wetten in Folge sind normal. Setze nur Geld, dessen Verlust dir nicht wehtut, und erst dann echt, wenn der CLV nach etwa 100 Papierwetten positiv ist.</p>' +
+    '<p class="klein">Hilfe bei Glücksspielproblemen: BZgA-Telefon 0800 1 37 27 00 (kostenlos).</p></div>' +
+    (daten && daten.credits != null ? '<p class="klein" style="text-align:center">Quoten-API: noch ' + nf(0).format(daten.credits) + " Abrufe diesen Monat</p>" : "");
+}
+
+/* ---------- Navigation ---------- */
+function zeigen(ziel) {
+  document.querySelectorAll(".ansicht").forEach((s) => s.classList.toggle("aktiv", s.id === ziel));
+  document.querySelectorAll("nav.leiste button").forEach((b) => b.toggleAttribute("aria-current", b.dataset.ziel === ziel));
+  document.querySelectorAll("nav.leiste button[aria-current]").forEach((b) => b.setAttribute("aria-current", "page"));
+  $("#titel").textContent = TITEL[ziel];
+  window.scrollTo(0, 0);
+  speicher.schreiben("wb-ansicht", ziel);
+}
+document.querySelectorAll("nav.leiste button").forEach((b) => b.addEventListener("click", () => zeigen(b.dataset.ziel)));
+$("#neuLaden").addEventListener("click", laden);
+window.addEventListener("scroll", () => $("#kopf").classList.toggle("scrolled", window.scrollY > 4), { passive: true });
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") laden(); });
+
+// Installationshinweis für iPhone-Safari
+(function () {
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const installiert = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  if (ios && !installiert && !speicher.lesen("wb-install-zu")) $("#installieren").classList.add("an");
+  $("#installierenZu").addEventListener("click", () => { $("#installieren").classList.remove("an"); speicher.schreiben("wb-install-zu", true); });
+})();
+
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+const gemerkt = location.hash.slice(1) || speicher.lesen("wb-ansicht");
+if (gemerkt && TITEL[gemerkt]) zeigen(gemerkt);
+laden();
+</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+{
+ "spiele": 9419,
+ "zeitraum": "2019/20 bis 2025/26",
+ "ligen": [
+  "Bundesliga",
+  "La Liga",
+  "Premier League",
+  "Serie A"
+ ],
+ "kalibrierung": [
+  {
+   "bereich": "0–10 %",
+   "anzahl": 1183,
+   "vorhergesagt": 0.0724,
+   "eingetreten": 0.0795
+  },
+  {
+   "bereich": "10–20 %",
+   "anzahl": 4473,
+   "vorhergesagt": 0.1569,
+   "eingetreten": 0.1545
+  },
+  {
+   "bereich": "20–30 %",
+   "anzahl": 10079,
+   "vorhergesagt": 0.2552,
+   "eingetreten": 0.2556
+  },
+  {
+   "bereich": "30–40 %",
+   "anzahl": 4666,
+   "vorhergesagt": 0.3413,
+   "eingetreten": 0.336
+  },
+  {
+   "bereich": "40–50 %",
+   "anzahl": 2891,
+   "vorhergesagt": 0.4464,
+   "eingetreten": 0.4462
+  },
+  {
+   "bereich": "50–60 %",
+   "anzahl": 2172,
+   "vorhergesagt": 0.5499,
+   "eingetreten": 0.564
+  },
+  {
+   "bereich": "60–70 %",
+   "anzahl": 1430,
+   "vorhergesagt": 0.6477,
+   "eingetreten": 0.6462
+  },
+  {
+   "bereich": "70–80 %",
+   "anzahl": 937,
+   "vorhergesagt": 0.7425,
+   "eingetreten": 0.7439
+  },
+  {
+   "bereich": "80–90 %",
+   "anzahl": 386,
+   "vorhergesagt": 0.8374,
+   "eingetreten": 0.8264
+  },
+  {
+   "bereich": "90–100 %",
+   "anzahl": 40,
+   "vorhergesagt": 0.9157,
+   "eingetreten": 0.875
+  }
+ ],
+ "strategien": [
+  {
+   "name": "Immer auf den Favoriten (Bet365)",
+   "art": "vergleich",
+   "wetten": 9419,
+   "treffer": 0.5392,
+   "erwartet": 0.5367,
+   "quote_schnitt": 1.89,
+   "gewinn": -329.5,
+   "roi": -0.035,
+   "clv": null,
+   "saisons": [
+    {
+     "saison": "2019/20",
+     "wetten": 1444,
+     "roi": -0.0596
+    },
+    {
+     "saison": "2020/21",
+     "wetten": 1444,
+     "roi": -0.0491
+    },
+    {
+     "saison": "2021/22",
+     "wetten": 1444,
+     "roi": -0.0501
+    },
+    {
+     "saison": "2022/23",
+     "wetten": 1446,
+     "roi": -0.0184
+    },
+    {
+     "saison": "2023/24",
+     "wetten": 1446,
+     "roi": -0.0029
+    },
+    {
+     "saison": "2024/25",
+     "wetten": 1446,
+     "roi": -0.0443
+    },
+    {
+     "saison": "2025/26",
+     "wetten": 749,
+     "roi": -0.0071
+    }
+   ]
+  },
+  {
+   "name": "Value ab 2 % – ein Buchmacher (Bet365)",
+   "art": "value",
+   "wetten": 71,
+   "treffer": 0.3099,
+   "erwartet": 0.2597,
+   "quote_schnitt": 4.22,
+   "gewinn": 14.6,
+   "roi": 0.2056,
+   "clv": 0.0053,
+   "saisons": [
+    {
+     "saison": "2019/20",
+     "wetten": 17,
+     "roi": 0.6647
+    },
+    {
+     "saison": "2020/21",
+     "wetten": 13,
+     "roi": -0.25
+    },
+    {
+     "saison": "2021/22",
+     "wetten": 14,
+     "roi": -0.7321
+    },
+    {
+     "saison": "2022/23",
+     "wetten": 9,
+     "roi": 1.0778
+    },
+    {
+     "saison": "2023/24",
+     "wetten": 5,
+     "roi": 0.67
+    },
+    {
+     "saison": "2024/25",
+     "wetten": 11,
+     "roi": -0.1364
+    },
+    {
+     "saison": "2025/26",
+     "wetten": 2,
+     "roi": 2.625
+    }
+   ]
+  },
+  {
+   "name": "Value ab 2 % – beste Quote aller Buchmacher",
+   "art": "obergrenze",
+   "wetten": 2406,
+   "treffer": 0.384,
+   "erwartet": 0.3759,
+   "quote_schnitt": 3.19,
+   "gewinn": 128.1,
+   "roi": 0.0533,
+   "clv": 0.0314,
+   "saisons": [
+    {
+     "saison": "2019/20",
+     "wetten": 373,
+     "roi": 0.1072
+    },
+    {
+     "saison": "2020/21",
+     "wetten": 452,
+     "roi": -0.0274
+    },
+    {
+     "saison": "2021/22",
+     "wetten": 589,
+     "roi": 0.0005
+    },
+    {
+     "saison": "2022/23",
+     "wetten": 342,
+     "roi": 0.0845
+    },
+    {
+     "saison": "2023/24",
+     "wetten": 341,
+     "roi": 0.119
+    },
+    {
+     "saison": "2024/25",
+     "wetten": 256,
+     "roi": 0.0845
+    },
+    {
+     "saison": "2025/26",
+     "wetten": 53,
+     "roi": 0.1732
+    }
+   ]
+  }
+ ]
+}

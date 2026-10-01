@@ -1,0 +1,35 @@
+{
+ "erzeugt": "2026-10-01T11:39:04Z",
+ "letzter_scan": null,
+ "spiele_geprueft": 0,
+ "credits": null,
+ "einstellungen": {
+  "bankroll": 500,
+  "kelly_anteil": 0.25,
+  "max_einsatz_anteil": 0.02,
+  "min_edge": 0.02
+ },
+ "ligen": [
+  "Bundesliga",
+  "Premier League",
+  "La Liga",
+  "Serie A",
+  "Champions League"
+ ],
+ "tipps": [],
+ "verlauf": [],
+ "bilanz": {
+  "gesamt": 0,
+  "abgerechnet": 0,
+  "offen": 0,
+  "treffer": 0,
+  "erwartet": 0,
+  "einsatz": 0,
+  "gewinn": 0,
+  "roi": null,
+  "gewinn_flach": 0,
+  "clv": null,
+  "clv_anzahl": 0
+ },
+ "kurve": []
+}

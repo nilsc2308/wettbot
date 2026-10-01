@@ -1,0 +1,5 @@
+.env
+reports/
+data/*
+!data/wetten.db
+__pycache__/

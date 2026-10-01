@@ -1,0 +1,34 @@
+{
+  "_hinweis": "Alle Einstellungen des Wettbots. Nach Aenderungen einfach neu starten.",
+  "ligen": {
+    "soccer_germany_bundesliga": "Bundesliga",
+    "soccer_epl": "Premier League",
+    "soccer_spain_la_liga": "La Liga",
+    "soccer_italy_serie_a": "Serie A",
+    "soccer_uefa_champs_league": "Champions League"
+  },
+  "maerkte": [
+    "h2h"
+  ],
+  "region": "eu",
+  "scharfe_buchmacher": [
+    "pinnacle",
+    "betfair_ex_eu"
+  ],
+  "meine_buchmacher": {
+    "winamax_de": {
+      "name": "Winamax",
+      "steuer_weitergegeben": false
+    }
+  },
+  "wettsteuer": 0.053,
+  "min_edge": 0.02,
+  "max_edge_plausibel": 0.15,
+  "min_quote": 1.3,
+  "max_quote": 6.0,
+  "tage_voraus": 3,
+  "bankroll": 500,
+  "kelly_anteil": 0.25,
+  "max_einsatz_anteil": 0.02,
+  "min_credits_rest": 40
+}

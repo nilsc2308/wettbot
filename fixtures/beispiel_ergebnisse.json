@@ -1,0 +1,4 @@
+[
+ {"id":"ev1","completed":true,"scores":[{"name":"Borussia Dortmund","score":"2"},{"name":"VfB Stuttgart","score":"1"}]},
+ {"id":"ev2","completed":true,"scores":[{"name":"Arsenal","score":"1"},{"name":"Chelsea","score":"1"}]}
+]
