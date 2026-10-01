@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-01T12:11:49Z",
- "letzter_scan": "2026-10-01T12:11:49Z",
- "spiele_geprueft": 29,
- "credits": 476,
+ "erzeugt": "2026-10-01T15:10:47Z",
+ "letzter_scan": "2026-10-01T15:10:47Z",
+ "spiele_geprueft": 42,
+ "credits": 473,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,37 +11,22 @@
  },
  "gescannt": [
   {
-   "name": "MLB",
-   "gruppe": "Baseball",
-   "spiele": 4
-  },
-  {
-   "name": "ATP China Open",
+   "name": "WTA China Open",
    "gruppe": "Tennis",
-   "spiele": 6
+   "spiele": 32
   },
   {
-   "name": "League 2",
-   "gruppe": "Fußball",
-   "spiele": 11
+   "name": "ATP Japan Open",
+   "gruppe": "Tennis",
+   "spiele": 8
   },
   {
-   "name": "League of Ireland",
-   "gruppe": "Fußball",
-   "spiele": 1
-  },
-  {
-   "name": "MLS",
-   "gruppe": "Fußball",
-   "spiele": 1
-  },
-  {
-   "name": "Primera División - Argentina",
-   "gruppe": "Fußball",
-   "spiele": 6
+   "name": "NFL",
+   "gruppe": "American Football",
+   "spiele": 2
   }
  ],
- "ausgelassen": 26,
+ "ausgelassen": 31,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
