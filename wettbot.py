@@ -206,8 +206,16 @@ def marktgruppen(markt):
     return gruppen
 
 
+def plausibel(preise, untergrenze=0.995, obergrenze=1.12):
+    """Summe der Kehrwerte = Buchmacher-Marge. Unter 1 heisst veraltete oder duenne Quoten
+    (typisch fuer illiquide Boersenmaerkte), deutlich ueber 1 eine zu grobe Quelle."""
+    return untergrenze <= sum(1.0 / q for q in preise.values()) <= obergrenze
+
+
 def faire_preise(cfg, event):
-    """{(markt, linie): {tipp: faire_prob}} aus dem ersten verfuegbaren scharfen Buchmacher."""
+    """{(markt, linie, ausgaenge): {tipp: faire_prob}} aus dem ersten verfuegbaren scharfen Buchmacher.
+    Die Ausgaenge gehoeren zum Schluessel, damit z. B. Eishockey mit Verlaengerung (2 Ausgaenge)
+    nie mit 60-Minuten-Wetten (3 Ausgaenge mit Unentschieden) verglichen wird."""
     buecher = {b["key"]: b for b in event.get("bookmakers", [])}
     ergebnis = {}
     for scharf in cfg["scharfe_buchmacher"]:
@@ -215,10 +223,8 @@ def faire_preise(cfg, event):
             continue
         for m in buecher[scharf]["markets"]:
             for linie, preise in marktgruppen(m).items():
-                schluessel = (m["key"], linie)
-                if schluessel in ergebnis:
-                    continue
-                if m["key"] == "h2h" and len(preise) < 2:
+                schluessel = (m["key"], linie, frozenset(preise))
+                if schluessel in ergebnis or len(preise) < 2 or not plausibel(preise):
                     continue
                 namen = list(preise)
                 probs = entmargen([preise[n] for n in namen])
@@ -233,11 +239,11 @@ def quellen_vergleich(cfg, event):
     for b in event.get("bookmakers", []):
         for m in b["markets"]:
             for linie, preise in marktgruppen(m).items():
-                if m["key"] == "h2h" and len(preise) < 2:
+                if len(preise) < 2 or not plausibel(preise, obergrenze=1.15):
                     continue
                 namen = list(preise)
                 probs = dict(zip(namen, entmargen([preise[n] for n in namen])))
-                eintrag = ergebnis.setdefault((m["key"], linie), {"markt_summe": {}, "n": 0})
+                eintrag = ergebnis.setdefault((m["key"], linie, frozenset(preise)), {"markt_summe": {}, "n": 0})
                 if b["key"] in cfg["scharfe_buchmacher"]:
                     eintrag[b["key"]] = probs
                 if b["key"] not in cfg["meine_buchmacher"]:
@@ -281,13 +287,22 @@ def finde_value(cfg, event, liga_name, gruppe="Fußball"):
             continue
         for m in b["markets"]:
             for linie, preise in marktgruppen(m).items():
-                ref = fair.get((m["key"], linie))
+                schluessel = (m["key"], linie, frozenset(preise))
+                ref = fair.get(schluessel)
                 if not ref:
                     continue
+                # 3-Wege-Siegwetten ausserhalb von Fussball/Handball gelten nur fuer die regulaere Spielzeit;
+                # die API-Ergebnisse enthalten aber die Verlaengerung -> nicht sauber abrechenbar
+                if m["key"] == "h2h" and len(preise) == 3 and gruppe not in ("Fußball", "Handball"):
+                    continue
+                gegen = vergleich.get(schluessel, {})
                 for tipp, quote in preise.items():
                     p = ref["probs"].get(tipp)
                     if p is None or not (cfg["min_quote"] <= quote <= cfg["max_quote"]):
                         continue
+                    markt_p = gegen.get("markt", {}).get(tipp)
+                    if markt_p is not None and abs(p - markt_p) > cfg.get("max_abweichung_markt", 0.08):
+                        continue  # Hauptquelle und Marktschnitt passen nicht zusammen -> Datenfehler
                     qn = netto_quote(cfg, b["key"], quote)
                     edge = p * qn - 1
                     kandidaten.append({
@@ -296,7 +311,7 @@ def finde_value(cfg, event, liga_name, gruppe="Fußball"):
                         "gast": event["away_team"], "markt": m["key"], "tipp": tipp, "linie": linie,
                         "buchmacher": b["key"], "quote": quote, "quote_netto": round(qn, 3),
                         "fair_prob": p, "edge": edge, "quelle": ref["quelle"],
-                        "analyse": analyse(cfg, vergleich.get((m["key"], linie), {}), tipp, qn, ref["quelle"]),
+                        "analyse": analyse(cfg, gegen, tipp, qn, ref["quelle"]),
                     })
     # pro Ausgang nur das beste Angebot
     bestes = {}
@@ -391,11 +406,9 @@ def scan(cfg, manuell=False):
             aktuell = {(v["markt"], v["tipp"], v["linie"]): v for v in value}
             for w in con.execute("SELECT id, markt, tipp, linie FROM wetten WHERE event_id=? AND status='offen'",
                                  (ev["id"],)).fetchall():
-                ref = fair.get((w["markt"], w["linie"]))
-                if ref and w["tipp"] in ref["probs"]:
-                    con.execute("UPDATE wetten SET schluss_prob=? WHERE id=?", (ref["probs"][w["tipp"]], w["id"]))
                 a = aktuell.get((w["markt"], w["tipp"], w["linie"]))
                 if a:
+                    con.execute("UPDATE wetten SET schluss_prob=? WHERE id=?", (a["fair_prob"], w["id"]))
                     con.execute("UPDATE wetten SET akt_quote=?, akt_edge=?, akt_zeit=?, analyse=? WHERE id=?",
                                 (a["quote"], a["edge"], jetzt_iso, json.dumps(a["analyse"]), w["id"]))
             alle_value += [v for v in value if v["edge"] >= cfg["min_edge"]]

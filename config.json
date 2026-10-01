@@ -40,5 +40,6 @@
   "max_einsatz_anteil": 0.02,
   "min_credits_rest": 40,
   "stunden_bis_anstoss": 48,
-  "prioritaet_intervall_stunden": 24
+  "prioritaet_intervall_stunden": 24,
+  "max_abweichung_markt": 0.08
 }
