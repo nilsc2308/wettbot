@@ -17,8 +17,11 @@ Sucht täglich Value-Wetten im Fußball, nennt die faire Gewinnwahrscheinlichkei
 5. Automatisch: GitHub Actions startet `morgen` (10 Uhr) und `abend` (17 Uhr)
 6. `python3 wettbot.py demo`: Testlauf mit Beispieldaten
 
-## Kontingent
-Pro Scan kostet jede Liga × jeder Markt 1 Credit (5 Ligen, nur h2h = 5). Ergebnisse kosten 2 Credits pro Liga mit offenen Wetten. Ein Lauf pro Tag passt in den Gratis-Plan. Für Über/Unter (`"maerkte": ["h2h", "totals"]`) oder mehrere Läufe am Tag reicht der Gratis-Plan nicht.
+## Sportarten und Kontingent
+`alle_sportarten: true` scannt alles, was The Odds API gerade anbietet: Fußball weltweit, Tennis, Basketball, Eishockey, NFL, MMA und mehr. Politik und Langzeitwetten sind ausgeschlossen. `prioritaet` wird zuerst gescannt.
+Jeder Wettbewerb kostet pro Markt 1 Credit. Die Liste der Sportarten und die Spielprüfung über `/events` sind gratis. Der Bot verteilt das Restguthaben automatisch auf die restlichen Läufe im Monat (2 geplante und 1 manueller pro Tag, 20 % Reserve für Ergebnisse).
+Gratis-Plan (500): etwa 4 Wettbewerbe pro Lauf. Plan mit 20.000 Credits (ca. 30 $/Monat): etwa 170 pro Lauf, also alles.
+Ergebnisse, die die API nicht liefert, werden nach 5 Tagen als `unklar` abgehakt und nicht gewertet.
 
 ## Bewertung
 - **CLV** (Closing Line Value): War deine Quote besser als die faire Schlussquote? Das ist nach etwa 50–100 Wetten aussagekräftig. Dauerhaft positiv heißt, die Edge ist echt.

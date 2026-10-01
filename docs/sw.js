@@ -1,6 +1,6 @@
 // Service Worker: macht den Wettbot installierbar und zeigt bei Funkloch den letzten Stand.
 // Alles wird zuerst frisch aus dem Netz geholt, nur ohne Netz aus dem Speicher.
-const CACHE = "wettbot-v2";
+const CACHE = "wettbot-v3";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "icons/icon.svg", "icons/icon-192.png", "icons/apple-touch-icon.png"];
 
 self.addEventListener("install", (e) => {

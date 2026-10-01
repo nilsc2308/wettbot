@@ -142,6 +142,15 @@ nav.leiste .zahl:empty { display: none; }
 .chip.gut { background: var(--value-soft); color: var(--good); }
 .chip.schlecht { background: var(--bad-soft); color: var(--bad); }
 
+.filter { display: flex; gap: 8px; overflow-x: auto; margin: 6px -16px 0; padding: 4px 16px; scrollbar-width: none; }
+.filter::-webkit-scrollbar { display: none; }
+.filter button {
+  flex: none; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 7px 14px;
+  font-size: 14px; font-weight: 600; cursor: pointer; color: var(--ink-2);
+}
+.filter button[aria-pressed="true"] { background: var(--ink); color: var(--card); border-color: var(--ink); }
+.filter small { font-weight: 400; opacity: .7; margin-left: 4px; }
+
 /* Tipp-Karte */
 .tipp .meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
 .tipp .spiel { margin: 8px 0 2px; font-size: 15px; color: var(--ink-2); }
@@ -433,6 +442,7 @@ function offeneTipps() {
   return daten.tipps.filter((t) => new Date(t.anstoss).getTime() > jetzt);
 }
 
+let filter = "Alle";
 function tippsZeichnen() {
   const el = $("#tipps");
   const tipps = offeneTipps();
@@ -447,13 +457,23 @@ function tippsZeichnen() {
   }
   if (!tipps.length) {
     el.innerHTML = '<div class="leer"><strong>Gerade keine Value-Wetten</strong>' +
-      esc(daten.spiele_geprueft) + " Spiele geprüft, bei keinem liegt Winamax über der fairen Quote. " +
+      esc(daten.spiele_geprueft) + " Spiele in " + (daten.gescannt || []).length + " Wettbewerben geprüft, bei keinem liegt Winamax über der fairen Quote. " +
       "Nicht wetten ist dann die richtige Entscheidung.</div>";
     return;
   }
   const minEdge = daten.einstellungen.min_edge;
-  let html = "", letzterTag = "";
-  for (const t of tipps) {
+  const gruppen = {};
+  for (const t of tipps) gruppen[t.gruppe] = (gruppen[t.gruppe] || 0) + 1;
+  if (filter !== "Alle" && !gruppen[filter]) filter = "Alle";
+  let html = "";
+  if (Object.keys(gruppen).length > 1) {
+    html += '<div class="filter" role="group" aria-label="Sportart">' +
+      ["Alle", ...Object.keys(gruppen).sort((a, b) => gruppen[b] - gruppen[a])].map((g) =>
+        '<button data-filter="' + esc(g) + '" aria-pressed="' + (g === filter) + '">' + esc(g) +
+        "<small>" + (g === "Alle" ? tipps.length : gruppen[g]) + "</small></button>").join("") + "</div>";
+  }
+  let letzterTag = "";
+  for (const t of tipps.filter((x) => filter === "Alle" || x.gruppe === filter)) {
     const tag = tagKopf(t.anstoss);
     if (tag !== letzterTag) { html += '<h2 class="abschnitt">' + esc(tag) + "</h2>"; letzterTag = tag; }
     html += tippKarte(t, minEdge);
@@ -492,7 +512,7 @@ function tippKarte(t, minEdge) {
   }
 
   return '<article class="karte tipp">' +
-    '<div class="meta"><span>' + esc(t.liga) + " · " + zeit(t.anstoss) + '</span><span class="chip ' + klasse + '">' + ICON.schild + label + "</span></div>" +
+    '<div class="meta"><span>' + (t.gruppe && t.gruppe !== "Fußball" ? esc(t.gruppe) + " · " : "") + esc(t.liga) + " · " + zeit(t.anstoss) + '</span><span class="chip ' + klasse + '">' + ICON.schild + label + "</span></div>" +
     '<div class="spiel">' + esc(t.heim) + " – " + esc(t.gast) + "</div>" +
     '<div class="wahl">' + esc(t.tipp) + "</div>" +
     '<div class="quote"><b>' + zahl(t.quote) + "</b><span>bei " + esc(t.buchmacher) + " · fair wäre " + zahl(fair) + "</span></div>" +
@@ -523,6 +543,8 @@ function sicherheitText(a, t) {
 }
 
 document.addEventListener("click", (e) => {
+  const f = e.target.closest("[data-filter]");
+  if (f) { filter = f.dataset.filter; tippsZeichnen(); return; }
   if (e.target.id === "tokenWeg") { speicher.schreiben("wb-gh-token", null); infosZeichnen(); return; }
   const b = e.target.closest("[data-setzen]");
   if (!b) return;
@@ -601,7 +623,8 @@ function bilanzZeichnen() {
 function verlaufZeile(w) {
   const [klasse, icon, text] = w.status === "gewonnen" ? ["gut", ICON.check, "Gewonnen"]
     : w.status === "verloren" ? ["schlecht", ICON.x, "Verloren"]
-    : w.status === "void" ? ["", ICON.minus, "Erstattet"] : ["", ICON.uhr, "Läuft"];
+    : w.status === "void" ? ["", ICON.minus, "Erstattet"]
+    : w.status === "unklar" ? ["", ICON.minus, "Kein Ergebnis"] : ["", ICON.uhr, "Läuft"];
   const chip = '<span class="marke chip ' + klasse + '" aria-hidden="true">' + icon + "</span>";
   const betrag = w.gewinn != null ? '<span class="' + (w.gewinn >= 0 ? "pos" : "neg") + '">' + eurVz(w.gewinn) + "</span>" : "";
   return "<li>" + chip + '<div class="text"><b>' + esc(w.tipp) + "</b><span>" + text + " · " + esc(w.heim) + " – " + esc(w.gast) + " · " + zahl(w.quote) + "</span></div>" +
@@ -730,15 +753,27 @@ function kalibDiagramm(el, daten) {
 }
 
 /* ---------- Infos ---------- */
+function gescanntKarte() {
+  const g = daten && daten.gescannt;
+  if (!g || !g.length) return "";
+  const nachGruppe = {};
+  for (const x of g) (nachGruppe[x.gruppe] = nachGruppe[x.gruppe] || []).push(x);
+  return '<div class="karte"><h3>Letzter Lauf: ' + g.length + " Wettbewerbe, " + nf(0).format(daten.spiele_geprueft) + " Spiele</h3>" +
+    Object.entries(nachGruppe).map(([gr, l]) => "<p><b>" + esc(gr) + "</b> · " + l.map((x) => esc(x.name)).join(", ") + "</p>").join("") +
+    (daten.ausgelassen ? '<div class="hinweis warn">' + ICON.warn + "<span>" + daten.ausgelassen + " weitere Wettbewerbe wurden ausgelassen, weil das API-Guthaben sonst nicht bis Monatsende reicht. Ein größerer Plan bei The Odds API deckt alles ab.</span></div>" : "") +
+    "</div>";
+}
+
 function infosZeichnen() {
   const e = daten ? daten.einstellungen : null;
   $("#infos").innerHTML =
     '<div class="karte"><h3>So arbeitet der Bot</h3><ul>' +
     "<li>Mit <b>Jetzt suchen</b> startest du ihn jederzeit selbst, ein Lauf dauert etwa eine Minute.</li>" +
-    "<li>Zweimal täglich (10 und 17 Uhr) holt er die Quoten von etwa 25 europäischen Buchmachern für " + esc(daten ? daten.ligen.join(", ") : "die großen Ligen") + ".</li>" +
+    "<li>Zweimal täglich (10 und 17 Uhr) holt er die Quoten von etwa 25 europäischen Buchmachern für alle Sportarten, die gerade laufen: Fußball weltweit, Tennis, Basketball, Eishockey, NFL, MMA und mehr.</li>" +
     "<li>Aus Pinnacle und der Betfair-Börse, den genauesten Märkten der Welt, rechnet er die Marge heraus. Das ergibt die faire Gewinnwahrscheinlichkeit.</li>" +
     "<li>Liegt Winamax darüber, ist das eine Value-Wette. Die Gegenprobe mit allen anderen Buchmachern bestimmt die Sicherheit.</li>" +
     "<li>Jeder Tipp wird als Papierwette gespeichert und nach dem Spiel abgerechnet, ganz ohne echtes Geld.</li></ul></div>" +
+    gescanntKarte() +
     '<div class="karte"><h3>Begriffe</h3><dl>' +
     "<dt>Gewinnwahrscheinlichkeit</dt><dd>Wie oft dieser Tipp auf lange Sicht aufgeht. Im Backtest stimmte sie fast exakt.</dd>" +
     "<dt>Edge</dt><dd>Erwarteter Gewinn pro Euro Einsatz. +4 % heißt: über viele solche Wetten im Schnitt 4 Cent Gewinn pro Euro.</dd>" +
@@ -808,7 +843,7 @@ async function jetztSuchen(bestaetigt) {
     const min = daten.letzter_scan ? (Date.now() - new Date(daten.letzter_scan)) / 6e4 : 999;
     const warnungen = [];
     if (min < 15) warnungen.push("Der letzte Lauf war " + vorWann(daten.letzter_scan) + ". So schnell ändern sich die Quoten selten.");
-    if (daten.credits != null && daten.credits < 60) warnungen.push("Nur noch " + daten.credits + " API-Abrufe diesen Monat übrig. Ein Lauf kostet bis zu " + daten.ligen.length + ".");
+    if (daten.credits != null && daten.credits < 60) warnungen.push("Nur noch " + daten.credits + " API-Abrufe diesen Monat übrig. Der Bot verteilt sie automatisch, scannt dann aber weniger Wettbewerbe.");
     if (warnungen.length) {
       sheetAuf('<h2 id="sheetTitel">Trotzdem suchen?</h2><p>' + warnungen.map(esc).join("</p><p>") + "</p>" +
         '<button class="knopf primaer" id="ja">Ja, jetzt suchen</button><button class="knopf" id="nein">Abbrechen</button>');

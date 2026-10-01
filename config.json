@@ -1,12 +1,20 @@
 {
-  "_hinweis": "Alle Einstellungen des Wettbots. Nach Aenderungen einfach neu starten.",
-  "ligen": {
+  "_hinweis": "Alle Einstellungen des Wettbots. alle_sportarten: true scannt alles, was die API anbietet; prioritaet wird zuerst gescannt; das Credit-Budget wird automatisch auf die restlichen Laeufe im Monat verteilt.",
+  "alle_sportarten": true,
+  "prioritaet": {
     "soccer_germany_bundesliga": "Bundesliga",
     "soccer_epl": "Premier League",
     "soccer_spain_la_liga": "La Liga",
     "soccer_italy_serie_a": "Serie A",
     "soccer_uefa_champs_league": "Champions League"
   },
+  "ausschliessen_gruppen": [
+    "Politics"
+  ],
+  "ausschliessen": [],
+  "laeufe_pro_tag": 2,
+  "puffer_laeufe_pro_tag": 1,
+  "reserve_credits": 30,
   "maerkte": [
     "h2h"
   ],

@@ -1,5 +1,5 @@
 {
- "erzeugt": "2026-10-01T11:39:04Z",
+ "erzeugt": "2026-10-01T11:48:13Z",
  "letzter_scan": null,
  "spiele_geprueft": 0,
  "credits": null,
@@ -9,13 +9,8 @@
   "max_einsatz_anteil": 0.02,
   "min_edge": 0.02
  },
- "ligen": [
-  "Bundesliga",
-  "Premier League",
-  "La Liga",
-  "Serie A",
-  "Champions League"
- ],
+ "gescannt": [],
+ "ausgelassen": 0,
  "tipps": [],
  "verlauf": [],
  "bilanz": {

@@ -26,6 +26,13 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 
 BASIS = os.path.dirname(os.path.abspath(__file__))
+GRUPPEN = {
+    "Soccer": "Fußball", "Tennis": "Tennis", "Basketball": "Basketball", "Ice Hockey": "Eishockey",
+    "American Football": "American Football", "Baseball": "Baseball", "Mixed Martial Arts": "MMA",
+    "Boxing": "Boxen", "Cricket": "Cricket", "Rugby League": "Rugby", "Rugby Union": "Rugby",
+    "Aussie Rules": "Australian Football", "Handball": "Handball", "Lacrosse": "Lacrosse", "Golf": "Golf",
+    "Volleyball": "Volleyball", "Darts": "Darts", "Table Tennis": "Tischtennis", "Snooker": "Snooker",
+}
 API = "https://api.the-odds-api.com/v4"
 DEMO = False
 
@@ -63,7 +70,8 @@ def db():
         schluss_prob REAL, status TEXT DEFAULT 'offen', gewinn REAL,
         UNIQUE(event_id, markt, tipp, linie))""")
     spalten = {r[1] for r in con.execute("PRAGMA table_info(wetten)")}
-    for name, typ in (("akt_quote", "REAL"), ("akt_edge", "REAL"), ("akt_zeit", "TEXT"), ("analyse", "TEXT")):
+    for name, typ in (("akt_quote", "REAL"), ("akt_edge", "REAL"), ("akt_zeit", "TEXT"), ("analyse", "TEXT"),
+                      ("gruppe", "TEXT")):
         if name not in spalten:
             con.execute("ALTER TABLE wetten ADD COLUMN %s %s" % (name, typ))
     con.execute("CREATE TABLE IF NOT EXISTS meta (k TEXT PRIMARY KEY, v TEXT)")
@@ -91,6 +99,42 @@ def hole(pfad, params):
             sys.exit("Zu viele Anfragen (429). Spaeter erneut versuchen.")
         print("  Fehler %s bei %s: %s" % (e.code, pfad, text[:200]))
         return [], None
+
+
+def sportarten(cfg):
+    """Alle aktiven Wettbewerbe (der /sports-Endpunkt kostet nichts), Prioritaetsliste zuerst.
+    Gibt [(key, name, gruppe)] und die restlichen Credits zurueck."""
+    prio = cfg["prioritaet"]
+    if DEMO or not cfg.get("alle_sportarten"):
+        return [(k, v, "Fußball") for k, v in prio.items()], None
+    liste, rest = hole("/sports", {})
+    rang = {k: i for i, k in enumerate(prio)}
+    auswahl = []
+    for sp in liste:
+        if sp.get("has_outrights") or not sp.get("active", True):
+            continue
+        if sp["group"] in cfg.get("ausschliessen_gruppen", []) or sp["key"] in cfg.get("ausschliessen", []):
+            continue
+        gruppe = GRUPPEN.get(sp["group"], sp["group"])
+        name = prio.get(sp["key"], sp["title"])
+        auswahl.append((sp["key"], name, gruppe))
+    auswahl.sort(key=lambda x: (rang.get(x[0], len(rang)), x[2] != "Fußball", x[2], x[1]))
+    return auswahl, rest
+
+
+def lauf_budget(cfg, rest):
+    """Verteilt die restlichen Credits gleichmaessig auf die restlichen Laeufe des Monats.
+    20 % bleiben fuer die Ergebnisabfragen uebrig."""
+    if rest is None:
+        return None
+    heute = datetime.now()
+    naechster = (heute.replace(day=28) + timedelta(days=4)).replace(day=1)
+    tage = (naechster.date() - heute.date()).days
+    laeufe = max(1, tage * (cfg["laeufe_pro_tag"] + cfg["puffer_laeufe_pro_tag"]))
+    frei = max(0, int(rest) - cfg["reserve_credits"])
+    if frei < len(cfg["maerkte"]):
+        return 0
+    return max(len(cfg["maerkte"]), int(frei * 0.8 / laeufe))
 
 
 def hat_spiele(cfg, liga_key):
@@ -226,7 +270,7 @@ def analyse(cfg, quellen, tipp, qn, hauptquelle):
     return a
 
 
-def finde_value(cfg, event, liga_name):
+def finde_value(cfg, event, liga_name, gruppe="Fußball"):
     fair = faire_preise(cfg, event)
     vergleich = quellen_vergleich(cfg, event)
     kandidaten = []
@@ -245,7 +289,7 @@ def finde_value(cfg, event, liga_name):
                     qn = netto_quote(cfg, b["key"], quote)
                     edge = p * qn - 1
                     kandidaten.append({
-                        "event_id": event["id"], "liga": liga_name, "liga_key": event["sport_key"],
+                        "event_id": event["id"], "liga": liga_name, "liga_key": event["sport_key"], "gruppe": gruppe,
                         "anstoss": event["commence_time"], "heim": event["home_team"],
                         "gast": event["away_team"], "markt": m["key"], "tipp": tipp, "linie": linie,
                         "buchmacher": b["key"], "quote": quote, "quote_netto": round(qn, 3),
@@ -267,8 +311,8 @@ def tipp_text(w):
     if w["markt"] == "h2h":
         return "Unentschieden" if w["tipp"] == "Draw" else "Sieg " + w["tipp"]
     if w["markt"] == "totals":
-        art = "Ueber" if w["tipp"] == "Over" else "Unter"
-        return "%s %s Tore" % (art, w["linie"])
+        art = "Über" if w["tipp"] == "Over" else "Unter"
+        return "%s %s" % (art, ("%g" % w["linie"]).replace(".", ","))
     return "%s %s" % (w["tipp"], w["linie"] or "")
 
 
@@ -297,17 +341,28 @@ def melden(titel, text):
 def scan(cfg):
     con = db()
     heute = datetime.now().strftime("%Y-%m-%d")
-    alle_value, rest = [], None
+    alle_value = []
     anzahl_spiele = 0
-    for liga_key, liga_name in cfg["ligen"].items():
+    liste, rest = sportarten(cfg)
+    budget = lauf_budget(cfg, rest)
+    kosten = len(cfg["maerkte"])
+    gescannt, ausgelassen = [], 0
+    print("%d Wettbewerbe aktiv, Budget fuer diesen Lauf: %s Credits" % (len(liste), budget if budget is not None else "frei"))
+    for liga_key, liga_name, gruppe in liste:
+        if budget is not None and budget < kosten:
+            ausgelassen += 1
+            continue
         if not hat_spiele(cfg, liga_key):
-            print("  %s: keine Spiele in den naechsten %d Tagen" % (liga_name, cfg["tage_voraus"]))
             continue
         events, r = hole_quoten(cfg, liga_key)
         rest = r or rest
+        if budget is not None:
+            budget -= kosten
+        if events:
+            gescannt.append({"name": liga_name, "gruppe": gruppe, "spiele": len(events)})
         for ev in events:
             anzahl_spiele += 1
-            value, fair = finde_value(cfg, ev, liga_name)
+            value, fair = finde_value(cfg, ev, liga_name, gruppe)
             # Schlussquote (CLV) fuer offene Wetten mitschreiben, solange das Spiel nicht begonnen hat
             jetzt_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
             aktuell = {(v["markt"], v["tipp"], v["linie"]): v for v in value}
@@ -331,16 +386,20 @@ def scan(cfg):
         if not verdaechtig:
             cur = con.execute("""INSERT OR IGNORE INTO wetten (erstellt, event_id, liga, liga_key, anstoss, heim,
                 gast, markt, tipp, linie, buchmacher, quote, quote_netto, fair_prob, edge, einsatz, schluss_prob,
-                akt_quote, akt_edge, akt_zeit, analyse)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                akt_quote, akt_edge, akt_zeit, analyse, gruppe)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                 (heute, v["event_id"], v["liga"], v["liga_key"], v["anstoss"], v["heim"], v["gast"], v["markt"],
                  v["tipp"], v["linie"], v["buchmacher"], v["quote"], v["quote_netto"], v["fair_prob"],
                  v["edge"], einsatz, v["fair_prob"], v["quote"], v["edge"],
-                 datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), json.dumps(v["analyse"])))
+                 datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), json.dumps(v["analyse"]), v["gruppe"]))
             neu += cur.rowcount
         zeilen.append((v, einsatz, verdaechtig))
     meta_setzen(con, "letzter_scan", datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
     meta_setzen(con, "spiele_geprueft", anzahl_spiele)
+    meta_setzen(con, "gescannt", json.dumps(gescannt, ensure_ascii=False))
+    meta_setzen(con, "ausgelassen", ausgelassen)
+    if ausgelassen:
+        print("%d Wettbewerbe wegen des Credit-Budgets ausgelassen." % ausgelassen)
     if rest and rest != "demo":
         meta_setzen(con, "credits", rest)
     con.commit()
@@ -420,6 +479,10 @@ def settle(cfg):
     for w in offen:
         s = ergebnisse.get(w["event_id"])
         if not s:
+            alt = datetime.now(timezone.utc) - datetime.strptime(w["anstoss"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+            if alt > timedelta(days=5):
+                con.execute("UPDATE wetten SET status='unklar', gewinn=0 WHERE id=?", (w["id"],))
+                print("Kein Ergebnis von der API: %s – %s, als unklar abgehakt." % (w["heim"], w["gast"]))
             continue
         res = ausgang(w, s.get(w["heim"], 0), s.get(w["gast"], 0))
         if res is None:
@@ -491,7 +554,7 @@ def export(cfg, ziel=None):
 
     def karte(w):
         return {
-            "id": w["id"], "liga": w["liga"], "anstoss": w["anstoss"], "heim": w["heim"], "gast": w["gast"],
+            "id": w["id"], "liga": w["liga"], "gruppe": w["gruppe"] or "Fußball", "anstoss": w["anstoss"], "heim": w["heim"], "gast": w["gast"],
             "tipp": tipp_text(w), "buchmacher": buch_name(cfg, w["buchmacher"]),
             "quote": w["quote"], "prob": round(w["fair_prob"], 4), "edge": round(w["edge"], 4),
             "einsatz": w["einsatz"], "status": w["status"], "gewinn": w["gewinn"],
@@ -517,7 +580,8 @@ def export(cfg, ziel=None):
         "spiele_geprueft": int(meta.get("spiele_geprueft", 0)),
         "credits": int(meta["credits"]) if meta.get("credits") else None,
         "einstellungen": {k: cfg[k] for k in ("bankroll", "kelly_anteil", "max_einsatz_anteil", "min_edge")},
-        "ligen": list(cfg["ligen"].values()),
+        "gescannt": json.loads(meta["gescannt"]) if meta.get("gescannt") else [],
+        "ausgelassen": int(meta.get("ausgelassen", 0)),
         "tipps": tipps,
         "verlauf": verlauf,
         "bilanz": bilanz_daten(alle),
