@@ -354,7 +354,11 @@ def scan(cfg):
         "SELECT DISTINCT liga_key FROM wetten WHERE status='offen' AND anstoss > ?", (jetzt_iso,))}
     zuletzt = {r[0][8:]: r[1] for r in con.execute("SELECT k, v FROM meta WHERE k LIKE 'zuletzt_%'")}
     rang = {k: i for i, (k, _, _) in enumerate(liste)}
-    liste = sorted(liste, key=lambda x: (x[0] not in mit_tipps, zuletzt.get(x[0], ""), rang[x[0]]))
+    faellig_vor = (datetime.now(timezone.utc) - timedelta(hours=cfg.get("prioritaet_intervall_stunden", 24))
+                   ).strftime("%Y-%m-%dT%H:%M:%SZ")
+    prio_faellig = {k for k in cfg["prioritaet"] if zuletzt.get(k, "") < faellig_vor}
+    liste = sorted(liste, key=lambda x: (x[0] not in mit_tipps, x[0] not in prio_faellig,
+                                         zuletzt.get(x[0], ""), rang[x[0]]))
     print("%d Wettbewerbe aktiv, Budget fuer diesen Lauf: %s Credits" % (len(liste), budget if budget is not None else "frei"))
     for liga_key, liga_name, gruppe in liste:
         if budget is not None and budget < kosten:
