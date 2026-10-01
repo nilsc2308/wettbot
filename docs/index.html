@@ -250,6 +250,38 @@ details.tabelle summary { cursor: pointer; font-size: 13px; color: var(--muted);
 .infos dt { font-weight: 600; margin-top: 10px; }
 .infos dd { margin: 2px 0 0; color: var(--ink-2); font-size: 15px; }
 
+.suchen {
+  height: 40px; border-radius: 20px; border: 0; padding: 0 14px 0 11px; cursor: pointer; flex: none;
+  display: inline-flex; align-items: center; gap: 6px; background: var(--brand); color: var(--on-brand); font-weight: 600; font-size: 15px;
+}
+.suchen svg { width: 18px; height: 18px; }
+.suchen:disabled { opacity: .6; }
+.schleier { position: fixed; inset: 0; z-index: 30; background: rgba(0,0,0,.4); display: none; }
+.schleier.an { display: block; }
+.sheet {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 31; max-width: 640px; margin: 0 auto;
+  background: var(--card); border-radius: 22px 22px 0 0; padding: 10px 20px calc(env(safe-area-inset-bottom) + 20px);
+  transform: translateY(105%); transition: transform .25s ease; max-height: 90vh; overflow-y: auto;
+}
+.sheet.an { transform: none; }
+.sheet .griff { width: 40px; height: 5px; border-radius: 3px; background: var(--line); margin: 0 auto 14px; }
+.sheet h2 { margin: 0 0 8px; font-size: 21px; }
+.sheet p, .sheet li { color: var(--ink-2); font-size: 15px; }
+.sheet ol { padding-left: 20px; margin: 8px 0 14px; }
+.sheet li { margin-bottom: 6px; }
+.sheet input {
+  width: 100%; font: inherit; font-size: 16px; padding: 12px 14px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink); margin: 4px 0 12px;
+}
+.sheet .knopf { width: 100%; margin-top: 8px; }
+.lauf { text-align: center; padding: 18px 0 6px; }
+.lauf .kreis {
+  width: 54px; height: 54px; margin: 0 auto 14px; border-radius: 50%;
+  border: 4px solid var(--soft); border-top-color: var(--value); animation: drehen 1s linear infinite;
+}
+.lauf b { display: block; font-size: 19px; color: var(--ink); }
+.lauf .fehler { color: var(--bad); }
+
 .installieren {
   display: none; position: fixed; left: 12px; right: 12px; z-index: 20;
   bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 12px);
@@ -260,7 +292,8 @@ details.tabelle summary { cursor: pointer; font-size: 13px; color: var(--muted);
 .installieren button { position: absolute; right: 8px; top: 8px; border: 0; background: none; color: inherit; font-size: 22px; width: 32px; height: 32px; cursor: pointer; }
 
 @media (prefers-reduced-motion: reduce) {
-  .rund.dreht svg { animation: none; }
+  .rund.dreht svg, .lauf .kreis { animation: none; }
+  .sheet { transition: none; }
   .tooltip { transition: none; }
 }
 </style>
@@ -269,6 +302,9 @@ details.tabelle summary { cursor: pointer; font-size: 13px; color: var(--muted);
 
 <header class="kopf" id="kopf">
   <h1><span id="titel">Tipps</span><span class="stand" id="stand">Lädt …</span></h1>
+  <button class="suchen" id="jetztSuchen" aria-label="Bot jetzt suchen lassen">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Jetzt suchen
+  </button>
   <button class="rund" id="neuLaden" aria-label="Neu laden">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
   </button>
@@ -299,6 +335,9 @@ details.tabelle summary { cursor: pointer; font-size: 13px; color: var(--muted);
     Infos
   </button>
 </nav>
+
+<div class="schleier" id="schleier"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitel"><div class="griff"></div><div id="sheetInhalt"></div></div>
 
 <div class="installieren" id="installieren">
   <b>Als App installieren:</b> unten auf <b>Teilen</b> tippen, dann <b>„Zum Home-Bildschirm“</b>.
@@ -403,7 +442,7 @@ function tippsZeichnen() {
     return;
   }
   if (!daten.letzter_scan) {
-    el.innerHTML = '<div class="leer"><strong>Der Bot ist noch nicht gelaufen</strong>Sobald der API-Key hinterlegt ist, sucht er zweimal täglich nach Value-Wetten (10 und 17 Uhr).</div>';
+    el.innerHTML = '<div class="leer"><strong>Der Bot ist noch nicht gelaufen</strong>Sobald der API-Key hinterlegt ist, sucht er zweimal täglich nach Value-Wetten (10 und 17 Uhr). Mit „Jetzt suchen“ startest du ihn jederzeit selbst.</div>';
     return;
   }
   if (!tipps.length) {
@@ -484,6 +523,7 @@ function sicherheitText(a, t) {
 }
 
 document.addEventListener("click", (e) => {
+  if (e.target.id === "tokenWeg") { speicher.schreiben("wb-gh-token", null); infosZeichnen(); return; }
   const b = e.target.closest("[data-setzen]");
   if (!b) return;
   const id = b.dataset.setzen;
@@ -694,6 +734,7 @@ function infosZeichnen() {
   const e = daten ? daten.einstellungen : null;
   $("#infos").innerHTML =
     '<div class="karte"><h3>So arbeitet der Bot</h3><ul>' +
+    "<li>Mit <b>Jetzt suchen</b> startest du ihn jederzeit selbst, ein Lauf dauert etwa eine Minute.</li>" +
     "<li>Zweimal täglich (10 und 17 Uhr) holt er die Quoten von etwa 25 europäischen Buchmachern für " + esc(daten ? daten.ligen.join(", ") : "die großen Ligen") + ".</li>" +
     "<li>Aus Pinnacle und der Betfair-Börse, den genauesten Märkten der Welt, rechnet er die Marge heraus. Das ergibt die faire Gewinnwahrscheinlichkeit.</li>" +
     "<li>Liegt Winamax darüber, ist das eine Value-Wette. Die Gegenprobe mit allen anderen Buchmachern bestimmt die Sicherheit.</li>" +
@@ -707,8 +748,128 @@ function infosZeichnen() {
     "<dt>Sicherheit</dt><dd>Hoch: Pinnacle, Betfair und der Marktschnitt sehen alle Value. Mittel: nicht alle. Niedrig: nur eine Quelle.</dd></dl></div>" +
     '<div class="karte"><h3>Ehrlich bleiben</h3><p>Auch eine Wette mit 55 % Gewinnwahrscheinlichkeit verliert fast jedes zweite Mal. Pechsträhnen von zehn verlorenen Wetten in Folge sind normal. Setze nur Geld, dessen Verlust dir nicht wehtut, und erst dann echt, wenn der CLV nach etwa 100 Papierwetten positiv ist.</p>' +
     '<p class="klein">Hilfe bei Glücksspielproblemen: BZgA-Telefon 0800 1 37 27 00 (kostenlos).</p></div>' +
+    (ghToken() ? '<button class="knopf" id="tokenWeg" style="width:100%;margin-bottom:12px">GitHub-Schlüssel von diesem Gerät löschen</button>' : "") +
     (daten && daten.credits != null ? '<p class="klein" style="text-align:center">Quoten-API: noch ' + nf(0).format(daten.credits) + " Abrufe diesen Monat</p>" : "");
 }
+
+/* ---------- Manuell suchen (startet den Bot in GitHub Actions) ---------- */
+const REPO = "nilsc2308/wettbot", WORKFLOW = "wettbot.yml";
+const ghToken = () => speicher.lesen("wb-gh-token");
+const gh = (pfad, opt = {}) => fetch("https://api.github.com/repos/" + REPO + pfad, {
+  ...opt,
+  headers: { Accept: "application/vnd.github+json", Authorization: "Bearer " + ghToken(), "X-GitHub-Api-Version": "2022-11-28", ...(opt.headers || {}) },
+});
+
+function sheetAuf(html) {
+  $("#sheetInhalt").innerHTML = html;
+  $("#schleier").classList.add("an");
+  $("#sheet").classList.add("an");
+}
+function sheetZu() {
+  if (suchLaeuft) return;
+  $("#schleier").classList.remove("an");
+  $("#sheet").classList.remove("an");
+}
+$("#schleier").addEventListener("click", sheetZu);
+
+function schluesselAbfragen(fehler) {
+  sheetAuf('<h2 id="sheetTitel">Einmalig einrichten</h2>' +
+    "<p>Damit die App den Bot starten darf, braucht sie einen GitHub-Schlüssel, der <b>nur das Wettbot-Repository</b> steuern darf. Er wird nur auf diesem Gerät gespeichert.</p><ol>" +
+    '<li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub → neuen Fine-grained Token anlegen</a></li>' +
+    "<li>Name: <b>Wettbot-App</b>, Ablauf: 1 Jahr</li>" +
+    "<li>Repository access: <b>Only select repositories</b> → <b>wettbot</b></li>" +
+    "<li>Permissions → Repository: <b>Actions: Read and write</b>, <b>Contents: Read-only</b></li>" +
+    "<li>Generate token, kopieren und hier einfügen:</li></ol>" +
+    (fehler ? '<div class="hinweis warn">' + ICON.warn + "<span>" + esc(fehler) + "</span></div>" : "") +
+    '<input id="tokenFeld" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="github_pat_…">' +
+    '<button class="knopf primaer" id="tokenSpeichern">Speichern und suchen</button>' +
+    '<button class="knopf" id="tokenAbbrechen">Abbrechen</button>');
+  $("#tokenAbbrechen").onclick = sheetZu;
+  $("#tokenSpeichern").onclick = () => {
+    const t = $("#tokenFeld").value.trim();
+    if (!t) return;
+    speicher.schreiben("wb-gh-token", t);
+    jetztSuchen(true);
+  };
+}
+
+let suchLaeuft = false;
+function laufAnzeigen(titel, text, fehler) {
+  sheetAuf('<div class="lauf">' + (fehler ? "" : '<div class="kreis"></div>') +
+    '<b id="sheetTitel" class="' + (fehler ? "fehler" : "") + '">' + esc(titel) + '</b><p id="laufText">' + text + "</p></div>" +
+    (fehler ? '<button class="knopf" id="laufZu">Schließen</button>' : ""));
+  if (fehler) $("#laufZu").onclick = sheetZu;
+}
+
+async function jetztSuchen(bestaetigt) {
+  if (suchLaeuft) return;
+  if (!ghToken()) { schluesselAbfragen(); return; }
+  if (!bestaetigt && daten) {
+    const min = daten.letzter_scan ? (Date.now() - new Date(daten.letzter_scan)) / 6e4 : 999;
+    const warnungen = [];
+    if (min < 15) warnungen.push("Der letzte Lauf war " + vorWann(daten.letzter_scan) + ". So schnell ändern sich die Quoten selten.");
+    if (daten.credits != null && daten.credits < 60) warnungen.push("Nur noch " + daten.credits + " API-Abrufe diesen Monat übrig. Ein Lauf kostet bis zu " + daten.ligen.length + ".");
+    if (warnungen.length) {
+      sheetAuf('<h2 id="sheetTitel">Trotzdem suchen?</h2><p>' + warnungen.map(esc).join("</p><p>") + "</p>" +
+        '<button class="knopf primaer" id="ja">Ja, jetzt suchen</button><button class="knopf" id="nein">Abbrechen</button>');
+      $("#ja").onclick = () => jetztSuchen(true);
+      $("#nein").onclick = sheetZu;
+      return;
+    }
+  }
+  suchLaeuft = true;
+  $("#jetztSuchen").disabled = true;
+  const start = Date.now();
+  laufAnzeigen("Bot wird gestartet …", "Einen Moment.");
+  try {
+    const r = await gh("/actions/workflows/" + WORKFLOW + "/dispatches", {
+      method: "POST", body: JSON.stringify({ ref: "main", inputs: { lauf: "manuell" } }),
+    });
+    if (r.status === 401 || r.status === 403) {
+      speicher.schreiben("wb-gh-token", null);
+      suchLaeuft = false; $("#jetztSuchen").disabled = false;
+      schluesselAbfragen("GitHub hat den Schlüssel abgelehnt (abgelaufen oder falsche Rechte). Bitte neu anlegen.");
+      return;
+    }
+    if (!r.ok) throw new Error("Start fehlgeschlagen (" + r.status + ").");
+
+    // Auf den gestarteten Lauf warten
+    let lauf = null;
+    while (Date.now() - start < 4 * 60e3) {
+      await new Promise((ok) => setTimeout(ok, 4000));
+      const sek = Math.round((Date.now() - start) / 1000);
+      const rr = await gh("/actions/workflows/" + WORKFLOW + "/runs?event=workflow_dispatch&per_page=5");
+      if (rr.ok) {
+        const j = await rr.json();
+        lauf = (j.workflow_runs || []).find((x) => new Date(x.created_at).getTime() > start - 60e3) || lauf;
+      }
+      const phase = !lauf || lauf.status === "queued" ? "Wartet auf einen freien Rechner"
+        : lauf.status === "in_progress" ? "Prüft die Quoten aller Spiele" : "Fast fertig";
+      const el = $("#laufText");
+      if (el) el.textContent = phase + " · " + sek + " s";
+      const t = $("#sheetTitel");
+      if (t) t.textContent = "Bot sucht …";
+      if (lauf && lauf.status === "completed") break;
+    }
+    if (!lauf || lauf.status !== "completed") throw new Error("Der Lauf dauert ungewöhnlich lange. Schau später noch mal rein.");
+    if (lauf.conclusion !== "success") throw new Error("Der Lauf ist fehlgeschlagen. Details auf GitHub unter Actions.");
+
+    // Frische Daten direkt aus dem Repository (GitHub Pages braucht noch etwa eine Minute)
+    const dr = await gh("/contents/docs/daten.json?ref=main&t=" + Date.now(), { headers: { Accept: "application/vnd.github.raw+json" } });
+    if (dr.ok) daten = await dr.json();
+    suchLaeuft = false;
+    sheetZu();
+    zeichnen();
+    zeigen("tipps");
+  } catch (e) {
+    suchLaeuft = false;
+    laufAnzeigen("Hat nicht geklappt", esc(e.message), true);
+  } finally {
+    suchLaeuft = false;
+    $("#jetztSuchen").disabled = false;
+  }
+}
+$("#jetztSuchen").addEventListener("click", () => jetztSuchen(false));
 
 /* ---------- Navigation ---------- */
 function zeigen(ziel) {

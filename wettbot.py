@@ -11,6 +11,7 @@ Befehle:
   python3 wettbot.py stats     Bilanz: Trefferquote, Gewinn, ROI, CLV
   python3 wettbot.py morgen    settle + scan + export (Cloud-Lauf morgens)
   python3 wettbot.py abend     scan + export (Cloud-Lauf abends, misst Schlussquoten)
+  python3 wettbot.py manuell   wie abend, gestartet per Knopf in der App
   python3 wettbot.py export    schreibt docs/daten.json fuer die App
   python3 wettbot.py demo      Testlauf mit Beispieldaten, ohne API-Key
 """
@@ -566,7 +567,7 @@ def main():
         scan(cfg)
         stats(cfg)
         export(cfg)
-    elif befehl == "abend":
+    elif befehl in ("abend", "manuell"):
         if genug_credits(cfg):
             scan(cfg)
         export(cfg)
