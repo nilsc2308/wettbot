@@ -137,18 +137,19 @@ def lauf_budget(cfg, rest):
     return max(len(cfg["maerkte"]), int(frei * 0.8 / laeufe))
 
 
-def hat_spiele(cfg, liga_key):
-    """Der /events-Endpunkt kostet keine Credits. So werden Ligen ohne Spiele in den naechsten
-    48 Stunden uebersprungen, bevor ein Credit fuer die Quoten ausgegeben wird."""
+def spielplan(cfg, liga_key):
+    """Der /events-Endpunkt kostet keine Credits. Gibt (Spiele in 12 h, Spiele in 48 h) zurueck,
+    damit Credits nur fuer Wettbewerbe ausgegeben werden, in denen bald gespielt wird."""
     if DEMO:
-        return True
+        return 1, 1
     jetzt = datetime.now(timezone.utc)
     bis = jetzt + timedelta(hours=cfg.get("stunden_bis_anstoss", 48))
     events, _ = hole("/sports/%s/events" % liga_key, {
         "commenceTimeFrom": jetzt.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "commenceTimeTo": bis.strftime("%Y-%m-%dT%H:%M:%SZ"),
     })
-    return bool(events)
+    bald = (jetzt + timedelta(hours=12)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return sum(1 for e in events if e["commence_time"] <= bald), len(events)
 
 
 def hole_quoten(cfg, liga_key):
@@ -339,13 +340,15 @@ def melden(titel, text):
 
 # ---------- Befehle ----------
 
-def scan(cfg):
+def scan(cfg, manuell=False):
     con = db()
     heute = datetime.now().strftime("%Y-%m-%d")
     alle_value = []
     anzahl_spiele = 0
     liste, rest = sportarten(cfg)
     budget = lauf_budget(cfg, rest)
+    if manuell and budget is not None:
+        budget *= 2
     kosten = len(cfg["maerkte"])
     gescannt, ausgelassen = [], 0
     # Rotation: zuerst Ligen mit offenen Tipps (Quote/CLV aktuell halten), dann die am laengsten nicht gescannten
@@ -357,14 +360,21 @@ def scan(cfg):
     faellig_vor = (datetime.now(timezone.utc) - timedelta(hours=cfg.get("prioritaet_intervall_stunden", 24))
                    ).strftime("%Y-%m-%dT%H:%M:%SZ")
     prio_faellig = {k for k in cfg["prioritaet"] if zuletzt.get(k, "") < faellig_vor}
-    liste = sorted(liste, key=lambda x: (x[0] not in mit_tipps, x[0] not in prio_faellig,
-                                         zuletzt.get(x[0], ""), rang[x[0]]))
+    vor_6h = (datetime.now(timezone.utc) - timedelta(hours=6)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    plan = {k: spielplan(cfg, k) for k, _, _ in liste}
+    liste = [x for x in liste if plan[x[0]][1] > 0]
+    # Reihenfolge: offene Tipps > Spiele in den naechsten 12 h (viele zuerst, nicht in den letzten 6 h gescannt)
+    #              > Prioritaets-Ligen (1x taeglich) > Rotation nach letztem Scan
+    def reihenfolge(x):
+        k = x[0]
+        heute = plan[k][0] > 0 and zuletzt.get(k, "") < vor_6h
+        return (k not in mit_tipps, not heute, -plan[k][0] if heute else 0, k not in prio_faellig,
+                zuletzt.get(k, ""), rang[k])
+    liste.sort(key=reihenfolge)
     print("%d Wettbewerbe aktiv, Budget fuer diesen Lauf: %s Credits" % (len(liste), budget if budget is not None else "frei"))
     for liga_key, liga_name, gruppe in liste:
         if budget is not None and budget < kosten:
             ausgelassen += 1
-            continue
-        if not hat_spiele(cfg, liga_key):
             continue
         events, r = hole_quoten(cfg, liga_key)
         rest = r or rest
@@ -646,7 +656,7 @@ def main():
         export(cfg)
     elif befehl in ("abend", "manuell"):
         if genug_credits(cfg):
-            scan(cfg)
+            scan(cfg, manuell=befehl == "manuell")
         export(cfg)
     else:
         print(__doc__)
