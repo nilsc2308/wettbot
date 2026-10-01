@@ -1,0 +1,56 @@
+name: Wettbot
+
+# 08:00 und 15:00 UTC = 10 und 17 Uhr Sommerzeit (9 und 16 Uhr Winterzeit)
+on:
+  schedule:
+    - cron: "0 8 * * *"
+    - cron: "0 15 * * *"
+  workflow_dispatch:
+    inputs:
+      lauf:
+        description: "morgen (abrechnen + scannen), abend oder manuell (nur scannen)"
+        type: choice
+        options: [manuell, morgen, abend]
+        default: manuell
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: wettbot
+  cancel-in-progress: false
+
+jobs:
+  lauf:
+    runs-on: ubuntu-latest
+    env:
+      ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+      TZ: Europe/Berlin
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Bot starten
+        run: |
+          if [ -z "$ODDS_API_KEY" ]; then
+            echo "Kein ODDS_API_KEY als Secret hinterlegt, Lauf wird uebersprungen."
+            exit 0
+          fi
+          LAUF="${{ github.event.inputs.lauf }}"
+          if [ -z "$LAUF" ]; then
+            if [ "$(date -u +%H)" -lt 12 ]; then LAUF=morgen; else LAUF=abend; fi
+          fi
+          python wettbot.py "$LAUF"
+      - name: Ergebnisse speichern
+        run: |
+          git config user.name "wettbot"
+          git config user.email "wettbot@users.noreply.github.com"
+          git add docs/daten.json data/wetten.db
+          git diff --cached --quiet || git commit -m "Wettbot-Lauf $(date +'%d.%m.%Y %H:%M')"
+          git push
+      - name: App sofort aktualisieren
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
