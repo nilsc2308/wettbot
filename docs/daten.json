@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-01T12:11:29Z",
- "letzter_scan": "2026-10-01T12:09:29Z",
- "spiele_geprueft": 134,
- "credits": 487,
+ "erzeugt": "2026-10-01T12:11:49Z",
+ "letzter_scan": "2026-10-01T12:11:49Z",
+ "spiele_geprueft": 29,
+ "credits": 476,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,47 +11,37 @@
  },
  "gescannt": [
   {
-   "name": "UEFA Nations League",
-   "gruppe": "Fußball",
-   "spiele": 26
-  },
-  {
-   "name": "SHL",
-   "gruppe": "Eishockey",
-   "spiele": 7
-  },
-  {
-   "name": "UEFA Champions League Women",
-   "gruppe": "Fußball",
+   "name": "MLB",
+   "gruppe": "Baseball",
    "spiele": 4
   },
   {
-   "name": "Basketball Euroleague",
-   "gruppe": "Basketball",
-   "spiele": 10
+   "name": "ATP China Open",
+   "gruppe": "Tennis",
+   "spiele": 6
   },
   {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 16
+   "name": "League 2",
+   "gruppe": "Fußball",
+   "spiele": 11
   },
   {
-   "name": "Handball-Bundesliga",
-   "gruppe": "Handball",
-   "spiele": 8
+   "name": "League of Ireland",
+   "gruppe": "Fußball",
+   "spiele": 1
   },
   {
-   "name": "NCAAF",
-   "gruppe": "American Football",
-   "spiele": 59
+   "name": "MLS",
+   "gruppe": "Fußball",
+   "spiele": 1
   },
   {
-   "name": "Mestis",
-   "gruppe": "Eishockey",
-   "spiele": 4
+   "name": "Primera División - Argentina",
+   "gruppe": "Fußball",
+   "spiele": 6
   }
  ],
- "ausgelassen": 24,
+ "ausgelassen": 26,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
