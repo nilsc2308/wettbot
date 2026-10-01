@@ -760,7 +760,7 @@ function gescanntKarte() {
   for (const x of g) (nachGruppe[x.gruppe] = nachGruppe[x.gruppe] || []).push(x);
   return '<div class="karte"><h3>Letzter Lauf: ' + g.length + " Wettbewerbe, " + nf(0).format(daten.spiele_geprueft) + " Spiele</h3>" +
     Object.entries(nachGruppe).map(([gr, l]) => "<p><b>" + esc(gr) + "</b> · " + l.map((x) => esc(x.name)).join(", ") + "</p>").join("") +
-    (daten.ausgelassen ? '<div class="hinweis warn">' + ICON.warn + "<span>" + daten.ausgelassen + " weitere Wettbewerbe wurden ausgelassen, weil das API-Guthaben sonst nicht bis Monatsende reicht. Ein größerer Plan bei The Odds API deckt alles ab.</span></div>" : "") +
+    (daten.ausgelassen ? '<div class="hinweis warn">' + ICON.warn + "<span>" + daten.ausgelassen + " weitere Wettbewerbe sind in den nächsten Läufen dran. Der Bot wechselt sich ab, damit das kostenlose Guthaben bis Monatsende reicht.</span></div>" : "") +
     "</div>";
 }
 
@@ -810,11 +810,10 @@ $("#schleier").addEventListener("click", sheetZu);
 function schluesselAbfragen(fehler) {
   sheetAuf('<h2 id="sheetTitel">Einmalig einrichten</h2>' +
     "<p>Damit die App den Bot starten darf, braucht sie einen GitHub-Schlüssel, der <b>nur das Wettbot-Repository</b> steuern darf. Er wird nur auf diesem Gerät gespeichert.</p><ol>" +
-    '<li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub → neuen Fine-grained Token anlegen</a></li>' +
-    "<li>Name: <b>Wettbot-App</b>, Ablauf: 1 Jahr</li>" +
-    "<li>Repository access: <b>Only select repositories</b> → <b>wettbot</b></li>" +
-    "<li>Permissions → Repository: <b>Actions: Read and write</b>, <b>Contents: Read-only</b></li>" +
-    "<li>Generate token, kopieren und hier einfügen:</li></ol>" +
+    '<li><a href="https://github.com/settings/personal-access-tokens/new?name=Wettbot-App&description=Startet+den+Wettbot+aus+der+App&target_name=nilsc2308&expires_in=365&actions=write&contents=read" target="_blank" rel="noopener"><b>Diesen Link öffnen</b></a> (Name, Laufzeit und Rechte sind vorausgefüllt)</li>' +
+    "<li>Bei <b>Repository access</b>: <b>Only select repositories</b> wählen und <b>wettbot</b> anhaken</li>" +
+    "<li>Prüfen, dass unter Permissions <b>Actions: Read and write</b> und <b>Contents: Read-only</b> steht</li>" +
+    "<li>Ganz unten <b>Generate token</b>, den Schlüssel kopieren und hier einfügen:</li></ol>" +
     (fehler ? '<div class="hinweis warn">' + ICON.warn + "<span>" + esc(fehler) + "</span></div>" : "") +
     '<input id="tokenFeld" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="github_pat_…">' +
     '<button class="knopf primaer" id="tokenSpeichern">Speichern und suchen</button>' +
@@ -855,18 +854,31 @@ async function jetztSuchen(bestaetigt) {
   suchLaeuft = true;
   $("#jetztSuchen").disabled = true;
   const start = Date.now();
-  laufAnzeigen("Bot wird gestartet …", "Einen Moment.");
+  laufAnzeigen("Bot wird gestartet …", "Prüfe den Zugang.");
+  const neuerSchluessel = (text) => {
+    speicher.schreiben("wb-gh-token", null);
+    suchLaeuft = false; $("#jetztSuchen").disabled = false;
+    schluesselAbfragen(text);
+  };
+  const githubText = async (r) => { try { return (await r.json()).message || ""; } catch { return ""; } };
   try {
+    // 1. Funktioniert der Schlüssel und darf er das Repository sehen?
+    const repo = await gh("");
+    if (repo.status === 401) return neuerSchluessel("GitHub kennt diesen Schlüssel nicht. Beim Kopieren ist vermutlich etwas abgeschnitten worden, oder er ist abgelaufen.");
+    if (repo.status === 404 || repo.status === 403) return neuerSchluessel("Der Schlüssel funktioniert, darf aber das Repository wettbot nicht sehen. Bei „Repository access“ muss wettbot angehakt sein.");
+    if (!repo.ok) throw new Error("GitHub antwortet nicht richtig (" + repo.status + "). Später noch mal versuchen.");
+
+    // 2. Ist der Bot-Ablauf auf GitHub schon eingerichtet?
+    const wf = await gh("/actions/workflows/" + WORKFLOW);
+    if (wf.status === 404) throw new Error("Dein Schlüssel ist in Ordnung. Der Bot selbst ist auf GitHub aber noch nicht eingerichtet: Am Mac fehlt noch die GitHub-Berechtigung („gh auth refresh … workflow“). Sobald das erledigt ist, funktioniert dieser Knopf.");
+    if (wf.status === 403) return neuerSchluessel("Dem Schlüssel fehlt das Recht „Actions“. Bitte neu anlegen und Actions auf Read and write stellen.");
+
+    // 3. Starten
     const r = await gh("/actions/workflows/" + WORKFLOW + "/dispatches", {
       method: "POST", body: JSON.stringify({ ref: "main", inputs: { lauf: "manuell" } }),
     });
-    if (r.status === 401 || r.status === 403) {
-      speicher.schreiben("wb-gh-token", null);
-      suchLaeuft = false; $("#jetztSuchen").disabled = false;
-      schluesselAbfragen("GitHub hat den Schlüssel abgelehnt (abgelaufen oder falsche Rechte). Bitte neu anlegen.");
-      return;
-    }
-    if (!r.ok) throw new Error("Start fehlgeschlagen (" + r.status + ").");
+    if (r.status === 403) return neuerSchluessel("Der Schlüssel darf den Bot sehen, aber nicht starten. Bitte neu anlegen mit Actions: Read and write.");
+    if (!r.ok) throw new Error("Start fehlgeschlagen (" + r.status + "): " + (await githubText(r)));
 
     // Auf den gestarteten Lauf warten
     let lauf = null;

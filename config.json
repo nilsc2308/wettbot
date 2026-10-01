@@ -38,5 +38,6 @@
   "bankroll": 500,
   "kelly_anteil": 0.25,
   "max_einsatz_anteil": 0.02,
-  "min_credits_rest": 40
+  "min_credits_rest": 40,
+  "stunden_bis_anstoss": 48
 }

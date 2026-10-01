@@ -138,11 +138,12 @@ def lauf_budget(cfg, rest):
 
 
 def hat_spiele(cfg, liga_key):
-    """Der /events-Endpunkt kostet keine Credits. So werden Ligen ohne Spiele im Zeitfenster uebersprungen."""
+    """Der /events-Endpunkt kostet keine Credits. So werden Ligen ohne Spiele in den naechsten
+    48 Stunden uebersprungen, bevor ein Credit fuer die Quoten ausgegeben wird."""
     if DEMO:
         return True
     jetzt = datetime.now(timezone.utc)
-    bis = jetzt + timedelta(days=cfg["tage_voraus"])
+    bis = jetzt + timedelta(hours=cfg.get("stunden_bis_anstoss", 48))
     events, _ = hole("/sports/%s/events" % liga_key, {
         "commenceTimeFrom": jetzt.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "commenceTimeTo": bis.strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -347,6 +348,13 @@ def scan(cfg):
     budget = lauf_budget(cfg, rest)
     kosten = len(cfg["maerkte"])
     gescannt, ausgelassen = [], 0
+    # Rotation: zuerst Ligen mit offenen Tipps (Quote/CLV aktuell halten), dann die am laengsten nicht gescannten
+    jetzt_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    mit_tipps = {r[0] for r in con.execute(
+        "SELECT DISTINCT liga_key FROM wetten WHERE status='offen' AND anstoss > ?", (jetzt_iso,))}
+    zuletzt = {r[0][8:]: r[1] for r in con.execute("SELECT k, v FROM meta WHERE k LIKE 'zuletzt_%'")}
+    rang = {k: i for i, (k, _, _) in enumerate(liste)}
+    liste = sorted(liste, key=lambda x: (x[0] not in mit_tipps, zuletzt.get(x[0], ""), rang[x[0]]))
     print("%d Wettbewerbe aktiv, Budget fuer diesen Lauf: %s Credits" % (len(liste), budget if budget is not None else "frei"))
     for liga_key, liga_name, gruppe in liste:
         if budget is not None and budget < kosten:
@@ -356,6 +364,7 @@ def scan(cfg):
             continue
         events, r = hole_quoten(cfg, liga_key)
         rest = r or rest
+        meta_setzen(con, "zuletzt_" + liga_key, datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
         if budget is not None:
             budget -= kosten
         if events:
