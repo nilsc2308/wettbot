@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-01T15:10:47Z",
- "letzter_scan": "2026-10-01T15:10:47Z",
- "spiele_geprueft": 42,
- "credits": 473,
+ "erzeugt": "2026-10-02T08:10:14Z",
+ "letzter_scan": "2026-10-02T08:10:14Z",
+ "spiele_geprueft": 37,
+ "credits": 470,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,19 +11,19 @@
  },
  "gescannt": [
   {
-   "name": "WTA China Open",
-   "gruppe": "Tennis",
-   "spiele": 32
+   "name": "UEFA Nations League",
+   "gruppe": "Fußball",
+   "spiele": 24
   },
   {
-   "name": "ATP Japan Open",
-   "gruppe": "Tennis",
-   "spiele": 8
+   "name": "HockeyAllsvenskan",
+   "gruppe": "Eishockey",
+   "spiele": 7
   },
   {
-   "name": "NFL",
-   "gruppe": "American Football",
-   "spiele": 2
+   "name": "Basketball Euroleague",
+   "gruppe": "Basketball",
+   "spiele": 6
   }
  ],
  "ausgelassen": 31,
