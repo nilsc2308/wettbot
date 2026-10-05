@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-04T13:38:34Z",
- "letzter_scan": "2026-10-04T13:38:34Z",
- "spiele_geprueft": 54,
- "credits": 466,
+ "erzeugt": "2026-10-05T16:45:14Z",
+ "letzter_scan": "2026-10-05T16:45:14Z",
+ "spiele_geprueft": 43,
+ "credits": 462,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,27 +11,27 @@
  },
  "gescannt": [
   {
-   "name": "NFL",
-   "gruppe": "American Football",
+   "name": "UEFA Nations League",
+   "gruppe": "Fußball",
+   "spiele": 17
+  },
+  {
+   "name": "NBA Preseason",
+   "gruppe": "Basketball",
+   "spiele": 8
+  },
+  {
+   "name": "NHL",
+   "gruppe": "Eishockey",
    "spiele": 14
   },
   {
-   "name": "AHL",
-   "gruppe": "Eishockey",
-   "spiele": 9
-  },
-  {
-   "name": "UEFA Nations League",
+   "name": "Primera División - Argentina",
    "gruppe": "Fußball",
-   "spiele": 25
-  },
-  {
-   "name": "La Liga 2 - Spain",
-   "gruppe": "Fußball",
-   "spiele": 6
+   "spiele": 4
   }
  ],
- "ausgelassen": 14,
+ "ausgelassen": 19,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
