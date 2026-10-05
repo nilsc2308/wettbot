@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-05T16:45:14Z",
- "letzter_scan": "2026-10-05T16:45:14Z",
- "spiele_geprueft": 43,
- "credits": 462,
+ "erzeugt": "2026-10-05T21:48:27Z",
+ "letzter_scan": "2026-10-05T21:48:27Z",
+ "spiele_geprueft": 18,
+ "credits": 458,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,27 +11,27 @@
  },
  "gescannt": [
   {
-   "name": "UEFA Nations League",
-   "gruppe": "Fußball",
-   "spiele": 17
+   "name": "KBO",
+   "gruppe": "Baseball",
+   "spiele": 5
   },
   {
-   "name": "NBA Preseason",
-   "gruppe": "Basketball",
+   "name": "WTA China Open",
+   "gruppe": "Tennis",
    "spiele": 8
   },
   {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 14
+   "name": "NPB",
+   "gruppe": "Baseball",
+   "spiele": 2
   },
   {
-   "name": "Primera División - Argentina",
-   "gruppe": "Fußball",
-   "spiele": 4
+   "name": "MLB",
+   "gruppe": "Baseball",
+   "spiele": 3
   }
  ],
- "ausgelassen": 19,
+ "ausgelassen": 20,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
