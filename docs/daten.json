@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-05T21:48:27Z",
- "letzter_scan": "2026-10-05T21:48:27Z",
- "spiele_geprueft": 18,
- "credits": 458,
+ "erzeugt": "2026-10-06T14:42:14Z",
+ "letzter_scan": "2026-10-06T14:42:13Z",
+ "spiele_geprueft": 30,
+ "credits": 454,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,27 +11,27 @@
  },
  "gescannt": [
   {
-   "name": "KBO",
-   "gruppe": "Baseball",
-   "spiele": 5
+   "name": "NHL",
+   "gruppe": "Eishockey",
+   "spiele": 12
   },
   {
-   "name": "WTA China Open",
-   "gruppe": "Tennis",
+   "name": "UEFA Nations League",
+   "gruppe": "Fußball",
    "spiele": 8
   },
   {
-   "name": "NPB",
-   "gruppe": "Baseball",
-   "spiele": 2
+   "name": "FA Cup",
+   "gruppe": "Fußball",
+   "spiele": 5
   },
   {
-   "name": "MLB",
-   "gruppe": "Baseball",
-   "spiele": 3
+   "name": "MMA",
+   "gruppe": "MMA",
+   "spiele": 5
   }
  ],
- "ausgelassen": 20,
+ "ausgelassen": 18,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
