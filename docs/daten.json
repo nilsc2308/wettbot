@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-07T15:02:03Z",
- "letzter_scan": "2026-10-07T15:02:03Z",
- "spiele_geprueft": 29,
- "credits": 446,
+ "erzeugt": "2026-10-07T20:24:03Z",
+ "letzter_scan": "2026-10-07T20:24:03Z",
+ "spiele_geprueft": 50,
+ "credits": 442,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,27 +11,27 @@
  },
  "gescannt": [
   {
-   "name": "HockeyAllsvenskan",
+   "name": "ATP Shanghai Masters",
+   "gruppe": "Tennis",
+   "spiele": 32
+  },
+  {
+   "name": "NHL",
    "gruppe": "Eishockey",
-   "spiele": 7
+   "spiele": 13
   },
   {
-   "name": "Brazil Série A",
-   "gruppe": "Fußball",
-   "spiele": 10
+   "name": "MLB",
+   "gruppe": "Baseball",
+   "spiele": 3
   },
   {
-   "name": "NBA Preseason",
+   "name": "WNBA",
    "gruppe": "Basketball",
-   "spiele": 5
-  },
-  {
-   "name": "Brazil Série B",
-   "gruppe": "Fußball",
-   "spiele": 7
+   "spiele": 2
   }
  ],
- "ausgelassen": 24,
+ "ausgelassen": 42,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
