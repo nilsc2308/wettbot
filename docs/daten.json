@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-08T15:10:14Z",
- "letzter_scan": "2026-10-08T15:10:14Z",
- "spiele_geprueft": 33,
- "credits": 438,
+ "erzeugt": "2026-10-09T14:55:54Z",
+ "letzter_scan": "2026-10-09T14:55:54Z",
+ "spiele_geprueft": 52,
+ "credits": 434,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,27 +11,27 @@
  },
  "gescannt": [
   {
-   "name": "NHL",
+   "name": "AHL",
    "gruppe": "Eishockey",
-   "spiele": 11
+   "spiele": 9
   },
   {
-   "name": "SHL",
+   "name": "HockeyAllsvenskan",
    "gruppe": "Eishockey",
    "spiele": 7
   },
   {
-   "name": "Basketball Euroleague",
-   "gruppe": "Basketball",
-   "spiele": 9
+   "name": "Liiga",
+   "gruppe": "Eishockey",
+   "spiele": 6
   },
   {
-   "name": "NBA Preseason",
-   "gruppe": "Basketball",
-   "spiele": 6
+   "name": "MMA",
+   "gruppe": "MMA",
+   "spiele": 30
   }
  ],
- "ausgelassen": 56,
+ "ausgelassen": 58,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
