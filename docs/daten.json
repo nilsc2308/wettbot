@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-12T17:18:32Z",
- "letzter_scan": "2026-10-12T17:18:32Z",
- "spiele_geprueft": 32,
- "credits": 419,
+ "erzeugt": "2026-10-12T22:22:45Z",
+ "letzter_scan": "2026-10-12T22:22:45Z",
+ "spiele_geprueft": 31,
+ "credits": 414,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,32 +11,32 @@
  },
  "gescannt": [
   {
-   "name": "WTA Wuhan Open",
+   "name": "ATP Shanghai Masters",
    "gruppe": "Tennis",
+   "spiele": 8
+  },
+  {
+   "name": "Test Matches",
+   "gruppe": "Cricket",
+   "spiele": 2
+  },
+  {
+   "name": "NHL",
+   "gruppe": "Eishockey",
    "spiele": 18
   },
   {
-   "name": "Brazil Série B",
-   "gruppe": "Fußball",
-   "spiele": 5
-  },
-  {
-   "name": "NBA Preseason",
-   "gruppe": "Basketball",
-   "spiele": 4
-  },
-  {
-   "name": "Brazil Série A",
-   "gruppe": "Fußball",
-   "spiele": 3
-  },
-  {
-   "name": "MLB",
-   "gruppe": "Baseball",
+   "name": "One Day Internationals",
+   "gruppe": "Cricket",
    "spiele": 2
+  },
+  {
+   "name": "NFL",
+   "gruppe": "American Football",
+   "spiele": 1
   }
  ],
- "ausgelassen": 27,
+ "ausgelassen": 18,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
