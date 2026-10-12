@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-11T19:19:17Z",
- "letzter_scan": "2026-10-11T19:19:17Z",
- "spiele_geprueft": 47,
- "credits": 424,
+ "erzeugt": "2026-10-12T17:18:32Z",
+ "letzter_scan": "2026-10-12T17:18:32Z",
+ "spiele_geprueft": 32,
+ "credits": 419,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -13,30 +13,30 @@
   {
    "name": "WTA Wuhan Open",
    "gruppe": "Tennis",
-   "spiele": 23
+   "spiele": 18
   },
   {
-   "name": "ATP Shanghai Masters",
-   "gruppe": "Tennis",
-   "spiele": 12
-  },
-  {
-   "name": "Liga MX",
+   "name": "Brazil Série B",
    "gruppe": "Fußball",
-   "spiele": 3
-  },
-  {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 6
+   "spiele": 5
   },
   {
    "name": "NBA Preseason",
    "gruppe": "Basketball",
+   "spiele": 4
+  },
+  {
+   "name": "Brazil Série A",
+   "gruppe": "Fußball",
    "spiele": 3
+  },
+  {
+   "name": "MLB",
+   "gruppe": "Baseball",
+   "spiele": 2
   }
  ],
- "ausgelassen": 34,
+ "ausgelassen": 27,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
