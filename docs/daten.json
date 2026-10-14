@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-13T20:29:52Z",
- "letzter_scan": "2026-10-13T20:29:52Z",
- "spiele_geprueft": 50,
- "credits": 409,
+ "erzeugt": "2026-10-14T13:17:19Z",
+ "letzter_scan": "2026-10-14T13:17:19Z",
+ "spiele_geprueft": 49,
+ "credits": 404,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,29 +11,29 @@
  },
  "gescannt": [
   {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 18
-  },
-  {
-   "name": "WTA Wuhan Open",
-   "gruppe": "Tennis",
+   "name": "MLS",
+   "gruppe": "Fußball",
    "spiele": 15
   },
   {
-   "name": "MMA",
-   "gruppe": "MMA",
-   "spiele": 5
+   "name": "Champions League",
+   "gruppe": "Fußball",
+   "spiele": 9
+  },
+  {
+   "name": "HockeyAllsvenskan",
+   "gruppe": "Eishockey",
+   "spiele": 7
   },
   {
    "name": "NBA Preseason",
    "gruppe": "Basketball",
-   "spiele": 5
+   "spiele": 7
   },
   {
-   "name": "NCAAF",
-   "gruppe": "American Football",
-   "spiele": 7
+   "name": "3. Liga - Germany",
+   "gruppe": "Fußball",
+   "spiele": 11
   }
  ],
  "ausgelassen": 26,
