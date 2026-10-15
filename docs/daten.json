@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-15T13:02:48Z",
- "letzter_scan": "2026-10-15T13:02:48Z",
- "spiele_geprueft": 63,
- "credits": 399,
+ "erzeugt": "2026-10-15T18:52:11Z",
+ "letzter_scan": "2026-10-15T18:52:11Z",
+ "spiele_geprueft": 77,
+ "credits": 394,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,32 +11,32 @@
  },
  "gescannt": [
   {
-   "name": "UEFA Europa Conference League",
+   "name": "NCAAF",
+   "gruppe": "American Football",
+   "spiele": 58
+  },
+  {
+   "name": "WTA Wuhan Open",
+   "gruppe": "Tennis",
+   "spiele": 4
+  },
+  {
+   "name": "NBA Preseason",
+   "gruppe": "Basketball",
+   "spiele": 2
+  },
+  {
+   "name": "Copa Libertadores",
    "gruppe": "Fußball",
-   "spiele": 18
+   "spiele": 1
   },
   {
-   "name": "UEFA Europa League",
+   "name": "League 1",
    "gruppe": "Fußball",
-   "spiele": 18
-  },
-  {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 11
-  },
-  {
-   "name": "SHL",
-   "gruppe": "Eishockey",
-   "spiele": 7
-  },
-  {
-   "name": "Saudi Pro League",
-   "gruppe": "Fußball",
-   "spiele": 9
+   "spiele": 12
   }
  ],
- "ausgelassen": 54,
+ "ausgelassen": 58,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
