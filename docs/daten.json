@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-14T13:17:19Z",
- "letzter_scan": "2026-10-14T13:17:19Z",
- "spiele_geprueft": 49,
- "credits": 404,
+ "erzeugt": "2026-10-15T13:02:48Z",
+ "letzter_scan": "2026-10-15T13:02:48Z",
+ "spiele_geprueft": 63,
+ "credits": 399,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,32 +11,32 @@
  },
  "gescannt": [
   {
-   "name": "MLS",
+   "name": "UEFA Europa Conference League",
    "gruppe": "Fußball",
-   "spiele": 15
+   "spiele": 18
   },
   {
-   "name": "Champions League",
+   "name": "UEFA Europa League",
    "gruppe": "Fußball",
-   "spiele": 9
+   "spiele": 18
   },
   {
-   "name": "HockeyAllsvenskan",
+   "name": "NHL",
+   "gruppe": "Eishockey",
+   "spiele": 11
+  },
+  {
+   "name": "SHL",
    "gruppe": "Eishockey",
    "spiele": 7
   },
   {
-   "name": "NBA Preseason",
-   "gruppe": "Basketball",
-   "spiele": 7
-  },
-  {
-   "name": "3. Liga - Germany",
+   "name": "Saudi Pro League",
    "gruppe": "Fußball",
-   "spiele": 11
+   "spiele": 9
   }
  ],
- "ausgelassen": 26,
+ "ausgelassen": 54,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
