@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-16T12:59:40Z",
- "letzter_scan": "2026-10-16T12:59:40Z",
- "spiele_geprueft": 85,
- "credits": 388,
+ "erzeugt": "2026-10-16T18:36:11Z",
+ "letzter_scan": "2026-10-16T18:36:11Z",
+ "spiele_geprueft": 54,
+ "credits": 383,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,37 +11,32 @@
  },
  "gescannt": [
   {
-   "name": "NBA Preseason",
-   "gruppe": "Basketball",
-   "spiele": 12
-  },
-  {
-   "name": "AHL",
-   "gruppe": "Eishockey",
+   "name": "J League",
+   "gruppe": "Fußball",
    "spiele": 10
   },
   {
-   "name": "MMA",
-   "gruppe": "MMA",
-   "spiele": 43
+   "name": "Boxing",
+   "gruppe": "Boxen",
+   "spiele": 22
   },
   {
-   "name": "HockeyAllsvenskan",
-   "gruppe": "Eishockey",
-   "spiele": 7
+   "name": "League of Ireland",
+   "gruppe": "Fußball",
+   "spiele": 5
   },
   {
-   "name": "Basketball Euroleague",
-   "gruppe": "Basketball",
-   "spiele": 6
+   "name": "AFL Women's",
+   "gruppe": "Australian Football",
+   "spiele": 8
   },
   {
-   "name": "Liiga",
-   "gruppe": "Eishockey",
-   "spiele": 7
+   "name": "Liga MX",
+   "gruppe": "Fußball",
+   "spiele": 9
   }
  ],
- "ausgelassen": 56,
+ "ausgelassen": 57,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
