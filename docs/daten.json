@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-17T11:56:49Z",
- "letzter_scan": "2026-10-17T11:56:49Z",
- "spiele_geprueft": 206,
- "credits": 377,
+ "erzeugt": "2026-10-17T17:44:56Z",
+ "letzter_scan": "2026-10-17T17:44:56Z",
+ "spiele_geprueft": 71,
+ "credits": 371,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,37 +11,37 @@
  },
  "gescannt": [
   {
-   "name": "NCAAF FCS",
-   "gruppe": "American Football",
-   "spiele": 53
-  },
-  {
-   "name": "NCAAF",
-   "gruppe": "American Football",
-   "spiele": 52
-  },
-  {
-   "name": "MMA",
-   "gruppe": "MMA",
-   "spiele": 42
-  },
-  {
-   "name": "FA Cup",
+   "name": "MLS",
    "gruppe": "Fußball",
-   "spiele": 31
+   "spiele": 15
   },
   {
-   "name": "Boxing",
-   "gruppe": "Boxen",
-   "spiele": 18
+   "name": "AHL",
+   "gruppe": "Eishockey",
+   "spiele": 14
   },
   {
-   "name": "League 2",
+   "name": "NHL",
+   "gruppe": "Eishockey",
+   "spiele": 15
+  },
+  {
+   "name": "Primera División - Argentina",
    "gruppe": "Fußball",
-   "spiele": 10
+   "spiele": 12
+  },
+  {
+   "name": "Liga MX",
+   "gruppe": "Fußball",
+   "spiele": 6
+  },
+  {
+   "name": "Brazil Série A",
+   "gruppe": "Fußball",
+   "spiele": 9
   }
  ],
- "ausgelassen": 53,
+ "ausgelassen": 46,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
