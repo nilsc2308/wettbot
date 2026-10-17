@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-16T18:36:11Z",
- "letzter_scan": "2026-10-16T18:36:11Z",
- "spiele_geprueft": 54,
- "credits": 383,
+ "erzeugt": "2026-10-17T11:56:49Z",
+ "letzter_scan": "2026-10-17T11:56:49Z",
+ "spiele_geprueft": 206,
+ "credits": 377,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,32 +11,37 @@
  },
  "gescannt": [
   {
-   "name": "J League",
+   "name": "NCAAF FCS",
+   "gruppe": "American Football",
+   "spiele": 53
+  },
+  {
+   "name": "NCAAF",
+   "gruppe": "American Football",
+   "spiele": 52
+  },
+  {
+   "name": "MMA",
+   "gruppe": "MMA",
+   "spiele": 42
+  },
+  {
+   "name": "FA Cup",
    "gruppe": "Fußball",
-   "spiele": 10
+   "spiele": 31
   },
   {
    "name": "Boxing",
    "gruppe": "Boxen",
-   "spiele": 22
+   "spiele": 18
   },
   {
-   "name": "League of Ireland",
+   "name": "League 2",
    "gruppe": "Fußball",
-   "spiele": 5
-  },
-  {
-   "name": "AFL Women's",
-   "gruppe": "Australian Football",
-   "spiele": 8
-  },
-  {
-   "name": "Liga MX",
-   "gruppe": "Fußball",
-   "spiele": 9
+   "spiele": 10
   }
  ],
- "ausgelassen": 57,
+ "ausgelassen": 53,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
