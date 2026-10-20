@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-18T12:25:07Z",
- "letzter_scan": "2026-10-18T12:25:07Z",
- "spiele_geprueft": 37,
- "credits": 365,
+ "erzeugt": "2026-10-20T13:16:39Z",
+ "letzter_scan": "2026-10-20T13:16:39Z",
+ "spiele_geprueft": 77,
+ "credits": 358,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,37 +11,42 @@
  },
  "gescannt": [
   {
-   "name": "NFL",
-   "gruppe": "American Football",
-   "spiele": 13
+   "name": "League 2",
+   "gruppe": "Fußball",
+   "spiele": 12
   },
   {
-   "name": "Eliteserien - Norway",
+   "name": "League 1",
    "gruppe": "Fußball",
-   "spiele": 5
+   "spiele": 12
   },
   {
-   "name": "Ligue 1 - France",
+   "name": "FA Cup",
    "gruppe": "Fußball",
-   "spiele": 5
+   "spiele": 11
   },
   {
-   "name": "Super League - Greece",
+   "name": "Champions League",
    "gruppe": "Fußball",
-   "spiele": 5
+   "spiele": 18
   },
   {
-   "name": "Premier League",
-   "gruppe": "Fußball",
-   "spiele": 5
+   "name": "NHL",
+   "gruppe": "Eishockey",
+   "spiele": 11
   },
   {
-   "name": "Dutch Eredivisie",
+   "name": "Liiga",
+   "gruppe": "Eishockey",
+   "spiele": 6
+  },
+  {
+   "name": "Saudi Pro League",
    "gruppe": "Fußball",
-   "spiele": 4
+   "spiele": 7
   }
  ],
- "ausgelassen": 30,
+ "ausgelassen": 23,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
