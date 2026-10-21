@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-20T13:16:39Z",
- "letzter_scan": "2026-10-20T13:16:39Z",
- "spiele_geprueft": 77,
- "credits": 358,
+ "erzeugt": "2026-10-21T13:23:25Z",
+ "letzter_scan": "2026-10-21T13:23:25Z",
+ "spiele_geprueft": 55,
+ "credits": 351,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,38 +11,38 @@
  },
  "gescannt": [
   {
-   "name": "League 2",
-   "gruppe": "Fußball",
-   "spiele": 12
-  },
-  {
-   "name": "League 1",
-   "gruppe": "Fußball",
-   "spiele": 12
-  },
-  {
-   "name": "FA Cup",
-   "gruppe": "Fußball",
-   "spiele": 11
-  },
-  {
    "name": "Champions League",
    "gruppe": "Fußball",
-   "spiele": 18
+   "spiele": 9
   },
   {
-   "name": "NHL",
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 15
+  },
+  {
+   "name": "HockeyAllsvenskan",
    "gruppe": "Eishockey",
-   "spiele": 11
+   "spiele": 7
   },
   {
-   "name": "Liiga",
+   "name": "AHL",
    "gruppe": "Eishockey",
    "spiele": 6
   },
   {
-   "name": "Saudi Pro League",
+   "name": "Liga MX",
    "gruppe": "Fußball",
+   "spiele": 7
+  },
+  {
+   "name": "Mestis",
+   "gruppe": "Eishockey",
+   "spiele": 4
+  },
+  {
+   "name": "Liiga",
+   "gruppe": "Eishockey",
    "spiele": 7
   }
  ],
