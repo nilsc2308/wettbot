@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-21T13:23:25Z",
- "letzter_scan": "2026-10-21T13:23:25Z",
- "spiele_geprueft": 55,
- "credits": 351,
+ "erzeugt": "2026-10-22T13:24:12Z",
+ "letzter_scan": "2026-10-22T13:24:12Z",
+ "spiele_geprueft": 129,
+ "credits": 343,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,42 +11,47 @@
  },
  "gescannt": [
   {
-   "name": "Champions League",
+   "name": "UEFA Europa Conference League",
    "gruppe": "Fußball",
-   "spiele": 9
+   "spiele": 18
   },
   {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 15
+   "name": "UEFA Europa League",
+   "gruppe": "Fußball",
+   "spiele": 18
   },
   {
-   "name": "HockeyAllsvenskan",
+   "name": "NHL",
    "gruppe": "Eishockey",
-   "spiele": 7
+   "spiele": 12
   },
   {
-   "name": "AHL",
+   "name": "SHL",
    "gruppe": "Eishockey",
    "spiele": 6
   },
   {
-   "name": "Liga MX",
+   "name": "Basketball Euroleague",
+   "gruppe": "Basketball",
+   "spiele": 9
+  },
+  {
+   "name": "NCAAF",
+   "gruppe": "American Football",
+   "spiele": 52
+  },
+  {
+   "name": "Saudi Pro League",
    "gruppe": "Fußball",
-   "spiele": 7
+   "spiele": 9
   },
   {
-   "name": "Mestis",
-   "gruppe": "Eishockey",
-   "spiele": 4
-  },
-  {
-   "name": "Liiga",
-   "gruppe": "Eishockey",
-   "spiele": 7
+   "name": "Handball-Bundesliga",
+   "gruppe": "Handball",
+   "spiele": 5
   }
  ],
- "ausgelassen": 23,
+ "ausgelassen": 51,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
