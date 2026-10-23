@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-22T13:24:12Z",
- "letzter_scan": "2026-10-22T13:24:12Z",
- "spiele_geprueft": 129,
- "credits": 343,
+ "erzeugt": "2026-10-23T18:52:43Z",
+ "letzter_scan": "2026-10-23T18:52:43Z",
+ "spiele_geprueft": 137,
+ "credits": 334,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,47 +11,52 @@
  },
  "gescannt": [
   {
-   "name": "UEFA Europa Conference League",
-   "gruppe": "Fußball",
-   "spiele": 18
-  },
-  {
-   "name": "UEFA Europa League",
-   "gruppe": "Fußball",
-   "spiele": 18
-  },
-  {
-   "name": "NHL",
-   "gruppe": "Eishockey",
+   "name": "NBA",
+   "gruppe": "Basketball",
    "spiele": 12
   },
   {
-   "name": "SHL",
+   "name": "AHL",
    "gruppe": "Eishockey",
-   "spiele": 6
+   "spiele": 13
   },
   {
-   "name": "Basketball Euroleague",
-   "gruppe": "Basketball",
-   "spiele": 9
+   "name": "MMA",
+   "gruppe": "MMA",
+   "spiele": 22
+  },
+  {
+   "name": "K League 1",
+   "gruppe": "Fußball",
+   "spiele": 6
   },
   {
    "name": "NCAAF",
    "gruppe": "American Football",
-   "spiele": 52
+   "spiele": 49
   },
   {
-   "name": "Saudi Pro League",
+   "name": "J League",
    "gruppe": "Fußball",
-   "spiele": 9
+   "spiele": 10
   },
   {
-   "name": "Handball-Bundesliga",
-   "gruppe": "Handball",
+   "name": "AFL Women's",
+   "gruppe": "Australian Football",
+   "spiele": 8
+  },
+  {
+   "name": "Primera División - Argentina",
+   "gruppe": "Fußball",
+   "spiele": 12
+  },
+  {
+   "name": "A-League",
+   "gruppe": "Fußball",
    "spiele": 5
   }
  ],
- "ausgelassen": 51,
+ "ausgelassen": 52,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
