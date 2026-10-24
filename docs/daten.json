@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-24T12:25:35Z",
- "letzter_scan": "2026-10-24T12:25:35Z",
- "spiele_geprueft": 180,
- "credits": 324,
+ "erzeugt": "2026-10-24T17:48:51Z",
+ "letzter_scan": "2026-10-24T17:48:51Z",
+ "spiele_geprueft": 73,
+ "credits": 315,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,57 +11,52 @@
  },
  "gescannt": [
   {
-   "name": "NCAAF FCS",
-   "gruppe": "American Football",
-   "spiele": 52
-  },
-  {
-   "name": "NCAAF",
-   "gruppe": "American Football",
-   "spiele": 44
-  },
-  {
-   "name": "MMA",
-   "gruppe": "MMA",
+   "name": "MLS",
+   "gruppe": "Fußball",
    "spiele": 14
   },
   {
-   "name": "AHL",
-   "gruppe": "Eishockey",
-   "spiele": 14
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 8
   },
   {
-   "name": "League 1",
+   "name": "Boxing",
+   "gruppe": "Boxen",
+   "spiele": 8
+  },
+  {
+   "name": "Brazil Série A",
+   "gruppe": "Fußball",
+   "spiele": 9
+  },
+  {
+   "name": "Brazil Série B",
+   "gruppe": "Fußball",
+   "spiele": 7
+  },
+  {
+   "name": "Liga MX",
+   "gruppe": "Fußball",
+   "spiele": 7
+  },
+  {
+   "name": "Primera División - Argentina",
    "gruppe": "Fußball",
    "spiele": 10
   },
   {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 12
+   "name": "AFL Women's",
+   "gruppe": "Australian Football",
+   "spiele": 4
   },
   {
-   "name": "Championship",
+   "name": "Belgium First Div",
    "gruppe": "Fußball",
-   "spiele": 8
-  },
-  {
-   "name": "League 2",
-   "gruppe": "Fußball",
-   "spiele": 9
-  },
-  {
-   "name": "Liiga",
-   "gruppe": "Eishockey",
-   "spiele": 8
-  },
-  {
-   "name": "Serie B - Italy",
-   "gruppe": "Fußball",
-   "spiele": 9
+   "spiele": 6
   }
  ],
- "ausgelassen": 46,
+ "ausgelassen": 43,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
