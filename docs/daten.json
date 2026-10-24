@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-23T18:52:43Z",
- "letzter_scan": "2026-10-23T18:52:43Z",
- "spiele_geprueft": 137,
- "credits": 334,
+ "erzeugt": "2026-10-24T12:25:35Z",
+ "letzter_scan": "2026-10-24T12:25:35Z",
+ "spiele_geprueft": 180,
+ "credits": 324,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,52 +11,57 @@
  },
  "gescannt": [
   {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 12
-  },
-  {
-   "name": "AHL",
-   "gruppe": "Eishockey",
-   "spiele": 13
-  },
-  {
-   "name": "MMA",
-   "gruppe": "MMA",
-   "spiele": 22
-  },
-  {
-   "name": "K League 1",
-   "gruppe": "Fußball",
-   "spiele": 6
+   "name": "NCAAF FCS",
+   "gruppe": "American Football",
+   "spiele": 52
   },
   {
    "name": "NCAAF",
    "gruppe": "American Football",
-   "spiele": 49
+   "spiele": 44
   },
   {
-   "name": "J League",
+   "name": "MMA",
+   "gruppe": "MMA",
+   "spiele": 14
+  },
+  {
+   "name": "AHL",
+   "gruppe": "Eishockey",
+   "spiele": 14
+  },
+  {
+   "name": "League 1",
    "gruppe": "Fußball",
    "spiele": 10
   },
   {
-   "name": "AFL Women's",
-   "gruppe": "Australian Football",
-   "spiele": 8
-  },
-  {
-   "name": "Primera División - Argentina",
-   "gruppe": "Fußball",
+   "name": "NHL",
+   "gruppe": "Eishockey",
    "spiele": 12
   },
   {
-   "name": "A-League",
+   "name": "Championship",
    "gruppe": "Fußball",
-   "spiele": 5
+   "spiele": 8
+  },
+  {
+   "name": "League 2",
+   "gruppe": "Fußball",
+   "spiele": 9
+  },
+  {
+   "name": "Liiga",
+   "gruppe": "Eishockey",
+   "spiele": 8
+  },
+  {
+   "name": "Serie B - Italy",
+   "gruppe": "Fußball",
+   "spiele": 9
   }
  ],
- "ausgelassen": 52,
+ "ausgelassen": 46,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
