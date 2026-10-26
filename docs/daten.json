@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-24T17:48:51Z",
- "letzter_scan": "2026-10-24T17:48:51Z",
- "spiele_geprueft": 73,
- "credits": 315,
+ "erzeugt": "2026-10-26T20:17:23Z",
+ "letzter_scan": "2026-10-26T20:17:23Z",
+ "spiele_geprueft": 57,
+ "credits": 303,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,52 +11,67 @@
  },
  "gescannt": [
   {
-   "name": "MLS",
-   "gruppe": "Fußball",
-   "spiele": 14
-  },
-  {
    "name": "NBA",
    "gruppe": "Basketball",
-   "spiele": 8
+   "spiele": 10
   },
   {
-   "name": "Boxing",
-   "gruppe": "Boxen",
-   "spiele": 8
+   "name": "WTA Pan Pacific Open",
+   "gruppe": "Tennis",
+   "spiele": 10
+  },
+  {
+   "name": "One Day Internationals",
+   "gruppe": "Cricket",
+   "spiele": 3
+  },
+  {
+   "name": "NHL",
+   "gruppe": "Eishockey",
+   "spiele": 14
   },
   {
    "name": "Brazil Série A",
    "gruppe": "Fußball",
-   "spiele": 9
+   "spiele": 7
   },
   {
    "name": "Brazil Série B",
    "gruppe": "Fußball",
-   "spiele": 7
-  },
-  {
-   "name": "Liga MX",
-   "gruppe": "Fußball",
-   "spiele": 7
+   "spiele": 3
   },
   {
    "name": "Primera División - Argentina",
    "gruppe": "Fußball",
-   "spiele": 10
+   "spiele": 3
   },
   {
-   "name": "AFL Women's",
-   "gruppe": "Australian Football",
-   "spiele": 4
-  },
-  {
-   "name": "Belgium First Div",
+   "name": "Primera División - Chile",
    "gruppe": "Fußball",
-   "spiele": 6
+   "spiele": 2
+  },
+  {
+   "name": "International Twenty20",
+   "gruppe": "Cricket",
+   "spiele": 2
+  },
+  {
+   "name": "WNBA",
+   "gruppe": "Basketball",
+   "spiele": 1
+  },
+  {
+   "name": "MLB",
+   "gruppe": "Baseball",
+   "spiele": 1
+  },
+  {
+   "name": "NFL",
+   "gruppe": "American Football",
+   "spiele": 1
   }
  ],
- "ausgelassen": 43,
+ "ausgelassen": 23,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
