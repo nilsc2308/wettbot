@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-27T13:54:14Z",
- "letzter_scan": "2026-10-27T13:54:14Z",
- "spiele_geprueft": 127,
- "credits": 289,
+ "erzeugt": "2026-10-27T19:48:01Z",
+ "letzter_scan": "2026-10-27T19:48:01Z",
+ "spiele_geprueft": 62,
+ "credits": 276,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,77 +11,72 @@
  },
  "gescannt": [
   {
-   "name": "DFB-Pokal",
+   "name": "Copa del Rey",
    "gruppe": "Fußball",
-   "spiele": 16
+   "spiele": 19
   },
   {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 11
-  },
-  {
-   "name": "Serie B - Italy",
-   "gruppe": "Fußball",
-   "spiele": 10
-  },
-  {
-   "name": "Basketball Euroleague",
-   "gruppe": "Basketball",
-   "spiele": 13
-  },
-  {
-   "name": "ATP Vienna Open",
+   "name": "WTA Pan Pacific Open",
    "gruppe": "Tennis",
-   "spiele": 10
-  },
-  {
-   "name": "League 1",
-   "gruppe": "Fußball",
-   "spiele": 5
-  },
-  {
-   "name": "ATP Swiss Indoors Basel",
-   "gruppe": "Tennis",
-   "spiele": 9
-  },
-  {
-   "name": "Serie A",
-   "gruppe": "Fußball",
-   "spiele": 10
-  },
-  {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 5
-  },
-  {
-   "name": "EFL Cup",
-   "gruppe": "Fußball",
    "spiele": 8
   },
   {
-   "name": "SHL",
-   "gruppe": "Eishockey",
-   "spiele": 9
+   "name": "Test Matches",
+   "gruppe": "Cricket",
+   "spiele": 2
   },
   {
-   "name": "NCAAF",
-   "gruppe": "American Football",
+   "name": "Brazil Série B",
+   "gruppe": "Fußball",
+   "spiele": 1
+  },
+  {
+   "name": "Primera División - Argentina",
+   "gruppe": "Fußball",
+   "spiele": 1
+  },
+  {
+   "name": "MLB",
+   "gruppe": "Baseball",
+   "spiele": 1
+  },
+  {
+   "name": "Premiership - Scotland",
+   "gruppe": "Fußball",
    "spiele": 6
   },
   {
-   "name": "AHL",
-   "gruppe": "Eishockey",
-   "spiele": 7
+   "name": "Veikkausliiga - Finland",
+   "gruppe": "Fußball",
+   "spiele": 3
   },
   {
-   "name": "Allsvenskan - Sweden",
+   "name": "NBL",
+   "gruppe": "Basketball",
+   "spiele": 3
+  },
+  {
+   "name": "Frauen-Bundesliga",
    "gruppe": "Fußball",
-   "spiele": 8
+   "spiele": 1
+  },
+  {
+   "name": "UEFA Champions League Women",
+   "gruppe": "Fußball",
+   "spiele": 9
+  },
+  {
+   "name": "NPB",
+   "gruppe": "Baseball",
+   "spiele": 1
+  },
+  {
+   "name": "HockeyAllsvenskan",
+   "gruppe": "Eishockey",
+   "spiele": 7
   }
  ],
- "ausgelassen": 20,
+ "ausgelassen": 25,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
