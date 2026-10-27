@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-26T20:17:23Z",
- "letzter_scan": "2026-10-26T20:17:23Z",
- "spiele_geprueft": 57,
- "credits": 303,
+ "erzeugt": "2026-10-27T13:54:14Z",
+ "letzter_scan": "2026-10-27T13:54:14Z",
+ "spiele_geprueft": 127,
+ "credits": 289,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,67 +11,77 @@
  },
  "gescannt": [
   {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 10
-  },
-  {
-   "name": "WTA Pan Pacific Open",
-   "gruppe": "Tennis",
-   "spiele": 10
-  },
-  {
-   "name": "One Day Internationals",
-   "gruppe": "Cricket",
-   "spiele": 3
+   "name": "DFB-Pokal",
+   "gruppe": "Fußball",
+   "spiele": 16
   },
   {
    "name": "NHL",
    "gruppe": "Eishockey",
-   "spiele": 14
+   "spiele": 11
   },
   {
-   "name": "Brazil Série A",
+   "name": "Serie B - Italy",
    "gruppe": "Fußball",
+   "spiele": 10
+  },
+  {
+   "name": "Basketball Euroleague",
+   "gruppe": "Basketball",
+   "spiele": 13
+  },
+  {
+   "name": "ATP Vienna Open",
+   "gruppe": "Tennis",
+   "spiele": 10
+  },
+  {
+   "name": "League 1",
+   "gruppe": "Fußball",
+   "spiele": 5
+  },
+  {
+   "name": "ATP Swiss Indoors Basel",
+   "gruppe": "Tennis",
+   "spiele": 9
+  },
+  {
+   "name": "Serie A",
+   "gruppe": "Fußball",
+   "spiele": 10
+  },
+  {
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 5
+  },
+  {
+   "name": "EFL Cup",
+   "gruppe": "Fußball",
+   "spiele": 8
+  },
+  {
+   "name": "SHL",
+   "gruppe": "Eishockey",
+   "spiele": 9
+  },
+  {
+   "name": "NCAAF",
+   "gruppe": "American Football",
+   "spiele": 6
+  },
+  {
+   "name": "AHL",
+   "gruppe": "Eishockey",
    "spiele": 7
   },
   {
-   "name": "Brazil Série B",
+   "name": "Allsvenskan - Sweden",
    "gruppe": "Fußball",
-   "spiele": 3
-  },
-  {
-   "name": "Primera División - Argentina",
-   "gruppe": "Fußball",
-   "spiele": 3
-  },
-  {
-   "name": "Primera División - Chile",
-   "gruppe": "Fußball",
-   "spiele": 2
-  },
-  {
-   "name": "International Twenty20",
-   "gruppe": "Cricket",
-   "spiele": 2
-  },
-  {
-   "name": "WNBA",
-   "gruppe": "Basketball",
-   "spiele": 1
-  },
-  {
-   "name": "MLB",
-   "gruppe": "Baseball",
-   "spiele": 1
-  },
-  {
-   "name": "NFL",
-   "gruppe": "American Football",
-   "spiele": 1
+   "spiele": 8
   }
  ],
- "ausgelassen": 23,
+ "ausgelassen": 20,
  "tipps": [],
  "verlauf": [],
  "bilanz": {
