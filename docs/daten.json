@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-27T19:48:01Z",
- "letzter_scan": "2026-10-27T19:48:01Z",
- "spiele_geprueft": 62,
- "credits": 276,
+ "erzeugt": "2026-10-28T20:03:38Z",
+ "letzter_scan": "2026-10-28T20:03:38Z",
+ "spiele_geprueft": 144,
+ "credits": 260,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,29 +11,64 @@
  },
  "gescannt": [
   {
-   "name": "Copa del Rey",
+   "name": "MLS",
    "gruppe": "Fußball",
-   "spiele": 19
+   "spiele": 20
+  },
+  {
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 12
+  },
+  {
+   "name": "AHL",
+   "gruppe": "Eishockey",
+   "spiele": 8
+  },
+  {
+   "name": "Brazil Série A",
+   "gruppe": "Fußball",
+   "spiele": 10
+  },
+  {
+   "name": "NHL",
+   "gruppe": "Eishockey",
+   "spiele": 15
   },
   {
    "name": "WTA Pan Pacific Open",
    "gruppe": "Tennis",
-   "spiele": 8
+   "spiele": 6
   },
   {
-   "name": "Test Matches",
+   "name": "Boxing",
+   "gruppe": "Boxen",
+   "spiele": 5
+  },
+  {
+   "name": "One Day Internationals",
    "gruppe": "Cricket",
-   "spiele": 2
+   "spiele": 3
   },
   {
-   "name": "Brazil Série B",
-   "gruppe": "Fußball",
-   "spiele": 1
+   "name": "NCAAF",
+   "gruppe": "American Football",
+   "spiele": 37
   },
   {
-   "name": "Primera División - Argentina",
+   "name": "Liga MX",
    "gruppe": "Fußball",
-   "spiele": 1
+   "spiele": 4
+  },
+  {
+   "name": "Primera División - Chile",
+   "gruppe": "Fußball",
+   "spiele": 3
+  },
+  {
+   "name": "ATP Swiss Indoors Basel",
+   "gruppe": "Tennis",
+   "spiele": 6
   },
   {
    "name": "MLB",
@@ -41,56 +76,66 @@
    "spiele": 1
   },
   {
-   "name": "Premiership - Scotland",
+   "name": "Test Matches",
+   "gruppe": "Cricket",
+   "spiele": 2
+  },
+  {
+   "name": "Bundesliga",
    "gruppe": "Fußball",
-   "spiele": 6
-  },
-  {
-   "name": "Veikkausliiga - Finland",
-   "gruppe": "Fußball",
-   "spiele": 3
-  },
-  {
-   "name": "NBL",
-   "gruppe": "Basketball",
-   "spiele": 3
-  },
-  {
-   "name": "Frauen-Bundesliga",
-   "gruppe": "Fußball",
-   "spiele": 1
-  },
-  {
-   "name": "UEFA Champions League Women",
-   "gruppe": "Fußball",
-   "spiele": 9
-  },
-  {
-   "name": "NPB",
-   "gruppe": "Baseball",
-   "spiele": 1
-  },
-  {
-   "name": "HockeyAllsvenskan",
-   "gruppe": "Eishockey",
    "spiele": 7
+  },
+  {
+   "name": "La Liga",
+   "gruppe": "Fußball",
+   "spiele": 5
   }
  ],
- "ausgelassen": 25,
- "tipps": [],
+ "ausgelassen": 34,
+ "tipps": [
+  {
+   "id": 1,
+   "liga": "ATP Swiss Indoors Basel",
+   "gruppe": "Tennis",
+   "anstoss": "2026-10-29T17:00:00Z",
+   "heim": "Novak Djokovic",
+   "gast": "Jan-Lennard Struff",
+   "tipp": "Sieg Jan-Lennard Struff",
+   "buchmacher": "Winamax",
+   "quote": 4.0,
+   "prob": 0.2598,
+   "edge": 0.039,
+   "einsatz": 1.63,
+   "status": "offen",
+   "gewinn": null,
+   "akt_quote": 4.0,
+   "akt_edge": 0.039,
+   "akt_zeit": "2026-10-28T20:03:38Z",
+   "clv": 0.039,
+   "prob_jetzt": 0.2598,
+   "analyse": {
+    "anzahl_buecher": 14,
+    "pinnacle": 0.2598,
+    "betfair": 0.2277,
+    "markt": 0.223,
+    "sicherheit": "niedrig",
+    "hauptquelle": "pinnacle"
+   }
+  }
+ ],
  "verlauf": [],
  "bilanz": {
-  "gesamt": 0,
+  "gesamt": 1,
   "abgerechnet": 0,
-  "offen": 0,
+  "offen": 1,
   "treffer": 0,
   "erwartet": 0,
   "einsatz": 0,
   "gewinn": 0,
   "roi": null,
   "gewinn_flach": 0,
-  "clv": null,
-  "clv_anzahl": 0
+  "clv": 0.039,
+  "clv_anzahl": 1
  },
  "kurve": []
 }
