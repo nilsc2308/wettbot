@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-29T14:54:44Z",
- "letzter_scan": "2026-10-29T14:54:44Z",
- "spiele_geprueft": 221,
- "credits": 240,
+ "erzeugt": "2026-10-29T20:02:58Z",
+ "letzter_scan": "2026-10-29T20:02:58Z",
+ "spiele_geprueft": 104,
+ "credits": 222,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,108 +11,99 @@
  },
  "gescannt": [
   {
-   "name": "ATP Swiss Indoors Basel",
-   "gruppe": "Tennis",
-   "spiele": 4
+   "name": "International Twenty20",
+   "gruppe": "Cricket",
+   "spiele": 2
   },
   {
-   "name": "Copa del Rey",
+   "name": "NFL",
+   "gruppe": "American Football",
+   "spiele": 9
+  },
+  {
+   "name": "NBL",
+   "gruppe": "Basketball",
+   "spiele": 3
+  },
+  {
+   "name": "One Day Internationals",
+   "gruppe": "Cricket",
+   "spiele": 2
+  },
+  {
+   "name": "Test Matches",
+   "gruppe": "Cricket",
+   "spiele": 2
+  },
+  {
+   "name": "Premier League",
    "gruppe": "Fußball",
-   "spiele": 18
+   "spiele": 9
   },
   {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 11
+   "name": "Austrian Football Bundesliga",
+   "gruppe": "Fußball",
+   "spiele": 6
   },
   {
-   "name": "SHL",
-   "gruppe": "Eishockey",
+   "name": "Bundesliga 2 - Germany",
+   "gruppe": "Fußball",
+   "spiele": 9
+  },
+  {
+   "name": "Denmark Superliga",
+   "gruppe": "Fußball",
+   "spiele": 5
+  },
+  {
+   "name": "Ekstraklasa - Poland",
+   "gruppe": "Fußball",
+   "spiele": 6
+  },
+  {
+   "name": "Ligue 2 - France",
+   "gruppe": "Fußball",
+   "spiele": 8
+  },
+  {
+   "name": "Premier League - Russia",
+   "gruppe": "Fußball",
    "spiele": 7
   },
   {
-   "name": "ATP Vienna Open",
-   "gruppe": "Tennis",
-   "spiele": 4
-  },
-  {
-   "name": "UEFA Champions League Women",
+   "name": "Primeira Liga - Portugal",
    "gruppe": "Fußball",
-   "spiele": 4
+   "spiele": 6
   },
   {
-   "name": "Mestis",
-   "gruppe": "Eishockey",
-   "spiele": 4
-  },
-  {
-   "name": "Basketball Euroleague",
-   "gruppe": "Basketball",
-   "spiele": 10
-  },
-  {
-   "name": "Allsvenskan - Sweden",
+   "name": "Superettan - Sweden",
    "gruppe": "Fußball",
-   "spiele": 5
+   "spiele": 6
   },
   {
-   "name": "Brazil Série A",
+   "name": "Swiss Superleague",
    "gruppe": "Fußball",
-   "spiele": 5
+   "spiele": 6
   },
   {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 3
-  },
-  {
-   "name": "Serie A",
+   "name": "Turkey Super League",
    "gruppe": "Fußball",
    "spiele": 8
   },
   {
-   "name": "Saudi Pro League",
-   "gruppe": "Fußball",
-   "spiele": 8
-  },
-  {
-   "name": "Handball-Bundesliga",
-   "gruppe": "Handball",
-   "spiele": 8
-  },
-  {
-   "name": "Veikkausliiga - Finland",
-   "gruppe": "Fußball",
-   "spiele": 3
-  },
-  {
-   "name": "AHL",
-   "gruppe": "Eishockey",
-   "spiele": 8
-  },
-  {
-   "name": "WTA Pan Pacific Open",
-   "gruppe": "Tennis",
-   "spiele": 4
-  },
-  {
-   "name": "NCAAF",
+   "name": "CFL",
    "gruppe": "American Football",
-   "spiele": 52
+   "spiele": 2
   },
   {
-   "name": "NCAAF FCS",
-   "gruppe": "American Football",
-   "spiele": 54
-  },
-  {
-   "name": "WNBA",
-   "gruppe": "Basketball",
-   "spiele": 1
+   "name": "La Liga 2 - Spain",
+   "gruppe": "Fußball",
+   "spiele": 8
   }
  ],
  "ausgelassen": 42,
- "tipps": [
+ "tipps": [],
+ "verlauf": [
   {
    "id": 1,
    "liga": "ATP Swiss Indoors Basel",
@@ -143,7 +134,6 @@
    }
   }
  ],
- "verlauf": [],
  "bilanz": {
   "gesamt": 1,
   "abgerechnet": 0,
