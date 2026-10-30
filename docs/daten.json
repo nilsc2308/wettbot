@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-29T20:02:58Z",
- "letzter_scan": "2026-10-29T20:02:58Z",
- "spiele_geprueft": 104,
- "credits": 222,
+ "erzeugt": "2026-10-30T14:47:21Z",
+ "letzter_scan": "2026-10-30T14:47:21Z",
+ "spiele_geprueft": 242,
+ "credits": 197,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,39 +11,99 @@
  },
  "gescannt": [
   {
-   "name": "International Twenty20",
-   "gruppe": "Cricket",
-   "spiele": 2
+   "name": "AHL",
+   "gruppe": "Eishockey",
+   "spiele": 15
   },
   {
-   "name": "NFL",
-   "gruppe": "American Football",
-   "spiele": 9
-  },
-  {
-   "name": "NBL",
+   "name": "NBA",
    "gruppe": "Basketball",
+   "spiele": 10
+  },
+  {
+   "name": "Liiga",
+   "gruppe": "Eishockey",
+   "spiele": 8
+  },
+  {
+   "name": "HockeyAllsvenskan",
+   "gruppe": "Eishockey",
+   "spiele": 7
+  },
+  {
+   "name": "Basketball Euroleague",
+   "gruppe": "Basketball",
+   "spiele": 7
+  },
+  {
+   "name": "MMA",
+   "gruppe": "MMA",
+   "spiele": 24
+  },
+  {
+   "name": "League of Ireland",
+   "gruppe": "Fußball",
+   "spiele": 5
+  },
+  {
+   "name": "Ligue 2 - France",
+   "gruppe": "Fußball",
+   "spiele": 7
+  },
+  {
+   "name": "Primera División - Argentina",
+   "gruppe": "Fußball",
+   "spiele": 11
+  },
+  {
+   "name": "Ligue 1 - France",
+   "gruppe": "Fußball",
+   "spiele": 8
+  },
+  {
+   "name": "ATP Swiss Indoors Basel",
+   "gruppe": "Tennis",
    "spiele": 3
   },
   {
-   "name": "One Day Internationals",
-   "gruppe": "Cricket",
-   "spiele": 2
+   "name": "NHL",
+   "gruppe": "Eishockey",
+   "spiele": 3
   },
   {
-   "name": "Test Matches",
-   "gruppe": "Cricket",
-   "spiele": 2
+   "name": "NCAAF",
+   "gruppe": "American Football",
+   "spiele": 50
   },
   {
-   "name": "Premier League",
+   "name": "Liga MX",
    "gruppe": "Fußball",
    "spiele": 9
   },
   {
-   "name": "Austrian Football Bundesliga",
+   "name": "Primera División - Chile",
    "gruppe": "Fußball",
    "spiele": 6
+  },
+  {
+   "name": "Saudi Pro League",
+   "gruppe": "Fußball",
+   "spiele": 5
+  },
+  {
+   "name": "Mestis",
+   "gruppe": "Eishockey",
+   "spiele": 3
+  },
+  {
+   "name": "ATP Vienna Open",
+   "gruppe": "Tennis",
+   "spiele": 2
+  },
+  {
+   "name": "Handball-Bundesliga",
+   "gruppe": "Handball",
+   "spiele": 8
   },
   {
    "name": "Bundesliga 2 - Germany",
@@ -51,57 +111,32 @@
    "spiele": 9
   },
   {
-   "name": "Denmark Superliga",
-   "gruppe": "Fußball",
-   "spiele": 5
-  },
-  {
    "name": "Ekstraklasa - Poland",
    "gruppe": "Fußball",
    "spiele": 6
   },
   {
-   "name": "Ligue 2 - France",
+   "name": "Bundesliga",
    "gruppe": "Fußball",
-   "spiele": 8
+   "spiele": 9
   },
   {
-   "name": "Premier League - Russia",
+   "name": "La Liga",
    "gruppe": "Fußball",
-   "spiele": 7
+   "spiele": 9
   },
   {
-   "name": "Primeira Liga - Portugal",
+   "name": "3. Liga - Germany",
    "gruppe": "Fußball",
-   "spiele": 6
+   "spiele": 10
   },
   {
-   "name": "Superettan - Sweden",
-   "gruppe": "Fußball",
-   "spiele": 6
-  },
-  {
-   "name": "Swiss Superleague",
-   "gruppe": "Fußball",
-   "spiele": 6
-  },
-  {
-   "name": "Turkey Super League",
-   "gruppe": "Fußball",
-   "spiele": 8
-  },
-  {
-   "name": "CFL",
-   "gruppe": "American Football",
-   "spiele": 2
-  },
-  {
-   "name": "La Liga 2 - Spain",
+   "name": "Eliteserien - Norway",
    "gruppe": "Fußball",
    "spiele": 8
   }
  ],
- "ausgelassen": 42,
+ "ausgelassen": 38,
  "tipps": [],
  "verlauf": [
   {
