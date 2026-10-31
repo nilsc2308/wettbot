@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-30T14:47:21Z",
- "letzter_scan": "2026-10-30T14:47:21Z",
- "spiele_geprueft": 242,
- "credits": 197,
+ "erzeugt": "2026-10-31T14:15:34Z",
+ "letzter_scan": "2026-10-31T14:15:34Z",
+ "spiele_geprueft": 404,
+ "credits": 153,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,44 +11,114 @@
  },
  "gescannt": [
   {
-   "name": "AHL",
-   "gruppe": "Eishockey",
-   "spiele": 15
+   "name": "NCAAF FCS",
+   "gruppe": "American Football",
+   "spiele": 56
   },
   {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 10
-  },
-  {
-   "name": "Liiga",
-   "gruppe": "Eishockey",
-   "spiele": 8
-  },
-  {
-   "name": "HockeyAllsvenskan",
-   "gruppe": "Eishockey",
-   "spiele": 7
-  },
-  {
-   "name": "Basketball Euroleague",
-   "gruppe": "Basketball",
-   "spiele": 7
+   "name": "NCAAF",
+   "gruppe": "American Football",
+   "spiele": 47
   },
   {
    "name": "MMA",
    "gruppe": "MMA",
-   "spiele": 24
+   "spiele": 13
   },
   {
-   "name": "League of Ireland",
-   "gruppe": "Fußball",
-   "spiele": 5
+   "name": "NHL",
+   "gruppe": "Eishockey",
+   "spiele": 10
   },
   {
-   "name": "Ligue 2 - France",
+   "name": "League 2",
    "gruppe": "Fußball",
+   "spiele": 9
+  },
+  {
+   "name": "MLS",
+   "gruppe": "Fußball",
+   "spiele": 15
+  },
+  {
+   "name": "Championship",
+   "gruppe": "Fußball",
+   "spiele": 8
+  },
+  {
+   "name": "League 1",
+   "gruppe": "Fußball",
+   "spiele": 9
+  },
+  {
+   "name": "Premier League",
+   "gruppe": "Fußball",
+   "spiele": 9
+  },
+  {
+   "name": "Boxing",
+   "gruppe": "Boxen",
    "spiele": 7
+  },
+  {
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 7
+  },
+  {
+   "name": "Liiga",
+   "gruppe": "Eishockey",
+   "spiele": 7
+  },
+  {
+   "name": "Bundesliga",
+   "gruppe": "Fußball",
+   "spiele": 8
+  },
+  {
+   "name": "Dutch Eredivisie",
+   "gruppe": "Fußball",
+   "spiele": 9
+  },
+  {
+   "name": "Belgium First Div",
+   "gruppe": "Fußball",
+   "spiele": 8
+  },
+  {
+   "name": "SHL",
+   "gruppe": "Eishockey",
+   "spiele": 4
+  },
+  {
+   "name": "AHL",
+   "gruppe": "Eishockey",
+   "spiele": 13
+  },
+  {
+   "name": "Mestis",
+   "gruppe": "Eishockey",
+   "spiele": 4
+  },
+  {
+   "name": "ATP Paris Masters",
+   "gruppe": "Tennis",
+   "spiele": 15
+  },
+  {
+   "name": "Brazil Série B",
+   "gruppe": "Fußball",
+   "spiele": 9
+  },
+  {
+   "name": "Swiss Superleague",
+   "gruppe": "Fußball",
+   "spiele": 6
+  },
+  {
+   "name": "La Liga 2 - Spain",
+   "gruppe": "Fußball",
+   "spiele": 10
   },
   {
    "name": "Primera División - Argentina",
@@ -56,88 +126,143 @@
    "spiele": 11
   },
   {
-   "name": "Ligue 1 - France",
-   "gruppe": "Fußball",
-   "spiele": 8
-  },
-  {
-   "name": "ATP Swiss Indoors Basel",
-   "gruppe": "Tennis",
-   "spiele": 3
-  },
-  {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 3
-  },
-  {
-   "name": "NCAAF",
-   "gruppe": "American Football",
-   "spiele": 50
-  },
-  {
    "name": "Liga MX",
    "gruppe": "Fußball",
-   "spiele": 9
-  },
-  {
-   "name": "Primera División - Chile",
-   "gruppe": "Fußball",
    "spiele": 6
-  },
-  {
-   "name": "Saudi Pro League",
-   "gruppe": "Fußball",
-   "spiele": 5
-  },
-  {
-   "name": "Mestis",
-   "gruppe": "Eishockey",
-   "spiele": 3
-  },
-  {
-   "name": "ATP Vienna Open",
-   "gruppe": "Tennis",
-   "spiele": 2
-  },
-  {
-   "name": "Handball-Bundesliga",
-   "gruppe": "Handball",
-   "spiele": 8
-  },
-  {
-   "name": "Bundesliga 2 - Germany",
-   "gruppe": "Fußball",
-   "spiele": 9
-  },
-  {
-   "name": "Ekstraklasa - Poland",
-   "gruppe": "Fußball",
-   "spiele": 6
-  },
-  {
-   "name": "Bundesliga",
-   "gruppe": "Fußball",
-   "spiele": 9
   },
   {
    "name": "La Liga",
    "gruppe": "Fußball",
+   "spiele": 8
+  },
+  {
+   "name": "Handball-Bundesliga",
+   "gruppe": "Handball",
+   "spiele": 6
+  },
+  {
+   "name": "Serie A",
+   "gruppe": "Fußball",
    "spiele": 9
   },
   {
-   "name": "3. Liga - Germany",
+   "name": "AFL Women's",
+   "gruppe": "Australian Football",
+   "spiele": 4
+  },
+  {
+   "name": "Serie B - Italy",
    "gruppe": "Fußball",
-   "spiele": 10
+   "spiele": 7
+  },
+  {
+   "name": "Premiership - Scotland",
+   "gruppe": "Fußball",
+   "spiele": 3
+  },
+  {
+   "name": "Austrian Football Bundesliga",
+   "gruppe": "Fußball",
+   "spiele": 5
+  },
+  {
+   "name": "Premier League - Russia",
+   "gruppe": "Fußball",
+   "spiele": 7
+  },
+  {
+   "name": "Primeira Liga - Portugal",
+   "gruppe": "Fußball",
+   "spiele": 8
+  },
+  {
+   "name": "CFL",
+   "gruppe": "American Football",
+   "spiele": 2
+  },
+  {
+   "name": "Saudi Pro League",
+   "gruppe": "Fußball",
+   "spiele": 2
+  },
+  {
+   "name": "Ekstraklasa - Poland",
+   "gruppe": "Fußball",
+   "spiele": 5
   },
   {
    "name": "Eliteserien - Norway",
    "gruppe": "Fußball",
-   "spiele": 8
+   "spiele": 7
+  },
+  {
+   "name": "Super League - Greece",
+   "gruppe": "Fußball",
+   "spiele": 7
+  },
+  {
+   "name": "Brazil Série A",
+   "gruppe": "Fußball",
+   "spiele": 2
+  },
+  {
+   "name": "WNBA",
+   "gruppe": "Basketball",
+   "spiele": 1
+  },
+  {
+   "name": "Superettan - Sweden",
+   "gruppe": "Fußball",
+   "spiele": 4
+  },
+  {
+   "name": "Turkey Super League",
+   "gruppe": "Fußball",
+   "spiele": 6
+  },
+  {
+   "name": "HockeyAllsvenskan",
+   "gruppe": "Eishockey",
+   "spiele": 5
+  },
+  {
+   "name": "Ligue 1 - France",
+   "gruppe": "Fußball",
+   "spiele": 6
   }
  ],
- "ausgelassen": 38,
- "tipps": [],
+ "ausgelassen": 20,
+ "tipps": [
+  {
+   "id": 2,
+   "liga": "Super League - Greece",
+   "gruppe": "Fußball",
+   "anstoss": "2026-11-01T16:00:00Z",
+   "heim": "Panetolikos Agrinio",
+   "gast": "OFI Crete",
+   "tipp": "Unentschieden",
+   "buchmacher": "Winamax",
+   "quote": 3.05,
+   "prob": 0.3401,
+   "edge": 0.0373,
+   "einsatz": 2.28,
+   "status": "offen",
+   "gewinn": null,
+   "akt_quote": 3.05,
+   "akt_edge": 0.0373,
+   "akt_zeit": "2026-10-31T14:15:34Z",
+   "clv": 0.0373,
+   "prob_jetzt": 0.3401,
+   "analyse": {
+    "anzahl_buecher": 16,
+    "pinnacle": 0.3401,
+    "betfair": 0.3247,
+    "markt": 0.3089,
+    "sicherheit": "niedrig",
+    "hauptquelle": "pinnacle"
+   }
+  }
+ ],
  "verlauf": [
   {
    "id": 1,
@@ -170,17 +295,17 @@
   }
  ],
  "bilanz": {
-  "gesamt": 1,
+  "gesamt": 2,
   "abgerechnet": 0,
-  "offen": 1,
+  "offen": 2,
   "treffer": 0,
   "erwartet": 0,
   "einsatz": 0,
   "gewinn": 0,
   "roi": null,
   "gewinn_flach": 0,
-  "clv": -0.0681,
-  "clv_anzahl": 1
+  "clv": -0.0154,
+  "clv_anzahl": 2
  },
  "kurve": []
 }
