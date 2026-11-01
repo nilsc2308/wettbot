@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-10-31T19:04:27Z",
- "letzter_scan": "2026-10-31T19:04:27Z",
- "spiele_geprueft": 278,
- "credits": 121,
+ "erzeugt": "2026-11-01T14:42:21Z",
+ "letzter_scan": "2026-11-01T14:42:21Z",
+ "spiele_geprueft": 34,
+ "credits": 496,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -16,162 +16,22 @@
    "spiele": 6
   },
   {
-   "name": "J League",
-   "gruppe": "Fußball",
-   "spiele": 4
-  },
-  {
-   "name": "K League 1",
-   "gruppe": "Fußball",
-   "spiele": 4
-  },
-  {
-   "name": "NBL",
-   "gruppe": "Basketball",
-   "spiele": 2
-  },
-  {
-   "name": "KBO",
-   "gruppe": "Baseball",
-   "spiele": 1
-  },
-  {
-   "name": "A-League",
-   "gruppe": "Fußball",
-   "spiele": 2
-  },
-  {
-   "name": "WTA Pan Pacific Open",
-   "gruppe": "Tennis",
-   "spiele": 1
-  },
-  {
-   "name": "International Twenty20",
-   "gruppe": "Cricket",
-   "spiele": 2
-  },
-  {
-   "name": "Primera División - Chile",
-   "gruppe": "Fußball",
-   "spiele": 6
-  },
-  {
-   "name": "Bundesliga 2 - Germany",
-   "gruppe": "Fußball",
-   "spiele": 4
-  },
-  {
-   "name": "NCAAB",
-   "gruppe": "Basketball",
-   "spiele": 108
-  },
-  {
-   "name": "WNCAAB",
-   "gruppe": "Basketball",
-   "spiele": 1
-  },
-  {
-   "name": "Allsvenskan - Sweden",
-   "gruppe": "Fußball",
-   "spiele": 8
-  },
-  {
-   "name": "Veikkausliiga - Finland",
-   "gruppe": "Fußball",
-   "spiele": 3
-  },
-  {
    "name": "NFL",
    "gruppe": "American Football",
    "spiele": 13
   },
   {
-   "name": "One Day Internationals",
-   "gruppe": "Cricket",
-   "spiele": 1
-  },
-  {
-   "name": "Denmark Superliga",
-   "gruppe": "Fußball",
-   "spiele": 5
-  },
-  {
-   "name": "ATP Swiss Indoors Basel",
-   "gruppe": "Tennis",
-   "spiele": 1
-  },
-  {
-   "name": "3. Liga - Germany",
-   "gruppe": "Fußball",
-   "spiele": 3
-  },
-  {
-   "name": "NCAAF FCS",
-   "gruppe": "American Football",
-   "spiele": 13
-  },
-  {
-   "name": "NCAAF",
-   "gruppe": "American Football",
-   "spiele": 29
+   "name": "AHL",
+   "gruppe": "Eishockey",
+   "spiele": 10
   },
   {
    "name": "NHL",
    "gruppe": "Eishockey",
-   "spiele": 11
-  },
-  {
-   "name": "MMA",
-   "gruppe": "MMA",
-   "spiele": 12
-  },
-  {
-   "name": "Premier League",
-   "gruppe": "Fußball",
-   "spiele": 3
-  },
-  {
-   "name": "League 1",
-   "gruppe": "Fußball",
-   "spiele": 1
-  },
-  {
-   "name": "MLS",
-   "gruppe": "Fußball",
-   "spiele": 9
-  },
-  {
-   "name": "Bundesliga",
-   "gruppe": "Fußball",
-   "spiele": 2
-  },
-  {
-   "name": "Belgium First Div",
-   "gruppe": "Fußball",
-   "spiele": 6
-  },
-  {
-   "name": "Dutch Eredivisie",
-   "gruppe": "Fußball",
-   "spiele": 6
-  },
-  {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 7
-  },
-  {
-   "name": "Boxing",
-   "gruppe": "Boxen",
-   "spiele": 3
-  },
-  {
-   "name": "Liiga",
-   "gruppe": "Eishockey",
-   "spiele": 1
+   "spiele": 5
   }
  ],
- "ausgelassen": 24,
+ "ausgelassen": 36,
  "tipps": [
   {
    "id": 2,
@@ -188,16 +48,16 @@
    "einsatz": 2.28,
    "status": "offen",
    "gewinn": null,
-   "akt_quote": 3.05,
-   "akt_edge": 0.0329,
-   "akt_zeit": "2026-10-31T19:04:24Z",
-   "clv": 0.0329,
-   "prob_jetzt": 0.3387,
+   "akt_quote": 2.85,
+   "akt_edge": -0.0804,
+   "akt_zeit": "2026-11-01T14:42:20Z",
+   "clv": -0.0158,
+   "prob_jetzt": 0.3227,
    "analyse": {
     "anzahl_buecher": 16,
-    "pinnacle": 0.3387,
-    "betfair": 0.3267,
-    "markt": 0.3089,
+    "pinnacle": 0.3227,
+    "betfair": 0.3079,
+    "markt": 0.3057,
     "sicherheit": "niedrig",
     "hauptquelle": "pinnacle"
    }
@@ -217,16 +77,16 @@
    "einsatz": 2.01,
    "status": "offen",
    "gewinn": null,
-   "akt_quote": 3.05,
-   "akt_edge": 0.0329,
-   "akt_zeit": "2026-10-31T19:04:27Z",
-   "clv": 0.0329,
-   "prob_jetzt": 0.3387,
+   "akt_quote": 2.85,
+   "akt_edge": -0.0804,
+   "akt_zeit": "2026-11-01T14:42:20Z",
+   "clv": -0.0158,
+   "prob_jetzt": 0.3227,
    "analyse": {
     "anzahl_buecher": 16,
-    "pinnacle": 0.3387,
-    "betfair": 0.3267,
-    "markt": 0.3089,
+    "pinnacle": 0.3227,
+    "betfair": 0.3079,
+    "markt": 0.3057,
     "sicherheit": "niedrig",
     "hauptquelle": "pinnacle"
    }
@@ -273,7 +133,7 @@
   "gewinn": 0,
   "roi": null,
   "gewinn_flach": 0,
-  "clv": -0.0008,
+  "clv": -0.0333,
   "clv_anzahl": 3
  },
  "kurve": []
