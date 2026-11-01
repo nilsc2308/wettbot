@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-01T14:42:21Z",
- "letzter_scan": "2026-11-01T14:42:21Z",
- "spiele_geprueft": 34,
- "credits": 496,
+ "erzeugt": "2026-11-01T19:20:51Z",
+ "letzter_scan": "2026-11-01T19:20:51Z",
+ "spiele_geprueft": 22,
+ "credits": 492,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,28 +11,58 @@
  },
  "gescannt": [
   {
-   "name": "Super League - Greece",
+   "name": "MLS",
    "gruppe": "Fußball",
    "spiele": 6
   },
   {
-   "name": "NFL",
-   "gruppe": "American Football",
-   "spiele": 13
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 4
   },
   {
-   "name": "AHL",
-   "gruppe": "Eishockey",
-   "spiele": 10
+   "name": "Primera División - Argentina",
+   "gruppe": "Fußball",
+   "spiele": 7
   },
   {
-   "name": "NHL",
-   "gruppe": "Eishockey",
+   "name": "Brazil Série B",
+   "gruppe": "Fußball",
    "spiele": 5
   }
  ],
- "ausgelassen": 36,
- "tipps": [
+ "ausgelassen": 26,
+ "tipps": [],
+ "verlauf": [
+  {
+   "id": 3,
+   "liga": "Super League - Greece",
+   "gruppe": "Fußball",
+   "anstoss": "2026-11-01T16:00:00Z",
+   "heim": "Panetolikos Agrinio",
+   "gast": "OFI Crete",
+   "tipp": "Unentschieden",
+   "buchmacher": "Winamax",
+   "quote": 3.05,
+   "prob": 0.3387,
+   "edge": 0.0329,
+   "einsatz": 2.01,
+   "status": "offen",
+   "gewinn": null,
+   "akt_quote": 2.85,
+   "akt_edge": -0.0804,
+   "akt_zeit": "2026-11-01T14:42:20Z",
+   "clv": -0.0158,
+   "prob_jetzt": 0.3227,
+   "analyse": {
+    "anzahl_buecher": 16,
+    "pinnacle": 0.3227,
+    "betfair": 0.3079,
+    "markt": 0.3057,
+    "sicherheit": "niedrig",
+    "hauptquelle": "pinnacle"
+   }
+  },
   {
    "id": 2,
    "liga": "Super League - Greece",
@@ -62,37 +92,6 @@
     "hauptquelle": "pinnacle"
    }
   },
-  {
-   "id": 3,
-   "liga": "Super League - Greece",
-   "gruppe": "Fußball",
-   "anstoss": "2026-11-01T16:00:00Z",
-   "heim": "Panetolikos Agrinio",
-   "gast": "OFI Crete",
-   "tipp": "Unentschieden",
-   "buchmacher": "Winamax",
-   "quote": 3.05,
-   "prob": 0.3387,
-   "edge": 0.0329,
-   "einsatz": 2.01,
-   "status": "offen",
-   "gewinn": null,
-   "akt_quote": 2.85,
-   "akt_edge": -0.0804,
-   "akt_zeit": "2026-11-01T14:42:20Z",
-   "clv": -0.0158,
-   "prob_jetzt": 0.3227,
-   "analyse": {
-    "anzahl_buecher": 16,
-    "pinnacle": 0.3227,
-    "betfair": 0.3079,
-    "markt": 0.3057,
-    "sicherheit": "niedrig",
-    "hauptquelle": "pinnacle"
-   }
-  }
- ],
- "verlauf": [
   {
    "id": 1,
    "liga": "ATP Swiss Indoors Basel",
