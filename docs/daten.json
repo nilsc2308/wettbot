@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-01T19:20:51Z",
- "letzter_scan": "2026-11-01T19:20:51Z",
- "spiele_geprueft": 22,
- "credits": 492,
+ "erzeugt": "2026-11-02T17:45:09Z",
+ "letzter_scan": "2026-11-02T17:45:09Z",
+ "spiele_geprueft": 163,
+ "credits": 488,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,27 +11,27 @@
  },
  "gescannt": [
   {
-   "name": "MLS",
-   "gruppe": "Fußball",
-   "spiele": 6
+   "name": "NCAAB",
+   "gruppe": "Basketball",
+   "spiele": 125
   },
   {
    "name": "NBA",
    "gruppe": "Basketball",
-   "spiele": 4
+   "spiele": 15
   },
   {
-   "name": "Primera División - Argentina",
-   "gruppe": "Fußball",
-   "spiele": 7
+   "name": "WNCAAB",
+   "gruppe": "Basketball",
+   "spiele": 8
   },
   {
-   "name": "Brazil Série B",
-   "gruppe": "Fußball",
-   "spiele": 5
+   "name": "NHL",
+   "gruppe": "Eishockey",
+   "spiele": 15
   }
  ],
- "ausgelassen": 26,
+ "ausgelassen": 28,
  "tipps": [],
  "verlauf": [
   {
