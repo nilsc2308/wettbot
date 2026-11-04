@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-02T22:58:52Z",
- "letzter_scan": "2026-11-02T22:58:52Z",
- "spiele_geprueft": 27,
- "credits": 484,
+ "erzeugt": "2026-11-04T15:56:18Z",
+ "letzter_scan": "2026-11-04T15:56:18Z",
+ "spiele_geprueft": 42,
+ "credits": 480,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,27 +11,27 @@
  },
  "gescannt": [
   {
-   "name": "ATP Paris Masters",
-   "gruppe": "Tennis",
-   "spiele": 16
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 14
   },
   {
-   "name": "Primera División - Argentina",
-   "gruppe": "Fußball",
-   "spiele": 2
+   "name": "NCAAB",
+   "gruppe": "Basketball",
+   "spiele": 11
   },
   {
-   "name": "Brazil Série A",
+   "name": "Champions League",
    "gruppe": "Fußball",
+   "spiele": 9
+  },
+  {
+   "name": "AHL",
+   "gruppe": "Eishockey",
    "spiele": 8
-  },
-  {
-   "name": "KBO",
-   "gruppe": "Baseball",
-   "spiele": 1
   }
  ],
- "ausgelassen": 20,
+ "ausgelassen": 18,
  "tipps": [],
  "verlauf": [
   {
