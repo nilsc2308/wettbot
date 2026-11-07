@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-07T14:38:15Z",
- "letzter_scan": "2026-11-07T14:38:15Z",
- "spiele_geprueft": 199,
- "credits": 468,
+ "erzeugt": "2026-11-07T19:14:44Z",
+ "letzter_scan": "2026-11-07T19:14:44Z",
+ "spiele_geprueft": 76,
+ "credits": 464,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,28 +11,29 @@
  },
  "gescannt": [
   {
-   "name": "NCAAF FCS",
-   "gruppe": "American Football",
-   "spiele": 61
+   "name": "MMA",
+   "gruppe": "MMA",
+   "spiele": 23
   },
   {
-   "name": "NCAAF",
-   "gruppe": "American Football",
-   "spiele": 51
+   "name": "AHL",
+   "gruppe": "Eishockey",
+   "spiele": 17
   },
   {
-   "name": "NCAAB",
-   "gruppe": "Basketball",
-   "spiele": 49
+   "name": "Boxing",
+   "gruppe": "Boxen",
+   "spiele": 21
   },
   {
-   "name": "FA Cup",
+   "name": "MLS",
    "gruppe": "Fußball",
-   "spiele": 38
+   "spiele": 15
   }
  ],
- "ausgelassen": 48,
- "tipps": [
+ "ausgelassen": 47,
+ "tipps": [],
+ "verlauf": [
   {
    "id": 4,
    "liga": "FA Cup",
@@ -61,9 +62,7 @@
     "sicherheit": "hoch",
     "hauptquelle": "pinnacle"
    }
-  }
- ],
- "verlauf": [
+  },
   {
    "id": 3,
    "liga": "Super League - Greece",
