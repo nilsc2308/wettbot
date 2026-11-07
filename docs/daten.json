@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-05T21:19:35Z",
- "letzter_scan": "2026-11-05T21:19:35Z",
- "spiele_geprueft": 106,
- "credits": 472,
+ "erzeugt": "2026-11-07T14:38:15Z",
+ "letzter_scan": "2026-11-07T14:38:15Z",
+ "spiele_geprueft": 199,
+ "credits": 468,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,28 +11,58 @@
  },
  "gescannt": [
   {
+   "name": "NCAAF FCS",
+   "gruppe": "American Football",
+   "spiele": 61
+  },
+  {
+   "name": "NCAAF",
+   "gruppe": "American Football",
+   "spiele": 51
+  },
+  {
    "name": "NCAAB",
    "gruppe": "Basketball",
-   "spiele": 83
+   "spiele": 49
   },
   {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 14
-  },
-  {
-   "name": "WNCAAB",
-   "gruppe": "Basketball",
-   "spiele": 7
-  },
-  {
-   "name": "Test Matches",
-   "gruppe": "Cricket",
-   "spiele": 2
+   "name": "FA Cup",
+   "gruppe": "Fußball",
+   "spiele": 38
   }
  ],
- "ausgelassen": 52,
- "tipps": [],
+ "ausgelassen": 48,
+ "tipps": [
+  {
+   "id": 4,
+   "liga": "FA Cup",
+   "gruppe": "Fußball",
+   "anstoss": "2026-11-07T15:00:00Z",
+   "heim": "Accrington Stanley",
+   "gast": "Wycombe Wanderers",
+   "tipp": "Sieg Wycombe Wanderers",
+   "buchmacher": "Winamax",
+   "quote": 2.45,
+   "prob": 0.4256,
+   "edge": 0.0426,
+   "einsatz": 3.67,
+   "status": "offen",
+   "gewinn": null,
+   "akt_quote": 2.45,
+   "akt_edge": 0.0426,
+   "akt_zeit": "2026-11-07T14:38:15Z",
+   "clv": 0.0426,
+   "prob_jetzt": 0.4256,
+   "analyse": {
+    "anzahl_buecher": 14,
+    "pinnacle": 0.4256,
+    "betfair": 0.4299,
+    "markt": 0.4138,
+    "sicherheit": "hoch",
+    "hauptquelle": "pinnacle"
+   }
+  }
+ ],
  "verlauf": [
   {
    "id": 3,
@@ -123,17 +153,17 @@
   }
  ],
  "bilanz": {
-  "gesamt": 3,
+  "gesamt": 4,
   "abgerechnet": 0,
-  "offen": 3,
+  "offen": 4,
   "treffer": 0,
   "erwartet": 0,
   "einsatz": 0,
   "gewinn": 0,
   "roi": null,
   "gewinn_flach": 0,
-  "clv": -0.0333,
-  "clv_anzahl": 3
+  "clv": -0.0143,
+  "clv_anzahl": 4
  },
  "kurve": []
 }
