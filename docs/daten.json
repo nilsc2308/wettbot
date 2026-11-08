@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-07T19:14:44Z",
- "letzter_scan": "2026-11-07T19:14:44Z",
- "spiele_geprueft": 76,
- "credits": 464,
+ "erzeugt": "2026-11-08T14:44:28Z",
+ "letzter_scan": "2026-11-08T14:44:28Z",
+ "spiele_geprueft": 64,
+ "credits": 459,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,27 +11,32 @@
  },
  "gescannt": [
   {
-   "name": "MMA",
-   "gruppe": "MMA",
-   "spiele": 23
+   "name": "NCAAB",
+   "gruppe": "Basketball",
+   "spiele": 32
   },
   {
-   "name": "AHL",
-   "gruppe": "Eishockey",
-   "spiele": 17
+   "name": "NFL",
+   "gruppe": "American Football",
+   "spiele": 13
   },
   {
-   "name": "Boxing",
-   "gruppe": "Boxen",
-   "spiele": 21
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 7
   },
   {
-   "name": "MLS",
+   "name": "Primeira Liga - Portugal",
    "gruppe": "Fußball",
-   "spiele": 15
+   "spiele": 6
+  },
+  {
+   "name": "Primera División - Chile",
+   "gruppe": "Fußball",
+   "spiele": 6
   }
  ],
- "ausgelassen": 47,
+ "ausgelassen": 33,
  "tipps": [],
  "verlauf": [
   {
