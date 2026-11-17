@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-16T17:52:16Z",
- "letzter_scan": "2026-11-16T17:52:16Z",
- "spiele_geprueft": 71,
- "credits": 402,
+ "erzeugt": "2026-11-17T17:20:07Z",
+ "letzter_scan": "2026-11-17T17:20:07Z",
+ "spiele_geprueft": 112,
+ "credits": 395,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -13,35 +13,40 @@
   {
    "name": "NCAAB",
    "gruppe": "Basketball",
-   "spiele": 30
-  },
-  {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 8
-  },
-  {
-   "name": "UEFA Nations League",
-   "gruppe": "Fußball",
-   "spiele": 13
+   "spiele": 54
   },
   {
    "name": "WNCAAB",
    "gruppe": "Basketball",
-   "spiele": 4
+   "spiele": 11
   },
   {
    "name": "NHL",
    "gruppe": "Eishockey",
-   "spiele": 13
+   "spiele": 14
   },
   {
-   "name": "ATP Finals",
-   "gruppe": "Tennis",
-   "spiele": 3
+   "name": "UEFA Nations League",
+   "gruppe": "Fußball",
+   "spiele": 8
+  },
+  {
+   "name": "Basketball Euroleague",
+   "gruppe": "Basketball",
+   "spiele": 14
+  },
+  {
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 5
+  },
+  {
+   "name": "NCAAF",
+   "gruppe": "American Football",
+   "spiele": 6
   }
  ],
- "ausgelassen": 14,
+ "ausgelassen": 13,
  "tipps": [],
  "verlauf": [
   {
