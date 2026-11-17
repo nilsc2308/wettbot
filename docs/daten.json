@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-17T17:20:07Z",
- "letzter_scan": "2026-11-17T17:20:07Z",
- "spiele_geprueft": 112,
- "credits": 395,
+ "erzeugt": "2026-11-17T22:46:05Z",
+ "letzter_scan": "2026-11-17T22:46:05Z",
+ "spiele_geprueft": 29,
+ "credits": 389,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,39 +11,34 @@
  },
  "gescannt": [
   {
-   "name": "NCAAB",
-   "gruppe": "Basketball",
-   "spiele": 54
+   "name": "Test Matches",
+   "gruppe": "Cricket",
+   "spiele": 3
   },
   {
-   "name": "WNCAAB",
-   "gruppe": "Basketball",
-   "spiele": 11
-  },
-  {
-   "name": "NHL",
+   "name": "AHL",
    "gruppe": "Eishockey",
-   "spiele": 14
+   "spiele": 10
   },
   {
-   "name": "UEFA Nations League",
+   "name": "One Day Internationals",
+   "gruppe": "Cricket",
+   "spiele": 1
+  },
+  {
+   "name": "NBL",
+   "gruppe": "Basketball",
+   "spiele": 3
+  },
+  {
+   "name": "Mestis",
+   "gruppe": "Eishockey",
+   "spiele": 3
+  },
+  {
+   "name": "Brazil Série A",
    "gruppe": "Fußball",
-   "spiele": 8
-  },
-  {
-   "name": "Basketball Euroleague",
-   "gruppe": "Basketball",
-   "spiele": 14
-  },
-  {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 5
-  },
-  {
-   "name": "NCAAF",
-   "gruppe": "American Football",
-   "spiele": 6
+   "spiele": 9
   }
  ],
  "ausgelassen": 13,
