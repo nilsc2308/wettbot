@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-18T16:54:54Z",
- "letzter_scan": "2026-11-18T16:54:54Z",
- "spiele_geprueft": 114,
- "credits": 382,
+ "erzeugt": "2026-11-18T22:27:54Z",
+ "letzter_scan": "2026-11-18T22:27:54Z",
+ "spiele_geprueft": 82,
+ "credits": 375,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,42 +11,42 @@
  },
  "gescannt": [
   {
-   "name": "NCAAB",
-   "gruppe": "Basketball",
-   "spiele": 62
-  },
-  {
-   "name": "WNCAAB",
-   "gruppe": "Basketball",
-   "spiele": 12
-  },
-  {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 12
-  },
-  {
-   "name": "AHL",
+   "name": "NHL",
    "gruppe": "Eishockey",
+   "spiele": 15
+  },
+  {
+   "name": "NCAAF",
+   "gruppe": "American Football",
+   "spiele": 48
+  },
+  {
+   "name": "Test Matches",
+   "gruppe": "Cricket",
+   "spiele": 2
+  },
+  {
+   "name": "NBL",
+   "gruppe": "Basketball",
+   "spiele": 2
+  },
+  {
+   "name": "La Liga",
+   "gruppe": "Fußball",
+   "spiele": 5
+  },
+  {
+   "name": "Bundesliga",
+   "gruppe": "Fußball",
    "spiele": 7
   },
   {
-   "name": "Copa del Rey",
+   "name": "Frauen-Bundesliga",
    "gruppe": "Fußball",
-   "spiele": 6
-  },
-  {
-   "name": "HockeyAllsvenskan",
-   "gruppe": "Eishockey",
-   "spiele": 6
-  },
-  {
-   "name": "Brazil Série A",
-   "gruppe": "Fußball",
-   "spiele": 9
+   "spiele": 3
   }
  ],
- "ausgelassen": 14,
+ "ausgelassen": 31,
  "tipps": [],
  "verlauf": [
   {
