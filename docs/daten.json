@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-17T22:46:05Z",
- "letzter_scan": "2026-11-17T22:46:05Z",
- "spiele_geprueft": 29,
- "credits": 389,
+ "erzeugt": "2026-11-18T16:54:54Z",
+ "letzter_scan": "2026-11-18T16:54:54Z",
+ "spiele_geprueft": 114,
+ "credits": 382,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,29 +11,34 @@
  },
  "gescannt": [
   {
-   "name": "Test Matches",
-   "gruppe": "Cricket",
-   "spiele": 3
+   "name": "NCAAB",
+   "gruppe": "Basketball",
+   "spiele": 62
+  },
+  {
+   "name": "WNCAAB",
+   "gruppe": "Basketball",
+   "spiele": 12
+  },
+  {
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 12
   },
   {
    "name": "AHL",
    "gruppe": "Eishockey",
-   "spiele": 10
+   "spiele": 7
   },
   {
-   "name": "One Day Internationals",
-   "gruppe": "Cricket",
-   "spiele": 1
+   "name": "Copa del Rey",
+   "gruppe": "Fußball",
+   "spiele": 6
   },
   {
-   "name": "NBL",
-   "gruppe": "Basketball",
-   "spiele": 3
-  },
-  {
-   "name": "Mestis",
+   "name": "HockeyAllsvenskan",
    "gruppe": "Eishockey",
-   "spiele": 3
+   "spiele": 6
   },
   {
    "name": "Brazil Série A",
@@ -41,7 +46,7 @@
    "spiele": 9
   }
  ],
- "ausgelassen": 13,
+ "ausgelassen": 14,
  "tipps": [],
  "verlauf": [
   {
