@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-19T22:33:27Z",
- "letzter_scan": "2026-11-19T22:33:27Z",
- "spiele_geprueft": 158,
- "credits": 361,
+ "erzeugt": "2026-11-20T16:39:33Z",
+ "letzter_scan": "2026-11-20T16:39:33Z",
+ "spiele_geprueft": 179,
+ "credits": 353,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,43 +11,78 @@
  },
  "gescannt": [
   {
-   "name": "J League",
-   "gruppe": "Fußball",
-   "spiele": 10
+   "name": "NCAAB",
+   "gruppe": "Basketball",
+   "spiele": 51
   },
   {
-   "name": "MLS",
-   "gruppe": "Fußball",
-   "spiele": 5
+   "name": "Boxing",
+   "gruppe": "Boxen",
+   "spiele": 12
   },
   {
-   "name": "NCAAF FCS",
-   "gruppe": "American Football",
-   "spiele": 57
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 9
   },
   {
-   "name": "A-League",
-   "gruppe": "Fußball",
-   "spiele": 5
-  },
-  {
-   "name": "NFL",
-   "gruppe": "American Football",
-   "spiele": 11
-  },
-  {
-   "name": "Brazil Série A",
-   "gruppe": "Fußball",
-   "spiele": 5
+   "name": "HockeyAllsvenskan",
+   "gruppe": "Eishockey",
+   "spiele": 7
   },
   {
    "name": "NCAAF",
    "gruppe": "American Football",
-   "spiele": 65
+   "spiele": 64
+  },
+  {
+   "name": "Ligue 2 - France",
+   "gruppe": "Fußball",
+   "spiele": 7
+  },
+  {
+   "name": "MMA",
+   "gruppe": "MMA",
+   "spiele": 25
+  },
+  {
+   "name": "Basketball Euroleague",
+   "gruppe": "Basketball",
+   "spiele": 4
   }
  ],
- "ausgelassen": 48,
- "tipps": [],
+ "ausgelassen": 47,
+ "tipps": [
+  {
+   "id": 5,
+   "liga": "Basketball Euroleague",
+   "gruppe": "Basketball",
+   "anstoss": "2026-11-20T19:15:00Z",
+   "heim": "Olympiacos",
+   "gast": "Real Madrid",
+   "tipp": "Sieg Real Madrid",
+   "buchmacher": "Winamax",
+   "quote": 2.1,
+   "prob": 0.4876,
+   "edge": 0.024,
+   "einsatz": 2.73,
+   "status": "offen",
+   "gewinn": null,
+   "akt_quote": 2.1,
+   "akt_edge": 0.024,
+   "akt_zeit": "2026-11-20T16:39:33Z",
+   "clv": 0.024,
+   "prob_jetzt": 0.4876,
+   "analyse": {
+    "anzahl_buecher": 20,
+    "pinnacle": 0.4876,
+    "betfair": 0.4795,
+    "markt": 0.4794,
+    "sicherheit": "hoch",
+    "hauptquelle": "pinnacle"
+   }
+  }
+ ],
  "verlauf": [
   {
    "id": 4,
@@ -167,17 +202,17 @@
   }
  ],
  "bilanz": {
-  "gesamt": 4,
+  "gesamt": 5,
   "abgerechnet": 0,
-  "offen": 4,
+  "offen": 5,
   "treffer": 0,
   "erwartet": 0,
   "einsatz": 0,
   "gewinn": 0,
   "roi": null,
   "gewinn_flach": 0,
-  "clv": -0.0143,
-  "clv_anzahl": 4
+  "clv": -0.0066,
+  "clv_anzahl": 5
  },
  "kurve": []
 }
