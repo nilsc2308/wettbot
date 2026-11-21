@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-20T16:39:33Z",
- "letzter_scan": "2026-11-20T16:39:33Z",
- "spiele_geprueft": 179,
- "credits": 353,
+ "erzeugt": "2026-11-21T20:45:37Z",
+ "letzter_scan": "2026-11-21T20:45:37Z",
+ "spiele_geprueft": 138,
+ "credits": 345,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -13,46 +13,47 @@
   {
    "name": "NCAAB",
    "gruppe": "Basketball",
-   "spiele": 51
-  },
-  {
-   "name": "Boxing",
-   "gruppe": "Boxen",
-   "spiele": 12
-  },
-  {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 9
-  },
-  {
-   "name": "HockeyAllsvenskan",
-   "gruppe": "Eishockey",
-   "spiele": 7
+   "spiele": 54
   },
   {
    "name": "NCAAF",
    "gruppe": "American Football",
-   "spiele": 64
+   "spiele": 24
   },
   {
-   "name": "Ligue 2 - France",
-   "gruppe": "Fußball",
-   "spiele": 7
+   "name": "NHL",
+   "gruppe": "Eishockey",
+   "spiele": 17
   },
   {
-   "name": "MMA",
-   "gruppe": "MMA",
-   "spiele": 25
+   "name": "AHL",
+   "gruppe": "Eishockey",
+   "spiele": 19
   },
   {
-   "name": "Basketball Euroleague",
+   "name": "NCAAF FCS",
+   "gruppe": "American Football",
+   "spiele": 11
+  },
+  {
+   "name": "NBA",
    "gruppe": "Basketball",
-   "spiele": 4
+   "spiele": 5
+  },
+  {
+   "name": "Liga MX",
+   "gruppe": "Fußball",
+   "spiele": 6
+  },
+  {
+   "name": "K League 1",
+   "gruppe": "Fußball",
+   "spiele": 2
   }
  ],
- "ausgelassen": 47,
- "tipps": [
+ "ausgelassen": 35,
+ "tipps": [],
+ "verlauf": [
   {
    "id": 5,
    "liga": "Basketball Euroleague",
@@ -81,9 +82,7 @@
     "sicherheit": "hoch",
     "hauptquelle": "pinnacle"
    }
-  }
- ],
- "verlauf": [
+  },
   {
    "id": 4,
    "liga": "FA Cup",
