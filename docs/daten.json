@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-21T20:45:37Z",
- "letzter_scan": "2026-11-21T20:45:37Z",
- "spiele_geprueft": 138,
- "credits": 345,
+ "erzeugt": "2026-11-22T15:53:27Z",
+ "letzter_scan": "2026-11-22T15:53:27Z",
+ "spiele_geprueft": 95,
+ "credits": 336,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -13,45 +13,50 @@
   {
    "name": "NCAAB",
    "gruppe": "Basketball",
-   "spiele": 54
+   "spiele": 38
   },
   {
-   "name": "NCAAF",
+   "name": "WNCAAB",
+   "gruppe": "Basketball",
+   "spiele": 12
+  },
+  {
+   "name": "NFL",
    "gruppe": "American Football",
-   "spiele": 24
-  },
-  {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 17
+   "spiele": 12
   },
   {
    "name": "AHL",
    "gruppe": "Eishockey",
-   "spiele": 19
-  },
-  {
-   "name": "NCAAF FCS",
-   "gruppe": "American Football",
-   "spiele": 11
+   "spiele": 9
   },
   {
    "name": "NBA",
    "gruppe": "Basketball",
+   "spiele": 7
+  },
+  {
+   "name": "NHL",
+   "gruppe": "Eishockey",
    "spiele": 5
   },
   {
-   "name": "Liga MX",
+   "name": "Eliteserien - Norway",
    "gruppe": "Fußball",
-   "spiele": 6
+   "spiele": 4
   },
   {
-   "name": "K League 1",
+   "name": "La Liga 2 - Spain",
    "gruppe": "Fußball",
-   "spiele": 2
+   "spiele": 4
+  },
+  {
+   "name": "Primera División - Argentina",
+   "gruppe": "Fußball",
+   "spiele": 4
   }
  ],
- "ausgelassen": 35,
+ "ausgelassen": 26,
  "tipps": [],
  "verlauf": [
   {
