@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-22T20:55:01Z",
- "letzter_scan": "2026-11-22T20:55:01Z",
- "spiele_geprueft": 38,
- "credits": 327,
+ "erzeugt": "2026-11-23T19:46:35Z",
+ "letzter_scan": "2026-11-23T19:46:35Z",
+ "spiele_geprueft": 70,
+ "credits": 318,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,52 +11,52 @@
  },
  "gescannt": [
   {
-   "name": "MLS",
-   "gruppe": "Fußball",
+   "name": "NCAAB",
+   "gruppe": "Basketball",
+   "spiele": 34
+  },
+  {
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 10
+  },
+  {
+   "name": "NHL",
+   "gruppe": "Eishockey",
+   "spiele": 8
+  },
+  {
+   "name": "WNCAAB",
+   "gruppe": "Basketball",
    "spiele": 5
-  },
-  {
-   "name": "Primera División - Chile",
-   "gruppe": "Fußball",
-   "spiele": 2
-  },
-  {
-   "name": "Test Matches",
-   "gruppe": "Cricket",
-   "spiele": 2
   },
   {
    "name": "Brazil Série A",
    "gruppe": "Fußball",
-   "spiele": 6
+   "spiele": 5
   },
   {
-   "name": "Liga MX",
+   "name": "La Liga",
+   "gruppe": "Fußball",
+   "spiele": 1
+  },
+  {
+   "name": "NFL",
+   "gruppe": "American Football",
+   "spiele": 3
+  },
+  {
+   "name": "Primera División - Argentina",
    "gruppe": "Fußball",
    "spiele": 2
   },
   {
-   "name": "Brazil Série B",
+   "name": "MLS",
    "gruppe": "Fußball",
-   "spiele": 1
-  },
-  {
-   "name": "Serie A",
-   "gruppe": "Fußball",
-   "spiele": 1
-  },
-  {
-   "name": "Premier League",
-   "gruppe": "Fußball",
-   "spiele": 1
-  },
-  {
-   "name": "Champions League",
-   "gruppe": "Fußball",
-   "spiele": 18
+   "spiele": 2
   }
  ],
- "ausgelassen": 26,
+ "ausgelassen": 18,
  "tipps": [],
  "verlauf": [
   {
