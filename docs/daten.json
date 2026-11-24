@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-24T01:59:09Z",
- "letzter_scan": "2026-11-24T01:59:09Z",
- "spiele_geprueft": 118,
- "credits": 302,
+ "erzeugt": "2026-11-24T19:18:11Z",
+ "letzter_scan": "2026-11-24T19:18:11Z",
+ "spiele_geprueft": 146,
+ "credits": 292,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -13,42 +13,7 @@
   {
    "name": "NCAAB",
    "gruppe": "Basketball",
-   "spiele": 72
-  },
-  {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 5
-  },
-  {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 3
-  },
-  {
-   "name": "International Twenty20",
-   "gruppe": "Cricket",
-   "spiele": 1
-  },
-  {
-   "name": "Test Matches",
-   "gruppe": "Cricket",
-   "spiele": 2
-  },
-  {
-   "name": "WNCAAB",
-   "gruppe": "Basketball",
-   "spiele": 1
-  },
-  {
-   "name": "Champions League",
-   "gruppe": "Fußball",
-   "spiele": 18
-  },
-  {
-   "name": "League 2",
-   "gruppe": "Fußball",
-   "spiele": 2
+   "spiele": 70
   },
   {
    "name": "Championship",
@@ -56,12 +21,47 @@
    "spiele": 12
   },
   {
-   "name": "Premiership - Scotland",
+   "name": "WNCAAB",
+   "gruppe": "Basketball",
+   "spiele": 8
+  },
+  {
+   "name": "Champions League",
+   "gruppe": "Fußball",
+   "spiele": 16
+  },
+  {
+   "name": "League 1",
+   "gruppe": "Fußball",
+   "spiele": 5
+  },
+  {
+   "name": "Basketball Euroleague",
+   "gruppe": "Basketball",
+   "spiele": 7
+  },
+  {
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 7
+  },
+  {
+   "name": "NCAAF",
+   "gruppe": "American Football",
+   "spiele": 8
+  },
+  {
+   "name": "AHL",
+   "gruppe": "Eishockey",
+   "spiele": 11
+  },
+  {
+   "name": "League 2",
    "gruppe": "Fußball",
    "spiele": 2
   }
  ],
- "ausgelassen": 16,
+ "ausgelassen": 19,
  "tipps": [],
  "verlauf": [
   {
