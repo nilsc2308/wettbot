@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-25T18:23:25Z",
- "letzter_scan": "2026-11-25T18:23:25Z",
- "spiele_geprueft": 141,
- "credits": 281,
+ "erzeugt": "2026-11-25T23:27:39Z",
+ "letzter_scan": "2026-11-25T23:27:39Z",
+ "spiele_geprueft": 83,
+ "credits": 268,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,62 +11,72 @@
  },
  "gescannt": [
   {
-   "name": "NCAAB",
-   "gruppe": "Basketball",
-   "spiele": 69
+   "name": "Boxing",
+   "gruppe": "Boxen",
+   "spiele": 8
   },
   {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 14
-  },
-  {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 9
-  },
-  {
-   "name": "AHL",
-   "gruppe": "Eishockey",
-   "spiele": 9
-  },
-  {
-   "name": "Champions League",
+   "name": "Primera División - Argentina",
    "gruppe": "Fußball",
-   "spiele": 7
+   "spiele": 1
   },
   {
-   "name": "Championship",
+   "name": "NFL",
+   "gruppe": "American Football",
+   "spiele": 5
+  },
+  {
+   "name": "Bundesliga",
    "gruppe": "Fußball",
-   "spiele": 15
+   "spiele": 6
   },
   {
-   "name": "Serie B - Italy",
-   "gruppe": "Fußball",
-   "spiele": 7
-  },
-  {
-   "name": "WNCAAB",
-   "gruppe": "Basketball",
-   "spiele": 3
-  },
-  {
-   "name": "Basketball Euroleague",
-   "gruppe": "Basketball",
-   "spiele": 3
-  },
-  {
-   "name": "Liga MX",
+   "name": "Premier League",
    "gruppe": "Fußball",
    "spiele": 4
   },
   {
-   "name": "EFL Trophy",
+   "name": "Serie A",
    "gruppe": "Fußball",
+   "spiele": 4
+  },
+  {
+   "name": "La Liga",
+   "gruppe": "Fußball",
+   "spiele": 5
+  },
+  {
+   "name": "UEFA Europa Conference League",
+   "gruppe": "Fußball",
+   "spiele": 18
+  },
+  {
+   "name": "UEFA Europa League",
+   "gruppe": "Fußball",
+   "spiele": 18
+  },
+  {
+   "name": "AFL Women's",
+   "gruppe": "Australian Football",
    "spiele": 1
+  },
+  {
+   "name": "Handball-Bundesliga",
+   "gruppe": "Handball",
+   "spiele": 5
+  },
+  {
+   "name": "Austrian Football Bundesliga",
+   "gruppe": "Fußball",
+   "spiele": 3
+  },
+  {
+   "name": "Ekstraklasa - Poland",
+   "gruppe": "Fußball",
+   "spiele": 5
   }
  ],
- "ausgelassen": 23,
+ "ausgelassen": 28,
  "tipps": [],
  "verlauf": [
   {
