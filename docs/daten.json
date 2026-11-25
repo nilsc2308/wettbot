@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-24T19:18:11Z",
- "letzter_scan": "2026-11-24T19:18:11Z",
- "spiele_geprueft": 146,
- "credits": 292,
+ "erzeugt": "2026-11-25T18:23:25Z",
+ "letzter_scan": "2026-11-25T18:23:25Z",
+ "spiele_geprueft": 141,
+ "credits": 281,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -13,55 +13,60 @@
   {
    "name": "NCAAB",
    "gruppe": "Basketball",
-   "spiele": 70
+   "spiele": 69
   },
   {
-   "name": "Championship",
-   "gruppe": "Fußball",
-   "spiele": 12
-  },
-  {
-   "name": "WNCAAB",
-   "gruppe": "Basketball",
-   "spiele": 8
-  },
-  {
-   "name": "Champions League",
-   "gruppe": "Fußball",
-   "spiele": 16
-  },
-  {
-   "name": "League 1",
-   "gruppe": "Fußball",
-   "spiele": 5
-  },
-  {
-   "name": "Basketball Euroleague",
-   "gruppe": "Basketball",
-   "spiele": 7
+   "name": "NHL",
+   "gruppe": "Eishockey",
+   "spiele": 14
   },
   {
    "name": "NBA",
    "gruppe": "Basketball",
-   "spiele": 7
-  },
-  {
-   "name": "NCAAF",
-   "gruppe": "American Football",
-   "spiele": 8
+   "spiele": 9
   },
   {
    "name": "AHL",
    "gruppe": "Eishockey",
-   "spiele": 11
+   "spiele": 9
   },
   {
-   "name": "League 2",
+   "name": "Champions League",
    "gruppe": "Fußball",
-   "spiele": 2
+   "spiele": 7
+  },
+  {
+   "name": "Championship",
+   "gruppe": "Fußball",
+   "spiele": 15
+  },
+  {
+   "name": "Serie B - Italy",
+   "gruppe": "Fußball",
+   "spiele": 7
+  },
+  {
+   "name": "WNCAAB",
+   "gruppe": "Basketball",
+   "spiele": 3
+  },
+  {
+   "name": "Basketball Euroleague",
+   "gruppe": "Basketball",
+   "spiele": 3
+  },
+  {
+   "name": "Liga MX",
+   "gruppe": "Fußball",
+   "spiele": 4
+  },
+  {
+   "name": "EFL Trophy",
+   "gruppe": "Fußball",
+   "spiele": 1
   }
  ],
- "ausgelassen": 19,
+ "ausgelassen": 23,
  "tipps": [],
  "verlauf": [
   {
