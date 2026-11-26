@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-25T23:27:39Z",
- "letzter_scan": "2026-11-25T23:27:39Z",
- "spiele_geprueft": 83,
- "credits": 268,
+ "erzeugt": "2026-11-26T18:05:07Z",
+ "letzter_scan": "2026-11-26T18:05:07Z",
+ "spiele_geprueft": 149,
+ "credits": 256,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,72 +11,67 @@
  },
  "gescannt": [
   {
-   "name": "Boxing",
-   "gruppe": "Boxen",
-   "spiele": 8
-  },
-  {
-   "name": "Primera División - Argentina",
-   "gruppe": "Fußball",
-   "spiele": 1
-  },
-  {
-   "name": "NFL",
-   "gruppe": "American Football",
-   "spiele": 5
-  },
-  {
-   "name": "Bundesliga",
-   "gruppe": "Fußball",
-   "spiele": 6
-  },
-  {
-   "name": "Premier League",
-   "gruppe": "Fußball",
-   "spiele": 4
-  },
-  {
-   "name": "Serie A",
-   "gruppe": "Fußball",
-   "spiele": 4
-  },
-  {
-   "name": "La Liga",
-   "gruppe": "Fußball",
-   "spiele": 5
-  },
-  {
-   "name": "UEFA Europa Conference League",
-   "gruppe": "Fußball",
-   "spiele": 18
+   "name": "NCAAB",
+   "gruppe": "Basketball",
+   "spiele": 17
   },
   {
    "name": "UEFA Europa League",
    "gruppe": "Fußball",
-   "spiele": 18
+   "spiele": 10
   },
   {
-   "name": "AFL Women's",
-   "gruppe": "Australian Football",
-   "spiele": 1
+   "name": "UEFA Europa Conference League",
+   "gruppe": "Fußball",
+   "spiele": 8
   },
   {
-   "name": "Handball-Bundesliga",
-   "gruppe": "Handball",
+   "name": "WNCAAB",
+   "gruppe": "Basketball",
    "spiele": 5
   },
   {
-   "name": "Austrian Football Bundesliga",
+   "name": "Liga MX",
+   "gruppe": "Fußball",
+   "spiele": 4
+  },
+  {
+   "name": "NFL",
+   "gruppe": "American Football",
+   "spiele": 9
+  },
+  {
+   "name": "Brazil Série A",
    "gruppe": "Fußball",
    "spiele": 3
   },
   {
-   "name": "Ekstraklasa - Poland",
+   "name": "Test Matches",
+   "gruppe": "Cricket",
+   "spiele": 1
+  },
+  {
+   "name": "League 1",
    "gruppe": "Fußball",
-   "spiele": 5
+   "spiele": 12
+  },
+  {
+   "name": "NCAAF",
+   "gruppe": "American Football",
+   "spiele": 67
+  },
+  {
+   "name": "Swiss Superleague",
+   "gruppe": "Fußball",
+   "spiele": 6
+  },
+  {
+   "name": "Premier League - Russia",
+   "gruppe": "Fußball",
+   "spiele": 7
   }
  ],
- "ausgelassen": 28,
+ "ausgelassen": 40,
  "tipps": [],
  "verlauf": [
   {
