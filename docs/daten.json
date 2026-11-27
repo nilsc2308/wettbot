@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-26T23:28:20Z",
- "letzter_scan": "2026-11-26T23:28:20Z",
- "spiele_geprueft": 90,
- "credits": 241,
+ "erzeugt": "2026-11-27T17:48:35Z",
+ "letzter_scan": "2026-11-27T17:48:35Z",
+ "spiele_geprueft": 250,
+ "credits": 227,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -11,82 +11,77 @@
  },
  "gescannt": [
   {
-   "name": "A-League",
-   "gruppe": "Fußball",
-   "spiele": 2
+   "name": "NCAAB",
+   "gruppe": "Basketball",
+   "spiele": 47
   },
   {
-   "name": "International Twenty20",
-   "gruppe": "Cricket",
-   "spiele": 1
+   "name": "NHL",
+   "gruppe": "Eishockey",
+   "spiele": 28
   },
   {
-   "name": "AFL Women's",
-   "gruppe": "Australian Football",
-   "spiele": 1
+   "name": "MMA",
+   "gruppe": "MMA",
+   "spiele": 23
   },
   {
-   "name": "Bundesliga",
-   "gruppe": "Fußball",
-   "spiele": 9
+   "name": "AHL",
+   "gruppe": "Eishockey",
+   "spiele": 22
   },
   {
-   "name": "Premier League",
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 11
+  },
+  {
+   "name": "NCAAF",
+   "gruppe": "American Football",
+   "spiele": 61
+  },
+  {
+   "name": "HockeyAllsvenskan",
+   "gruppe": "Eishockey",
+   "spiele": 6
+  },
+  {
+   "name": "Handball-Bundesliga",
+   "gruppe": "Handball",
+   "spiele": 7
+  },
+  {
+   "name": "WNCAAB",
+   "gruppe": "Basketball",
+   "spiele": 3
+  },
+  {
+   "name": "J League",
    "gruppe": "Fußball",
    "spiele": 10
   },
   {
-   "name": "La Liga",
-   "gruppe": "Fußball",
-   "spiele": 9
-  },
-  {
-   "name": "Serie A",
-   "gruppe": "Fußball",
-   "spiele": 8
-  },
-  {
-   "name": "Copa Libertadores",
-   "gruppe": "Fußball",
-   "spiele": 1
-  },
-  {
-   "name": "Saudi Pro League",
+   "name": "K League 1",
    "gruppe": "Fußball",
    "spiele": 6
   },
   {
-   "name": "Ligue 1 - France",
+   "name": "MLS",
    "gruppe": "Fußball",
+   "spiele": 8
+  },
+  {
+   "name": "Boxing",
+   "gruppe": "Boxen",
    "spiele": 9
   },
   {
-   "name": "Superettan - Sweden",
-   "gruppe": "Fußball",
-   "spiele": 3
-  },
-  {
-   "name": "Turkey Super League",
-   "gruppe": "Fußball",
-   "spiele": 7
-  },
-  {
-   "name": "Bundesliga 2 - Germany",
+   "name": "Belgium First Div",
    "gruppe": "Fußball",
    "spiele": 9
-  },
-  {
-   "name": "Denmark Superliga",
-   "gruppe": "Fußball",
-   "spiele": 5
-  },
-  {
-   "name": "3. Liga - Germany",
-   "gruppe": "Fußball",
-   "spiele": 10
   }
  ],
- "ausgelassen": 38,
+ "ausgelassen": 40,
  "tipps": [],
  "verlauf": [
   {
