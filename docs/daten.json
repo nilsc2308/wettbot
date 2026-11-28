@@ -1,8 +1,8 @@
 {
- "erzeugt": "2026-11-27T17:48:35Z",
- "letzter_scan": "2026-11-27T17:48:35Z",
- "spiele_geprueft": 250,
- "credits": 227,
+ "erzeugt": "2026-11-28T16:35:54Z",
+ "letzter_scan": "2026-11-28T16:35:54Z",
+ "spiele_geprueft": 251,
+ "credits": 210,
  "einstellungen": {
   "bankroll": 500,
   "kelly_anteil": 0.25,
@@ -13,76 +13,121 @@
   {
    "name": "NCAAB",
    "gruppe": "Basketball",
-   "spiele": 47
-  },
-  {
-   "name": "NHL",
-   "gruppe": "Eishockey",
-   "spiele": 28
-  },
-  {
-   "name": "MMA",
-   "gruppe": "MMA",
-   "spiele": 23
-  },
-  {
-   "name": "AHL",
-   "gruppe": "Eishockey",
-   "spiele": 22
-  },
-  {
-   "name": "NBA",
-   "gruppe": "Basketball",
-   "spiele": 11
+   "spiele": 63
   },
   {
    "name": "NCAAF",
    "gruppe": "American Football",
-   "spiele": 61
+   "spiele": 53
   },
   {
-   "name": "HockeyAllsvenskan",
+   "name": "MMA",
+   "gruppe": "MMA",
+   "spiele": 19
+  },
+  {
+   "name": "NHL",
    "gruppe": "Eishockey",
-   "spiele": 6
+   "spiele": 15
   },
   {
-   "name": "Handball-Bundesliga",
-   "gruppe": "Handball",
-   "spiele": 7
-  },
-  {
-   "name": "WNCAAB",
-   "gruppe": "Basketball",
-   "spiele": 3
-  },
-  {
-   "name": "J League",
-   "gruppe": "Fußball",
-   "spiele": 10
-  },
-  {
-   "name": "K League 1",
-   "gruppe": "Fußball",
-   "spiele": 6
-  },
-  {
-   "name": "MLS",
-   "gruppe": "Fußball",
-   "spiele": 8
+   "name": "AHL",
+   "gruppe": "Eishockey",
+   "spiele": 17
   },
   {
    "name": "Boxing",
    "gruppe": "Boxen",
+   "spiele": 12
+  },
+  {
+   "name": "Coupe de France",
+   "gruppe": "Fußball",
    "spiele": 9
+  },
+  {
+   "name": "NCAAF FCS",
+   "gruppe": "American Football",
+   "spiele": 8
+  },
+  {
+   "name": "MLS",
+   "gruppe": "Fußball",
+   "spiele": 6
+  },
+  {
+   "name": "WNCAAB",
+   "gruppe": "Basketball",
+   "spiele": 6
+  },
+  {
+   "name": "NBA",
+   "gruppe": "Basketball",
+   "spiele": 5
+  },
+  {
+   "name": "Ligue 1 - France",
+   "gruppe": "Fußball",
+   "spiele": 7
+  },
+  {
+   "name": "SHL",
+   "gruppe": "Eishockey",
+   "spiele": 3
+  },
+  {
+   "name": "Swiss Superleague",
+   "gruppe": "Fußball",
+   "spiele": 6
   },
   {
    "name": "Belgium First Div",
    "gruppe": "Fußball",
-   "spiele": 9
+   "spiele": 7
+  },
+  {
+   "name": "La Liga",
+   "gruppe": "Fußball",
+   "spiele": 7
+  },
+  {
+   "name": "Serie A",
+   "gruppe": "Fußball",
+   "spiele": 8
   }
  ],
- "ausgelassen": 40,
- "tipps": [],
+ "ausgelassen": 32,
+ "tipps": [
+  {
+   "id": 6,
+   "liga": "Coupe de France",
+   "gruppe": "Fußball",
+   "anstoss": "2026-11-28T17:00:00Z",
+   "heim": "Saint-Pryvé Saint-Hilaire",
+   "gast": "Selongey",
+   "tipp": "Sieg Selongey",
+   "buchmacher": "Winamax",
+   "quote": 4.6,
+   "prob": 0.2234,
+   "edge": 0.0275,
+   "einsatz": 0.96,
+   "status": "offen",
+   "gewinn": null,
+   "akt_quote": 4.6,
+   "akt_edge": 0.0275,
+   "akt_zeit": "2026-11-28T16:35:54Z",
+   "clv": 0.0275,
+   "prob_jetzt": 0.2234,
+   "analyse": {
+    "anzahl_buecher": 10,
+    "pinnacle": 0.2234,
+    "betfair": 0.2257,
+    "markt": 0.21,
+    "sicherheit": "mittel",
+    "hauptquelle": "pinnacle"
+   }
+  }
+ ],
  "verlauf": [
   {
    "id": 5,
@@ -231,17 +276,17 @@
   }
  ],
  "bilanz": {
-  "gesamt": 5,
+  "gesamt": 6,
   "abgerechnet": 0,
-  "offen": 1,
+  "offen": 2,
   "treffer": 0,
   "erwartet": 0,
   "einsatz": 0,
   "gewinn": 0,
   "roi": null,
   "gewinn_flach": 0,
-  "clv": -0.0066,
-  "clv_anzahl": 5
+  "clv": -0.0009,
+  "clv_anzahl": 6
  },
  "kurve": []
 }
